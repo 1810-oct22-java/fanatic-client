@@ -1,16 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Http , Response } from '@angular/http';
-// import { Observable } from 'rxjs/Observable';
-// import 'rxjs/add/operator/map';
-//import 'rxjs/add/operator/do';
-import { MovieAPI } from 'src/app/models/movieAPI';
+import { HttpClient } from '@angular/common/http';
 import { ConfigAPI } from 'src/app/models/configAPI';
+import { MovieAPI } from 'src/app/models/movieAPI';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieAPIService {
-  
   private themovieDB: string;
   public id: string;
 
@@ -48,16 +44,4 @@ export class MovieAPIService {
   public getBackground(backdrop) {
     return {'background-image': `url(${ConfigAPI.image_url}${backdrop})`};
   }
-
-  public setMovieID(id: string) {
-    // build the search url
-    this.themovieDB = ConfigAPI.base_url + "movie/" + id + ConfigAPI.api_key;
-    this.id = id; 
-  }
-
-  // public getMovie(): Observable<MovieAPI[]> {
-  //   return this.http.get(this.themovieDB)
-  //   .map((response: Response) => <MovieAPI[]> response.json())
-  //   .do(data => console.log(JSON.stringify(data)));
-  // }
 }
