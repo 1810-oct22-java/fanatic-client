@@ -19,12 +19,12 @@ import { MovieAPI } from './models/movieAPI';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule,
+    AppRoutingModule
   //  Tabulator
   ],
   providers: [ 
     MovieAPI,
-    Http 
+    Http
   ],
   bootstrap: [AppComponent]
 })

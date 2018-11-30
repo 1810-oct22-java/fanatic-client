@@ -14,6 +14,7 @@ export class MovieViewComponent implements OnInit {
   //tabulator: Tabulator = new Tabulator();
   //movie: MovieAPI = new MovieAPI();
   //movieService: MovieAPIService = new MovieAPIService();
+  private id: string;
 
   constructor(
     public route: ActivatedRoute,
@@ -22,10 +23,14 @@ export class MovieViewComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.movieService.setMovieID(this.id);
     
-    
+
+
+
     // Bohemian Rhapsody 424694
-    this.movie = this.movieService.pull(this.route.snapshot.paramMap.get('id'));
+    this.movie = this.movieService.pull(this.id);
 //    this.movie.id = this.route.snapshot.paramMap.get('id');
 //    this.movie.name = "Bohemian Rhapsody";
    
