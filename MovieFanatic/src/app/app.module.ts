@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MovieViewComponent } from './components/movie-view/movie-view.component';
 import { HeaderComponent } from './components/header/header.component';
+import { MovieAPI } from './models/movieAPI';
 
 @NgModule({
   declarations: [
