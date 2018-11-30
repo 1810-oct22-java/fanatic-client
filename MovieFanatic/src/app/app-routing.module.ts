@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { MovieViewComponent } from 'src/app/components/movie-view/movie-view.component';
 
 const routes: Routes = [
-  { path:'', redirectTo:'movie', pathMatch: 'full' },
-  { path: 'movie', component: MovieViewComponent},
+  { path:'', redirectTo:'movie/424694', pathMatch: 'full' },
+  { path:'movie/:id', component: MovieViewComponent },
 ];
 
 @NgModule({

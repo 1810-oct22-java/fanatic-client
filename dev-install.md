@@ -4,8 +4,6 @@ clone <em>git [repo_name]</em> <br>
 cd fanatic-client/MovieFanatic/ <br> 
 git checkout -b <em>feature_name</em> <br>
 
-make changes
-
 git add .<br>
 git commit -m "[message]"<br>
 git push<br>
