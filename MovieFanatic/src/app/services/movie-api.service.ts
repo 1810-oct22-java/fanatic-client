@@ -7,7 +7,6 @@ import { MovieAPI } from 'src/app/models/movieAPI';
   providedIn: 'root'
 })
 export class MovieAPIService {
- 
   private themovieDB: string;
   public id: string;
 

@@ -12,7 +12,7 @@ import { ConfigAPI } from 'src/app/models/configAPI';
 })
 export class MovieViewComponent implements OnInit {
   //tabulator: Tabulator = new Tabulator();
-  private id: string;
+ private id: string;
   public movie: MovieAPI;
 
   private something = [];
