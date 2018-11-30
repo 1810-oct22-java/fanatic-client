@@ -1,0 +1,9 @@
+cd ~/Documents/sean_young_code/fanatic-client 
+git status // just to know where you are
+git checkout -b [banch_name] // just the branch 
+mkdir [branch_name_folder] // if you want to add a new folder
+but you might be working in some other file so make sure you move it here
+
+git add [file/folder name or "." for everything]
+git commit -m"[meaningful message]
+git push --set-upstream origin [branch]
