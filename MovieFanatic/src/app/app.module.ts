@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MovieViewComponent } from './components/movie-view/movie-view.component';
 import { HeaderComponent } from './components/header/header.component';
-import { ConfigAPI } from './models/configAPI';
 import { MovieAPI } from './models/movieAPI';
 
 @NgModule({
@@ -24,7 +23,6 @@ import { MovieAPI } from './models/movieAPI';
   //  Tabulator
   ],
   providers: [ 
-    ConfigAPI,
     MovieAPI,
     Http 
   ],
