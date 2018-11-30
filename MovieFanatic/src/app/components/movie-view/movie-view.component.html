@@ -1,19 +1,18 @@
 <div *ngIf="this.movie">
-<div class="jumbotron jumbotron-fluid"  [ngStyle]="this.getBackground()">
-  <div class="container">
-    <div class="row justify-content-md-center">
-      <div class="col-4">
-          <img class="poster" src='{{this.movie.poster_path}}'>
-      </div>
-      <div class="col-8 round-border">
-        <h1>{{this.movie.original_title}}</h1>>
-        <h5 class="release-date">{{this.movie.release_date}}</h5>
-        <h5>2 hr 15 min</h5>
-        <hr class="line-break">
-        <p>{{this.movie.overview}}</p>
-      </div>
+<div class="jumbotron jumbotron-fluid" [ngStyle]="this.getBackground()">
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-4">
+                <img class="poster" src='{{this.movie.poster_path}}'>
+            </div>
+            <div class="col-8 round-border">
+                <h1>{{this.movie.original_title}}</h1>>
+                <h2>{{this.metaData}}</h2>
+                <hr class="line-break">
+                <p>{{this.movie.overview}}</p>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 <div class="review-list">
     <table id="example-table">

@@ -14,8 +14,7 @@ export class MovieViewComponent implements OnInit {
   //tabulator: Tabulator = new Tabulator();
   private id: string;
   public movie: MovieAPI;
-
-  private something = [];
+  public metaData: string;
 
   constructor(
     public route: ActivatedRoute,
@@ -30,6 +29,9 @@ export class MovieViewComponent implements OnInit {
                     this.movie = movie;
                     this.movie.poster_path = this.movieService.formatImage(this.movie.poster_path);
                     console.log(this.movie.poster_path);
+
+                    this.metaData = this.movie.release_date + "  |  "
+                      + "hours" + "  |  ";
                   }
     );
 
