@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { Http } from '@angular/http';
+//import { Http } from '@angular/http';
 //import { Tabulator } from 'tabulator-tables/dist/js/tabulator.min.js';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,9 +26,6 @@ import { Actor } from './models/actor';
   //  Tabulator
   ],
   providers: [ 
-    MovieAPI,
-    Actor,
-    Http
   ],
   bootstrap: [AppComponent]
 })
