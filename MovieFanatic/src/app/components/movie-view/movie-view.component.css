@@ -40,20 +40,39 @@ h1 {
     padding: 0px 0px 0px 0px;
 }
 
-h2 { 
+a.title {
     font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
-    color: rgb(170, 170, 170);
-    font-size: 16px;
-    padding: 0px 0px 0px 0px;
-}
-
-h5, p {
-    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
-    color: rgb(185, 185, 185);
-}
-
-.release-date {
+    font-weight: bold;
     color: white;
+    padding: 0px 0px 0px 0px;
+    line-height: 70%;
+    font-size: 36px;
+}
+
+p, h2, h3, h4, h5, h6, div, a {
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    color: rgb(145, 145, 145);
+}
+
+h6.tag-line {
+    padding: 5px 0px 15px 0px;
+    font-style: italic;
+    font-size: 12px;
+}
+
+h5.meta-data {
+    line-height: 80%;
+}
+
+.category {
+    color: rgb(80, 80, 80);
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.cast-link {
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    color: rgb(145, 145, 145);
 }
 
 .line-break {
@@ -64,4 +83,21 @@ h5, p {
 
 .review-list {
     padding: 50px 50px 50px 50px;
+}
+
+table, tr, th, td {
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    color: rgb(145, 145, 145);
+    text-align: center;
+    table-layout: fixed;
+    width: 60px;
+}
+.ratings-header {
+    font-size: 10px;
+    line-height: 85%;
+}
+
+.ratings-detail {
+    font-size: 20px;
+    padding: 0px 0px 0px 0px;
 }
