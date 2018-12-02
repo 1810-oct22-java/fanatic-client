@@ -8,14 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MovieViewComponent } from './components/movie-view/movie-view.component';
+import { ActorViewComponent } from './components/actor-view/actor-view.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
-import { ActorViewComponent } from 'src/app/components/actor-view/actor-view.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { Actor } from './models/actor';
 import { MovieReviewComponent } from './components/movie-review/movie-review.component';
 
 @NgModule({
+  
   declarations: [
     AppComponent,
     MovieViewComponent,
@@ -32,7 +32,6 @@ import { MovieReviewComponent } from './components/movie-review/movie-review.com
     FormsModule
   ],
   providers: [
-    Actor 
   ],
   bootstrap: [AppComponent]
 })
