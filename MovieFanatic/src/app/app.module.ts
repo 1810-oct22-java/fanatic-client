@@ -12,7 +12,6 @@ import { ProfileViewComponent } from './components/profile-view/profile-view.com
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { LoginComponent } from './components/login/login.component';
 import { SearchViewComponent } from './components/search-view/search-view.component';
-
 import { MovieReviewComponent } from './components/movie-review/movie-review.component';
 import { UserViewComponent } from './components/user-view/user-view.component';
 
