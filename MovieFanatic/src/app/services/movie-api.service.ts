@@ -16,7 +16,7 @@ export class MovieAPIService {
   }
 
   getMoviesByString(query: string) {
-    return this.http.get<MovieAPI>(ConfigAPI.base_url + 'search/movie' + ConfigAPI.api_key + ConfigAPI.query_params + query);
+    return this.http.get<MovieAPI>(ConfigAPI.base_url + 'search/multi' + ConfigAPI.api_key + ConfigAPI.query_params + query);
   }
 
   getCredits(id: string) {
