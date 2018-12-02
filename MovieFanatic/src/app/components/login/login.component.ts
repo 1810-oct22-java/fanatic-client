@@ -23,13 +23,16 @@ export class LoginComponent implements OnInit {
   login(){
     console.log('inside of login method');
     this.currentUser = this.loginService.validateUser(this.username,this.password);
-    if((this.currentUser == null)||(this.currentUser == undefined)){
+    if(this.currentUser == null|| this.currentUser == undefined){
       this.output ='Invalid Credentials';
-
-    }
-    else{
+    }else{
       this.output = `Welcome ${this.username}`;
     }
+  }
+  signup(){
+    console.log('inside of signup method');
+    
+
   }
 
 } 
