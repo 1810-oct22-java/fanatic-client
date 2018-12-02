@@ -8,19 +8,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MovieViewComponent } from './components/movie-view/movie-view.component';
 import { HeaderComponent } from './components/header/header.component';
-<<<<<<< HEAD
 import { ActorViewComponent } from 'src/app/components/actor-view/actor-view.component';
-
-=======
->>>>>>> 0ef7dd44fded79229128a0ca668adfd85d11ec21
-import { MovieAPI } from './models/movieAPI';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MovieViewComponent,
     HeaderComponent,
-    ActorViewComponent
+    ActorViewComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

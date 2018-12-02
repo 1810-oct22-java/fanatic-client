@@ -1,17 +1,20 @@
-.jumbotronX {
-    background: rgb(121, 18, 35) url("https://image.tmdb.org/t/p/w500/87hTDiay2N2qWyX4Ds7ybXi9h8I.jpg") no-repeat center;
-    background: url("https://image.tmdb.org/t/p/w500/pbXgLEYh8rlG2Km5IGZPnhcnuSz.jpg");
-    background-size: 100%;
-}
-
-.jumbotron {
-    background-size: 100%;
+.body {
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     background-origin: center;
+    padding: 40px;
 }
 
 img.poster {
-    height: 400px;
+    height: 500px;
+    border-radius: 15px;
+    border: 1px solid;
+    box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.60);
+    
+}
+
+img.posterX {
+    height: 500px;
     border-radius: 15px;
     border: 4px solid #ffc34d;
     border-style: ridge;
@@ -19,10 +22,25 @@ img.poster {
 }
 .round-border {
 	border-radius: 15px;
+	border: 1px solid;
+	padding: 15px 15px 15px 15px;
+    background-color: rgb(0, 0, 0, 0.8);
+    box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.60);
+}
+
+.round-borderX {
+	border-radius: 15px;
 	border: 4px solid #ffc34d;
 	padding: 15px 15px 15px 15px;
 	border-style: ridge;
-  background-color: rgb(0, 0, 0, 0.8);
+    background-color: rgb(0, 0, 0, 0.8);
+}
+
+
+.metacritic {
+	padding: 0px 0px 0px 0px;
+    background: rgb(3, 226, 3);
+    color:white;
 }
 
 .round-border-reviews {
@@ -54,7 +72,7 @@ p, h2, h3, h4, h5, h6, div, a {
     color: rgb(145, 145, 145);
 }
 
-h6.tag-line {
+.tag-line {
     padding: 5px 0px 15px 0px;
     font-style: italic;
     font-size: 12px;
