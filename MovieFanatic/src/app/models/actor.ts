@@ -3,9 +3,12 @@
 export interface Actor {
     id: string;
     name: string;
-    gender: string;
     birthday: string;
     profile_path:string;
+    gender: number;
+    place_of_birth: string;
+    popularity: number;
+    biography: string;
 }
 
 // biography: ""
