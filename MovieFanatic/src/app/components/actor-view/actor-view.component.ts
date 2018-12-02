@@ -1,0 +1,39 @@
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Actor } from 'src/app/models/actor';
+import { Tabulator } from 'tabulator-tables/dist/js/tabulator.min.js';
+import { ActorApiService } from 'src/app/services/actor-api.service';
+import { OMDBAPI } from 'src/app/models/OMDBAPI';
+
+@Component({
+  selector: 'app-actor-view',
+  templateUrl: './actor-view.component.html',
+  styleUrls: ['./actor-view.component.css']
+})
+export class ActorViewComponent implements OnInit {
+  private id: string;
+  public firstName: string;
+  public lastName: string;
+  public age: number;
+  public actor: Actor;
+
+
+  constructor(
+    public route: ActivatedRoute,
+    public actorService: ActorApiService
+  ) {}
+
+ 
+
+  ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.actorService.getActor(this.id).subscribe(
+      (actor) =>  { 
+        this.actor = actor;
+        this.actor.profile_path = this.actorService.formatImage(this.actor.profile_path);
+                    
+        console.log(this.actor);
+      });
+    }
+
+}

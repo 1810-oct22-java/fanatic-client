@@ -1,7 +1,83 @@
-<nav class="navbar navbar-light">
-  <a class="navbar-brand">Movie Fanatic</a>
-  <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-  </form>
+<nav class="navbar navbar-expand-lg navbar-light">
+    <img src="/assets/favicon.png" width="60" height="60"/>
+    <a class="navbar-brand" href="#">Movie Fanatics</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Test Actors
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="nav-link" href="actor/287">Brad Pitt</a>
+              <a class="nav-link" href="actor/2963">Nicholas Cage</a>
+              <a class="nav-link" href="actor/192">Morgan Freedman</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Test Movies
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="nav-link" href="movie/424694">Bohemian Rhapsody</a>
+                <a class="nav-link" href="movie/399360">Alpha</a>
+                <a class="nav-link" href="movie/141052">Justice League</a>
+                <a class="nav-link" href="movie/299536">Avengers: Infinity War</a>
+                <a class="nav-link" href="movie/10439">Hocus Pocus</a>
+                <a class="nav-link" href="movie/808">Shrek</a>
+            </div>
+          </li>
+      </ul>
+      <div>
+        <a href="#" data-toggle="modal" data-target="#creditModal">Credits</a>
+        &nbsp;&bull;&nbsp;
+        <a href="/login">login</a>
+        &nbsp;
+      </div>
+    </div>
 </nav>
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="search-icon"><img src="/assets/search.png" width="20" height="20"/></span>
+    </div>
+    <input type="text" class="form-control" placeholder="Search for a movie or actor" 
+          aria-label="Search for a movie or actor" aria-describedby="search-icon">
+</div>
+<!-- Modal -->
+<div class="modal fade" id="creditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Movie Fanatics</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>#theFanatics wish to thank and credit the following:</p>
+        <ul>
+          <li>Genesis Bonds for her love and inspiration.</li>
+          <li><a href="https://www.themoviedb.org/">The Movie DB</a> for providing the base API movie data.</li>
+          <li><a href="http://www.omdbapi.com/">The Open Movie Database</a> for prividing additional API movie data.</li>
+        </ul>
+        <hr>
+        <p>#theFanatics are:</p>
+        <ul>
+          <li>Ted Airey</li>
+          <li>Davidson Bock</li>
+          <li>Phil Gerringer</li>
+          <li>Andrew Newman</li>
+          <li>Gerald Roman-Gonzalez</li>
+          <li>Sean Young</li>
+        </ul>
+        <div>© #theFanatics 2018</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
