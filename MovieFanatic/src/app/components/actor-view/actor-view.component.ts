@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Actor } from 'src/app/models/actor';
 import { Tabulator } from 'tabulator-tables/dist/js/tabulator.min.js';
+import { ActorApiService } from 'src/app/services/actor-api.service';
 
 @Component({
   selector: 'app-actor-view',
@@ -8,17 +10,18 @@ import { Tabulator } from 'tabulator-tables/dist/js/tabulator.min.js';
   styleUrls: ['./actor-view.component.css']
 })
 export class ActorViewComponent implements OnInit {
+  private id: string;
 
-  actor: Actor = new Actor();
 
-
-  constructor() {tabulator: Tabulator; actor: Actor}
+  constructor(
+    public route: ActivatedRoute,
+    public actorService: ActorApiService,
+    public actor: Actor
+  ) {}
 
   ngOnInit() {
-    this.actor.firstName = "Nicholas";
-    this.actor.lastName = "Cage";
-    this.actor.age = 54;
-    this.actor.gender = 'Male';
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.actorService.setActorID(this.id);
   }
 
 }

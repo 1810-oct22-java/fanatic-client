@@ -1,5 +1,5 @@
-.navbar {
-    padding: 20px;
+.navbar, .navbar-brand {
+    padding: 10px;
     background-color: rgb(121, 18, 35);
     color: white;
 }
