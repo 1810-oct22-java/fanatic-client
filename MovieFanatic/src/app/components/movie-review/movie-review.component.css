@@ -1,0 +1,47 @@
+img.poster {
+    height: 100px;
+    border-radius: 15px;
+    border: 1px solid;
+}
+
+.round-border {
+	border-radius: 15px;
+	border: 1px solid;
+	padding: 15px 15px 15px 15px;
+    background-color: rgb(0, 0, 0, 0.8);
+    box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.60);
+}
+
+p, h2, h3, h4, h5, h6, div, a {
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    color: rgb(145, 145, 145);
+}
+
+a.title {
+    font-weight: bold;
+    color: white;
+    padding: 0px 0px 0px 0px;
+    line-height: 70%;
+    font-size: 36px;
+}
+
+table, tr, th, td {
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    color: rgb(145, 145, 145);
+    width: 100%;
+}
+
+td.header-poster {
+    padding: 0px 0px, 0px, 20px;
+    width: 100px; 
+}
+
+td.header-meta {
+    width: 1600px; 
+}
+
+.tag-line {
+    padding: 5px 0px 15px 0px;
+    font-style: italic;
+    font-size: 12px;
+}
