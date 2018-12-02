@@ -16,7 +16,7 @@ import { Actor } from './models/actor';
 import { MovieReviewComponent } from './components/movie-review/movie-review.component';
 
 @NgModule({
-  
+
   declarations: [
     AppComponent,
     MovieViewComponent,
@@ -31,8 +31,8 @@ import { MovieReviewComponent } from './components/movie-review/movie-review.com
     HttpClientModule,
     AppRoutingModule,
     FormsModule
-],
-  providers: [ 
+  ],
+  providers: [
   ],
   bootstrap: [AppComponent]
 })
