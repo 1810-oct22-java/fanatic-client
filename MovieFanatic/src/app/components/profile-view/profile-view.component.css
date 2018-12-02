@@ -1,0 +1,5 @@
+div {
+    -webkit-border-image: round;
+    border-image: stretch;
+}
+

@@ -45,7 +45,7 @@
     <div class="input-group-prepend">
       <span class="input-group-text" id="search-icon"><img src="/assets/search.png" width="20" height="20"/></span>
     </div>
-    <input type="text" class="form-control" placeholder="Search for a movie or actor" 
+    <input [(ngModel)]="query" (keyup.enter)="this.enterPressed()" class="form-control" placeholder="Search for a movie or actor" 
           aria-label="Search for a movie or actor" aria-describedby="search-icon">
 </div>
 <!-- Modal -->
@@ -62,8 +62,8 @@
         <p>#theFanatics wish to thank and credit the following:</p>
         <ul>
           <li>Genesis Bonds for her love and inspiration.</li>
-          <li><a href="https://www.themoviedb.org/">The Movie DB</a> for providing the base API movie data.</li>
-          <li><a href="http://www.omdbapi.com/">The Open Movie Database</a> for prividing additional API movie data.</li>
+          <li><a class="credit-link" href="https://www.themoviedb.org/">The Movie DB</a> for providing the base API movie data.</li>
+          <li><a class="credit-link" href="http://www.omdbapi.com/">The Open Movie Database</a> for prividing additional API movie data.</li>
         </ul>
         <hr>
         <p>#theFanatics are:</p>
