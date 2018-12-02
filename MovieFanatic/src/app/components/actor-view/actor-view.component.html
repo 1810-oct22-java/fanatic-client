@@ -9,30 +9,22 @@
       <div class="col-6 round-border" id = "actorstats">
         <h1>{{this.actor.name}}</h1>
         <hr class="line-break">
-        <h5 id = 'gender'>Gender: {{this.actor.gender}}</h5>
+        <div [ngSwitch]="this.actor.gender">
+          <h5 id = 'gender' *ngSwitchCase="1" >Gender: Female</h5>
+          <h5 id = 'gender' *ngSwitchCase="2" >Gender: Male</h5>
+        </div>
         <h5 id = 'birth'>Birth: {{this.actor.birthday}}</h5>
         <h5 id = 'place_of_birth'>Place of Birth: {{this.actor.place_of_birth}}</h5>
         <h5 id = 'popularity'>Popularity: {{this.actor.popularity}}</h5>
-        <h5 id = 'biography'>Biography: {{this.actor.biography}}</h5>
+        <hr class="line-break">
+        <p id = 'biography'>Biography: {{this.actor.biography}}</p>
       </div>
     </div>
     
   </div>
   
    
-</div>
-<section class="ad">
-  <div class="container">
-    <a href="http://www.timberland.com/">
-      <div class="logo" alt="Timberland">
-      </div>
-    </a>
-    <a href="http://www.timberland.com/sale.html">
-      <h2>Shop Now</h2>
-    </a>
-  </div>
-</section> 
-</div>
+
 
 
 
