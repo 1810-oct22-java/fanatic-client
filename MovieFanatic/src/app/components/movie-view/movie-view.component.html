@@ -1,112 +1,57 @@
-<div class="jumbotron jumbotron-fluid" [ngStyle]="this.movieService.getBackground('/pbXgLEYh8rlG2Km5IGZPnhcnuSz.jpg')">
-  <div class="container">
-    <div class="row justify-content-md-center">
-      <div class="col-4">
-          <img class="poster" src={{this.movie.poster_path}}>
-      </div>
-      <div class="col-8 round-border">
-        <h1>{{this.movie.title}}</h1>>
-        <h5 class="release-date">{{this.movie.release_date}}</h5>
-        <h5>2 hr 15 min</h5>
-        <hr class="line-break">
-        <p>{{this.movie.overview}}</p>
-      </div>
+<div *ngIf="this.movie">
+<div *ngIf="this.ratings">
+       <!-- class="jumbotron jumbotron-fluid" -->
+<div class="body" [ngStyle]="this.getBackground()">
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-4">
+                <img class="poster" id="movie-poster" src='{{this.movie.poster_path}}'>
+            </div>
+            <div class="col-8 round-border">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <a class="title" href="{{this.movie.homepage}}">{{this.movie.title}}</a>
+                                <span>({{this.date_convert(this.movie.release_date)}})</span>
+                            <h6 class="tag-line">{{this.movie.tagline}}</h6>
+                        </div>
+                        <div class="col-auto">
+                            <table> 
+                                <tr class='ratings-header'> 
+                                    <th><a href="https://www.metacritic.com">Metacritic</a></th> 
+                                    <th><a href="https://www.imdb.com">IMDB</a></th> 
+                                    <th><a href="https://www.rottentomatoes.com">Rotten<br>Tomatoes</a></th> 
+                                    <th>Movie<br>Fanatic</th> 
+                                </tr> 
+                                <tr class='ratings-detail'> 
+                                    <td>{{this.ratings.Metascore}}</td>
+                                    <td>{{this.ratings.imdbRating}}<span class="tag-line">/10</span></td>
+                                    <td>{{this.ratings.RottenTomatoes}}</td>
+                                    <td><button type="button" class="btn btn-outline-light" value="{{this.ratings.MovieFanatic}}">{{this.ratings.MovieFanatic}}</button></td>
+                                </tr> 
+                                <tr class='ratings-header'> 
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Click For Reviews</td>
+                                    </tr> 
+                            </table>
+                        </div>
+                    </div>
+                <div>
+                <h5 class="meta-data">{{this.ratings.Rated}}&nbsp;&bull;&nbsp;
+                                    {{this.time_convert(this.movie.runtime)}}&nbsp;&bull;&nbsp;
+                                    {{this.ratings.Genre}}</h5>
+                <hr class="line-break">
+                <p>{{this.movie.overview}}</p>
+                <h6><span class="category">Directed by: </span>{{this.directorList}}</h6>
+                <h6><span class="category">Produced by: </span>{{this.producerList}}</h6>
+                <h6><span class="category">Budget: </span>{{this.movie.budget | currency }}</h6>
+                <div>
+                    <h6 class="category">Cast:</h6>
+                    <div [innerHTML]='castList'></div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-<div class="review-list">
-    <table id="example-table">
-        <thead>
-            <tr>
-                <th width="200">Name</th>
-                <th tabulator-align="center">Age</th>
-                <th>Gender</th>
-                <th>Height</th>
-                <th width="150">Favourite Color</th>
-                <th>Date of Birth</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Billy Bob</td>
-                <td>12</td>
-                <td>male</td>
-                <td>1</td>
-                <td>red</td>
-                <td>22/04/1994</td>
-            </tr>
-            <tr>
-                <td>Mary May</td>
-                <td>1</td>
-                <td>female</td>
-                <td>2</td>
-                <td>blue</td>
-                <td>14/05/1982</td>
-            </tr>
-            <tr>
-                <td>Mary May</td>
-                <td>1</td>
-                <td>female</td>
-                <td>2</td>
-                <td>blue</td>
-                <td>14/05/1982</td>
-            </tr>
-            <tr>
-                <td>Mary May</td>
-                <td>1</td>
-                <td>female</td>
-                <td>2</td>
-                <td>blue</td>
-                <td>14/05/1982</td>
-            </tr>
-            <tr>
-                <td>Mary May</td>
-                <td>1</td>
-                <td>female</td>
-                <td>2</td>
-                <td>blue</td>
-                <td>14/05/1982</td>
-            </tr>
-            <tr>
-                <td>Mary May</td>
-                <td>1</td>
-                <td>female</td>
-                <td>2</td>
-                <td>blue</td>
-                <td>14/05/1982</td>
-            </tr>
-            <tr>
-                <td>Mary May</td>
-                <td>1</td>
-                <td>female</td>
-                <td>2</td>
-                <td>blue</td>
-                <td>14/05/1982</td>
-            </tr>
-            <tr>
-                <td>Mary May</td>
-                <td>1</td>
-                <td>female</td>
-                <td>2</td>
-                <td>blue</td>
-                <td>14/05/1982</td>
-            </tr>
-            <tr>
-                <td>Mary May</td>
-                <td>1</td>
-                <td>female</td>
-                <td>2</td>
-                <td>blue</td>
-                <td>14/05/1982</td>
-            </tr>
-            <tr>
-                <td>Mary May</td>
-                <td>1</td>
-                <td>female</td>
-                <td>2</td>
-                <td>blue</td>
-                <td>14/05/1982</td>
-            </tr>
-        </tbody>
-    </table>
 </div>
