@@ -13,6 +13,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ProfileViewComponent } from './components/profile-view/profile-view.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { LoginComponent } from './components/login/login.component';
+import { SearchViewComponent } from './components/search-view/search-view.component';
 import { MovieReviewComponent } from './components/movie-review/movie-review.component';
 
 @NgModule({
@@ -25,7 +26,8 @@ import { MovieReviewComponent } from './components/movie-review/movie-review.com
     EditProfileComponent
     ActorViewComponent,
     MovieReviewComponent,
-    LoginComponent
+    LoginComponent,
+    SearchViewComponent
   ],
   imports: [
     BrowserModule,

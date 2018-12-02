@@ -3,5 +3,6 @@ export const ConfigAPI = {
     base_url: "https://api.themoviedb.org/3/",
     image_url: "https://image.tmdb.org/t/p/w500", 
     omdapi_key: "apikey=60048595&",
-    omdapi_base_url: "http://www.omdbapi.com/"
+    omdapi_base_url: "http://www.omdbapi.com/",
+    query_params: "&include_adult=false&language=en-US&query="
 };
