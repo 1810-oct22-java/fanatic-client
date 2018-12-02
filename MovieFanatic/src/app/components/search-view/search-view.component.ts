@@ -13,11 +13,11 @@ import { ActivatedRoute } from '@angular/router';
 
 export class SearchViewComponent implements OnInit {
 
-  public movieArray = [];
-  public query: string;
-  public total_pages: number;
-  public current_page: number;
-  public tempMovie = [];
+  private movieArray = [];
+  private query: string;
+  private total_pages: number;
+  private current_page: number;
+  private tempMovie = [];
 
   constructor(
     public route: ActivatedRoute,
