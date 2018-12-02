@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MovieAPIService } from 'src/app/services/movie-api.service';
 import { MovieAPI } from 'src/app/models/movieAPI';
 import { ConfigAPI } from 'src/app/models/configAPI';
@@ -26,7 +26,8 @@ export class MovieViewComponent implements OnInit {
   constructor(
     public route: ActivatedRoute,
     public movieService: MovieAPIService, 
-    public colorService: ColorService
+    public colorService: ColorService,
+    public router: Router
   ) {}
 
   ngOnInit() {
@@ -56,6 +57,13 @@ export class MovieViewComponent implements OnInit {
     );
   }
   
+  /**
+   * forwards on to the review screen. 
+   */
+  goMovieReview() {
+    this.router.navigateByUrl("/movie/review/" + this.movie.id);
+  }
+
   /**
    * Angular doesn't like url() because its "unsafe"  The URL needs to be scrubbed
    * as a SafeStyle

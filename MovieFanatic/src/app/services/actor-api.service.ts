@@ -17,7 +17,7 @@ export class ActorApiService {
 
   public pull(id: string): Actor {
     // build the search url
-    this.theactorDB = ConfigAPI.base_url + "actor/" + id + ConfigAPI.api_key; 
+    this.theactorDB = ConfigAPI.base_url + "person/" + id + ConfigAPI.api_key; 
     
     // build the movie obj with what you get back
     this.actor.id = id;
@@ -38,7 +38,7 @@ export class ActorApiService {
 
   public setActorID(id: string) {
     // build the search url
-    this.theactorDB = ConfigAPI.base_url + "actor/" + id + ConfigAPI.api_key;
+    this.theactorDB = ConfigAPI.base_url + "person/" + id + ConfigAPI.api_key;
     this.id = id; 
   }
 

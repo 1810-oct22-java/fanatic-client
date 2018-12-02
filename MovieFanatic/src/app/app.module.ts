@@ -10,6 +10,8 @@ import { MovieViewComponent } from './components/movie-view/movie-view.component
 import { HeaderComponent } from './components/header/header.component';
 import { ActorViewComponent } from 'src/app/components/actor-view/actor-view.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { Actor } from './models/actor';
+import { MovieReviewComponent } from './components/movie-review/movie-review.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { FooterComponent } from './components/footer/footer.component';
     MovieViewComponent,
     HeaderComponent,
     ActorViewComponent,
-    FooterComponent
+    FooterComponent,
+    MovieReviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,8 @@ import { FooterComponent } from './components/footer/footer.component';
     AppRoutingModule
   //  Tabulator
   ],
-  providers: [ 
+  providers: [
+    Actor 
   ],
   bootstrap: [AppComponent]
 })

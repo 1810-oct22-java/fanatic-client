@@ -27,7 +27,7 @@
                                     <td>{{this.ratings.Metascore}}</td>
                                     <td>{{this.ratings.imdbRating}}<span class="tag-line">/10</span></td>
                                     <td>{{this.ratings.RottenTomatoes}}</td>
-                                    <td><button type="button" class="btn btn-outline-light" value="{{this.ratings.MovieFanatic}}">{{this.ratings.MovieFanatic}}</button></td>
+                                    <td><button type="button" (click)="goMovieReview()" class="btn btn-outline-light" value="{{this.ratings.MovieFanatic}}">{{this.ratings.MovieFanatic}}</button></td>
                                 </tr> 
                                 <tr class='ratings-header'> 
                                         <td></td>
