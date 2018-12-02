@@ -12,6 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { ActorViewComponent } from 'src/app/components/actor-view/actor-view.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { SearchViewComponent } from './components/search-view/search-view.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FooterComponent } from './components/footer/footer.component';
     HeaderComponent,
     ActorViewComponent,
     LoginComponent,
-    FooterComponent
+    FooterComponent,
+    SearchViewComponent
   ],
   imports: [
     BrowserModule,
