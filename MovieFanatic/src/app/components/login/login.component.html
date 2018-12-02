@@ -8,14 +8,12 @@
 <div class="jumbotron" >
 
 	<h1>Login</h1>
-		<input type="text" [(ngModel)]="username" class='form-control col-3' placeholder="Enter Username" >
+		<input type="text" [(ngModel)]="username" class='form-control col-3' placeholder='Enter Username'>
 		<input type="password" [(ngModel)]="password" class='form-control col-3' placeholder='Enter Password'> 
         <button class="btn btn-submit" (click)="login()">Log In!</button>
-        <div>
-            <button class="btn btn-submit" (click)="signup()">Sign Up</button>
-        </div>
+        
     <br><hr><br>
    {{output}} 
   </div>
-  <a href="/movie">Go Back Home</a>
+  <a href="/home">Go Back Home</a>
   
