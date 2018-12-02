@@ -41,6 +41,7 @@ export class SearchViewComponent implements OnInit {
                     
                     for (let i = 0; i < this.tempMovie[0].results.length; i++){
                       this.movieArray.push({"title": this.tempMovie[0].results[i].original_title,
+                                            "id": this.tempMovie[0].results[i].id,
                                             "Poster" : this.movieService.formatImage(this.tempMovie[0].results[i].poster_path) });
                     }
                     console.log(this.movieArray);
