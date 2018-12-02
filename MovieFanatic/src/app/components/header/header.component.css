@@ -1,8 +1,25 @@
 .navbar, .navbar-brand {
-    padding: 20px;
+    padding: 10px;
     background-color: transparent;
     background: transparent;
     border-color: transparent;
     color: white;
 }
 .navbar li { color: #000 } 
+
+.main-search {
+    padding: 0px 0px 0px 0px;
+    background-color: white;
+}
+
+img {
+    padding: 0px 0px 0px 0px;
+}
+
+a {
+    color: white;
+}
+
+form-control {
+    width: 100%;
+}
