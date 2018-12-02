@@ -10,28 +10,20 @@ import { AppComponent } from './app.component';
 import { MovieViewComponent } from './components/movie-view/movie-view.component';
 import { ActorViewComponent } from './components/actor-view/actor-view.component';
 import { HeaderComponent } from './components/header/header.component';
-<<<<<<< HEAD
-import { MovieAPI } from './models/movieAPI';
-import { Actor } from './models/actor';
-=======
 import { LoginComponent } from './components/login/login.component';
-import { ActorViewComponent } from 'src/app/components/actor-view/actor-view.component';
 import { FooterComponent } from './components/footer/footer.component';
->>>>>>> master
+import { Actor } from './models/actor';
+
 
 @NgModule({
+  
   declarations: [
     AppComponent,
     MovieViewComponent,
-<<<<<<< HEAD
-    ActorViewComponent,
-    HeaderComponent
-=======
     HeaderComponent,
     ActorViewComponent,
     LoginComponent,
     FooterComponent
->>>>>>> master
   ],
   imports: [
     BrowserModule,
@@ -40,12 +32,7 @@ import { FooterComponent } from './components/footer/footer.component';
     FormsModule
   ],
   providers: [ 
-<<<<<<< HEAD
-    MovieAPI,
-    Actor,
-    Http
-=======
->>>>>>> master
+
   ],
   bootstrap: [AppComponent]
 })
