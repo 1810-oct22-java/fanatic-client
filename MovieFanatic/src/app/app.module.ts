@@ -32,7 +32,10 @@ import { Actor } from './models/actor';
     FormsModule
   ],
   providers: [ 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 624768debad3d9077f6411f8752c222b751326dd
   ],
   bootstrap: [AppComponent]
 })
