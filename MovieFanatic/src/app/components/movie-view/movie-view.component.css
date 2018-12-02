@@ -1,17 +1,20 @@
-.jumbotronX {
-    background: rgb(121, 18, 35) url("https://image.tmdb.org/t/p/w500/87hTDiay2N2qWyX4Ds7ybXi9h8I.jpg") no-repeat center;
-    background: url("https://image.tmdb.org/t/p/w500/pbXgLEYh8rlG2Km5IGZPnhcnuSz.jpg");
-    background-size: 100%;
-}
-
-.jumbotron {
-    background-size: 100%;
+.body {
+    background-size: 100% 100%;
     background-repeat: no-repeat;
-    background-origin: center;
+    background-position: top, center;
+    padding: 40px;
 }
 
 img.poster {
-    height: 400px;
+    height: 500px;
+    border-radius: 15px;
+    border: 1px solid;
+    box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.60);
+    
+}
+
+img.posterX {
+    height: 500px;
     border-radius: 15px;
     border: 4px solid #ffc34d;
     border-style: ridge;
@@ -19,11 +22,27 @@ img.poster {
 }
 .round-border {
 	border-radius: 15px;
+	border: 1px solid;
+	padding: 15px 15px 15px 15px;
+    background-color: rgb(0, 0, 0, 0.8);
+    box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.60);
+}
+
+.round-borderX {
+	border-radius: 15px;
 	border: 4px solid #ffc34d;
 	padding: 15px 15px 15px 15px;
 	border-style: ridge;
-    background-color: rgb(0, 0, 0, 0.9);
+    background-color: rgb(0, 0, 0, 0.8);
 }
+
+
+.metacritic {
+	padding: 0px 0px 0px 0px;
+    background: rgb(3, 226, 3);
+    color:white;
+}
+
 .round-border-reviews {
     border-radius: 15px;
 	border: 4px solid #ffc34d;
@@ -36,15 +55,42 @@ h1 {
     font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
     font-weight: bold;
     color: white;
+    padding: 0px 0px 0px 0px;
 }
 
-h5, p {
+a.title {
     font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
-    color: rgb(110, 110, 110);
+    font-weight: bold;
+    color: white;
+    padding: 0px 0px 0px 0px;
+    line-height: 70%;
+    font-size: 36px;
 }
 
-.release-date {
-    color: white;
+p, h2, h3, h4, h5, h6, div, a {
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    color: rgb(145, 145, 145);
+}
+
+.tag-line {
+    padding: 5px 0px 15px 0px;
+    font-style: italic;
+    font-size: 12px;
+}
+
+h5.meta-data {
+    line-height: 80%;
+}
+
+.category {
+    color: rgb(80, 80, 80);
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.cast-link {
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    color: rgb(145, 145, 145);
 }
 
 .line-break {
@@ -55,4 +101,21 @@ h5, p {
 
 .review-list {
     padding: 50px 50px 50px 50px;
+}
+
+table, tr, th, td {
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    color: rgb(145, 145, 145);
+    text-align: center;
+    table-layout: fixed;
+    width: 60px;
+}
+.ratings-header {
+    font-size: 10px;
+    line-height: 85%;
+}
+
+.ratings-detail {
+    font-size: 20px;
+    padding: 0px 0px 0px 0px;
 }

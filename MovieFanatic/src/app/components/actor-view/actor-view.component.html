@@ -1,0 +1,23 @@
+<div *ngIf="this.actor">
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <div class="row justify-content-sm">
+      <div class="col-6" id = "pic">
+        <img class="w3-card-4" src="{{this.actor.profile_path}}" id = 'act'>
+      </div>
+      <div class="col-6 round-border" id = "actorstats">
+        <h1>{{this.actor.name}}</h1>
+        <hr class="line-break">
+        <div [ngSwitch]="this.actor.gender">
+          <h5 id = 'gender' *ngSwitchCase="1" >Gender: Female</h5>
+          <h5 id = 'gender' *ngSwitchCase="2" >Gender: Male</h5>
+        </div>
+        <h5 id = 'birth'>Birth: {{this.actor.birthday}}</h5>
+        <h5 id = 'place_of_birth'>Place of Birth: {{this.actor.place_of_birth}}</h5>
+        <h5 id = 'popularity'>Popularity: {{this.actor.popularity}}</h5>
+        <hr class="line-break">
+        <p id = 'biography'>Biography: {{this.actor.biography}}</p>
+      </div>
+    </div>
+  </div>
