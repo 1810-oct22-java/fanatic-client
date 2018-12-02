@@ -1,5 +1,5 @@
-div {
-    -webkit-border-image: round;
-    border-image: stretch;
+#jum {
+    background-color: black, transparent;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
