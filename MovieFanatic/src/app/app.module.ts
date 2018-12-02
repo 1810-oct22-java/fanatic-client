@@ -14,6 +14,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SearchViewComponent } from './components/search-view/search-view.component';
 
 import { MovieReviewComponent } from './components/movie-review/movie-review.component';
+import { UserViewComponent } from './components/user-view/user-view.component';
 
 @NgModule({
 
@@ -22,11 +23,12 @@ import { MovieReviewComponent } from './components/movie-review/movie-review.com
     MovieViewComponent,
     HeaderComponent,
     ProfileViewComponent,
-    EditProfileComponent
+    EditProfileComponent,
     ActorViewComponent,
     MovieReviewComponent,
     LoginComponent,
-    SearchViewComponent
+    SearchViewComponent,
+    UserViewComponent
   ],
   imports: [
     BrowserModule,
