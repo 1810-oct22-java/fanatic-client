@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-header',
@@ -6,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  public query: string;
 
-  constructor() { }
+  constructor(public router: Router) { 
+  }
 
   ngOnInit() {
   }
 
+  /**
+   * user keyed in search and we need to send it to the search results window
+   */
+  enterPressed() { 
+    var query: string = this.query.replace(/\s/g, '+');
+    this.query = "";
+    // change the spaces to plusses and sends it on its way
+    this.router.navigateByUrl("/movie_results/" + query);
+  }
 }
