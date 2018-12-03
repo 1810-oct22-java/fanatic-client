@@ -33,7 +33,8 @@ import { YearMoviesComponent } from './components/year-movies/year-movies.compon
     SearchViewComponent,
     UserViewComponent,
     PopularMoviesComponent,
-    YearMoviesComponent
+    YearMoviesComponent,
+    UserViewComponent
   ],
   imports: [
     BrowserModule,
