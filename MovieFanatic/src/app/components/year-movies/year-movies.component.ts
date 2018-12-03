@@ -8,10 +8,10 @@ import { MovieAPIService } from 'src/app/services/movie-api.service';
 })
 export class YearMoviesComponent implements OnInit {
 
-  private yearMovieArray = [];
-  private total_pages: number;
-  private current_page: number;
-  private tempYearMovie = [];
+  public yearMovieArray = [];
+  public total_pages: number;
+  public current_page: number;
+  public tempYearMovie = [];
 
   constructor(
     public movieService: MovieAPIService

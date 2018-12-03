@@ -45,3 +45,7 @@ td.header-meta {
     font-style: italic;
     font-size: 12px;
 }
+
+.body {
+    padding: 20px 0px 0px 0px;
+}
