@@ -16,6 +16,7 @@ import { SearchViewComponent } from './components/search-view/search-view.compon
 import { MovieReviewComponent } from './components/movie-review/movie-review.component';
 import { UserViewComponent } from './components/user-view/user-view.component';
 import { PopularMoviesComponent } from './components/popular-movies/popular-movies.component';
+import { YearMoviesComponent } from './components/year-movies/year-movies.component';
 
 @NgModule({
 
@@ -31,7 +32,8 @@ import { PopularMoviesComponent } from './components/popular-movies/popular-movi
     LoginComponent,
     SearchViewComponent,
     UserViewComponent,
-    PopularMoviesComponent
+    PopularMoviesComponent,
+    YearMoviesComponent
   ],
   imports: [
     BrowserModule,
