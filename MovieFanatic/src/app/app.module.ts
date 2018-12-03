@@ -18,6 +18,8 @@ import { UserViewComponent } from './components/user-view/user-view.component';
 import { PopularMoviesComponent } from './components/popular-movies/popular-movies.component';
 import { YearMoviesComponent } from './components/year-movies/year-movies.component';
 
+
+
 @NgModule({
 
   declarations: [
@@ -33,7 +35,8 @@ import { YearMoviesComponent } from './components/year-movies/year-movies.compon
     SearchViewComponent,
     UserViewComponent,
     PopularMoviesComponent,
-    YearMoviesComponent
+    YearMoviesComponent,
+    UserViewComponent
   ],
   imports: [
     BrowserModule,
