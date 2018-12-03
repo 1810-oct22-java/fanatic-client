@@ -32,7 +32,8 @@ export class PopularMoviesComponent implements OnInit {
                     
                     for (let i = 0; i < 6; i++){
                       this.popMovieArray.push({"title": this.tempPopMovie[0].results[i].original_title,
-                                            "Poster" : this.movieService.formatImage(this.tempPopMovie[0].results[i].poster_path) });
+                                            "Poster" : this.movieService.formatImage(this.tempPopMovie[0].results[i].poster_path),
+                                            "id" : this.tempPopMovie[0].results[i].id  });
                     }
                     console.log(this.popMovieArray);
                   });
