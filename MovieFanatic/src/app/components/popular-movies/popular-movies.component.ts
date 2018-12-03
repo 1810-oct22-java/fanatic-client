@@ -8,10 +8,10 @@ import { MovieAPIService } from '../../services/movie-api.service';
 })
 export class PopularMoviesComponent implements OnInit {
 
-  private popMovieArray = [];
-  private total_pages: number;
-  private current_page: number;
-  private tempPopMovie = [];
+  public popMovieArray = [];
+  public total_pages: number;
+  public current_page: number;
+  public tempPopMovie = [];
 
   constructor(
     public movieService: MovieAPIService
