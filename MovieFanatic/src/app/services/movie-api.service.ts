@@ -19,6 +19,10 @@ export class MovieAPIService {
     return this.http.get<MovieAPI>(ConfigAPI.base_url + 'search/movie' + ConfigAPI.api_key + ConfigAPI.query_params + query);
   }
 
+  getPopularMovies() {
+    return this.http.get<MovieAPI[]>(ConfigAPI.base_url + 'discover/movie' + ConfigAPI.api_key + '&sort_by=popularity.desc');
+  }
+
   getCredits(id: string) {
     return this.http.get<CreditsAPI[]>(ConfigAPI.base_url + 'movie/' + id + '/credits' + ConfigAPI.api_key);
   }

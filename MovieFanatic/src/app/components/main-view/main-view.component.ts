@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PopularMoviesComponent } from '../popular-movies/popular-movies.component';
 
 @Component({
   selector: 'app-main-view',
