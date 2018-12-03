@@ -1,5 +1,36 @@
-.navbar, .navbar-brand {
+.navbar {
     padding: 10px;
-    background-color: rgb(121, 18, 35);
+    background-color: transparent;
+    background: transparent;
+    border-color: transparent;
     color: white;
+}
+
+.navbar li { color: #000 }
+
+.navbar-brand {
+    padding: 0px;
+    color: white;
+}
+
+.main-search {
+    padding: 0px 0px 0px 0px;
+    background-color: white;
+}
+
+img, .input-group {
+    padding: 0px 0px 0px 0px;
+}
+
+a {
+    color: white;
+}
+
+.credit-link {
+    color: black;
+    font-weight: bold;
+}
+
+form-control {
+    width: 100%;
 }
