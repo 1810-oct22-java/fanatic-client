@@ -16,7 +16,15 @@ export class MovieAPIService {
   }
 
   getMoviesByString(query: string) {
-    return this.http.get<MovieAPI>(ConfigAPI.base_url + 'search/multi' + ConfigAPI.api_key + ConfigAPI.query_params + query);
+    return this.http.get<MovieAPI>(ConfigAPI.base_url + 'search/movie' + ConfigAPI.api_key + ConfigAPI.query_params + query);
+  }
+
+  getPopularMovies() {
+    return this.http.get<MovieAPI[]>(ConfigAPI.base_url + 'discover/movie' + ConfigAPI.api_key + '&sort_by=popularity.desc');
+  }
+
+  getMoviesByYear() {
+    return this.http.get<MovieAPI[]>(ConfigAPI.base_url + 'discover/movie' + ConfigAPI.api_key + ConfigAPI.query_params + 'primary_release_year=2018&sort_by=vote_average.desc');
   }
 
   getCredits(id: string) {
