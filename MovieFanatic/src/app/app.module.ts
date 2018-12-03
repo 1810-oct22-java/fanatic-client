@@ -17,6 +17,11 @@ import { MovieReviewComponent } from './components/movie-review/movie-review.com
 import { UserViewComponent } from './components/user-view/user-view.component';
 import { PopularMoviesComponent } from './components/popular-movies/popular-movies.component';
 import { YearMoviesComponent } from './components/year-movies/year-movies.component';
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 01d00c69cb3a62e487ce39571a12f0184add6817
 
 @NgModule({
 
