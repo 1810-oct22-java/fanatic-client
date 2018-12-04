@@ -3,6 +3,7 @@ import { MovieAPIService } from '../../services/movie-api.service';
 import { MovieAPI } from 'src/app/models/movieAPI';
 import { ConfigAPI } from 'src/app/models/configAPI';
 
+
 @Component({
   selector: 'app-featured-movie',
   templateUrl: './featured-movie.component.html',
@@ -38,9 +39,8 @@ export class FeaturedMovieComponent implements OnInit {
                                             "overview" : this.tempFeatMovie[0].results[0].overview  });
                   });
   }
-
+  
   public getBackground() {
     return {'background-image': `url(${ConfigAPI.image_url}${this.featMovie.background})`};
   }
-
 }
