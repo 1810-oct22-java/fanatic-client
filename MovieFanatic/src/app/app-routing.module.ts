@@ -9,15 +9,15 @@ import { ActorViewComponent } from 'src/app/components/actor-view/actor-view.com
 import { SearchViewComponent } from './components/search-view/search-view.component';
 
 const routes: Routes = [
-  { path:'', redirectTo:'movie', pathMatch: 'full' },
-  { path: 'movie', component: MovieViewComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'movie_results/:query', component: SearchViewComponent},
-  { path:'movie/:id', component: MovieViewComponent },
-  { path:'movie/review/:id', component: MovieReviewComponent},
-  { path:'actor/:id', component: ActorViewComponent },
-  { path: 'profile-view', component: ProfileViewComponent},
-  { path: 'edit-profile', component: EditProfileComponent}
+  { path: '', redirectTo: 'movie', pathMatch: 'full' },
+  { path: 'movie', component: MovieViewComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'movie_results/:query', component: SearchViewComponent },
+  { path: 'movie/:id', component: MovieViewComponent },
+  { path: 'movie/review/:id', component: MovieReviewComponent },
+  { path: 'actor/:id', component: ActorViewComponent },
+  { path: 'profile-view', component: ProfileViewComponent },
+  { path: 'edit-profile', component: EditProfileComponent }
 ];
 
 @NgModule({
