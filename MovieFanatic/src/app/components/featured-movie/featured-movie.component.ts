@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieAPIService } from '../../services/movie-api.service';
 import { MovieAPI } from 'src/app/models/movieAPI';
+import { ConfigAPI } from 'src/app/models/configAPI';
 
 @Component({
   selector: 'app-featured-movie',
@@ -33,8 +34,13 @@ export class FeaturedMovieComponent implements OnInit {
                                             "Poster" : this.movieService.formatImage(this.tempFeatMovie[0].results[0].poster_path),
                                             "id" : this.tempFeatMovie[0].results[0].id,
                                             "tagline" : this.tempFeatMovie[0].results[0].tagline,
+                                            "background" : this.tempFeatMovie[0].results[0].backdrop_path,
                                             "overview" : this.tempFeatMovie[0].results[0].overview  });
                   });
+  }
+
+  public getBackground() {
+    return {'background-image': `url(${ConfigAPI.image_url}${this.featMovie.background})`};
   }
 
 }

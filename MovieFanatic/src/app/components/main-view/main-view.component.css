@@ -40,7 +40,7 @@ h1 {
 }
 
 h2 {
-    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, serif;
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
     font-weight: bold;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
     color: white;
