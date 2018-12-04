@@ -3,6 +3,9 @@
     background-repeat: no-repeat;
     background-position: top, center;
     padding: 40px;
+    margin: 40px;
+    border: 2px solid;
+    border-radius: 15px;
 }
 
 img.poster {
