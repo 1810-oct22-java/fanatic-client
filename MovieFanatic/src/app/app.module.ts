@@ -40,9 +40,10 @@ import { YearMoviesComponent } from './components/year-movies/year-movies.compon
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule 
   ],
   providers: [
+    
   ],
   bootstrap: [AppComponent]
 })

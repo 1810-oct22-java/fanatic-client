@@ -45,6 +45,7 @@ export class SearchViewComponent implements OnInit {
                                             "Poster" : this.movieService.formatImage(this.tempMovie[0].results[i].poster_path) });
                     }
                     console.log(this.movieArray);
+                    //location.reload();
                   });
   }
 }
