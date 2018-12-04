@@ -2,14 +2,18 @@
 
 }
 #act{
-    box-shadow: 10px 10px 5px grey;
+    
 
 }
 #actorstats{
-    
-
+    border-top: 2px brown solid;
+    border-bottom: 10px brown solid;
+    border-left: 6px brown solid;
+    border-right: 6px brown solid;
+    border-radius: 2px 2px 20px 20px;
+    box-shadow: 3px 3px 5px grey;
     background-color: white; 
-    box-shadow: 5px 5px 3px grey;
+
 }
 
 #age{

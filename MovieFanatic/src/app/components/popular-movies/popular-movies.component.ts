@@ -30,7 +30,7 @@ export class PopularMoviesComponent implements OnInit {
                     console.log(this.total_pages);
                     this.current_page = 1;
                     
-                    for (let i = 0; i < 6; i++){
+                    for (let i = 1; i < 7; i++){
                       this.popMovieArray.push({"title": this.tempPopMovie[0].results[i].original_title,
                                             "Poster" : this.movieService.formatImage(this.tempPopMovie[0].results[i].poster_path),
                                             "id" : this.tempPopMovie[0].results[i].id  });

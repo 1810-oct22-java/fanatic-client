@@ -10,14 +10,14 @@ import { SearchViewComponent } from './components/search-view/search-view.compon
 import { MainViewComponent } from './components/main-view/main-view.component';
 
 const routes: Routes = [
-  { path: '', redirectTo:'main', pathMatch: 'full' },
+  { path: '', redirectTo: 'main', pathMatch: 'full' },
   { path: 'main', component: MainViewComponent},
   { path: 'movie', component: MovieViewComponent},
   { path: 'login', component: LoginComponent},
   { path: 'movie_results/:query', component: SearchViewComponent},
-  { path:'movie/:id', component: MovieViewComponent },
-  { path:'movie/review/:id', component: MovieReviewComponent},
-  { path:'actor/:id', component: ActorViewComponent },
+  { path: 'movie/:id', component: MovieViewComponent },
+  { path: 'movie/review/:id', component: MovieReviewComponent},
+  { path: 'actor/:id', component: ActorViewComponent },
   { path: 'profile-view', component: ProfileViewComponent},
   { path: 'edit-profile', component: EditProfileComponent}
 ];
