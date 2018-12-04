@@ -17,6 +17,7 @@ import { MovieReviewComponent } from './components/movie-review/movie-review.com
 import { UserViewComponent } from './components/user-view/user-view.component';
 import { PopularMoviesComponent } from './components/popular-movies/popular-movies.component';
 import { YearMoviesComponent } from './components/year-movies/year-movies.component';
+import { FeaturedMovieComponent } from './components/featured-movie/featured-movie.component';
 
 @NgModule({
 
@@ -34,7 +35,8 @@ import { YearMoviesComponent } from './components/year-movies/year-movies.compon
     UserViewComponent,
     PopularMoviesComponent,
     YearMoviesComponent,
-    UserViewComponent
+    UserViewComponent,
+    FeaturedMovieComponent
   ],
   imports: [
     BrowserModule,
