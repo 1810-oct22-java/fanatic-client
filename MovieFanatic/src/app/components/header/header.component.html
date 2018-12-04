@@ -7,29 +7,6 @@
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Test Actors
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="nav-link" href="actor/287">Brad Pitt</a>
-              <a class="nav-link" href="actor/2963">Nicholas Cage</a>
-              <a class="nav-link" href="actor/192">Morgan Freedman</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Test Movies
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="nav-link" href="movie/424694">Bohemian Rhapsody</a>
-                <a class="nav-link" href="movie/399360">Alpha</a>
-                <a class="nav-link" href="movie/141052">Justice League</a>
-                <a class="nav-link" href="movie/299536">Avengers: Infinity War</a>
-                <a class="nav-link" href="movie/10439">Hocus Pocus</a>
-                <a class="nav-link" href="movie/808">Shrek</a>
-            </div>
-          </li>
       </ul>
       <div>
         <a href="#" data-toggle="modal" data-target="#creditModal">Credits</a>
@@ -41,12 +18,11 @@
       </div>
     </div>
 </nav>
-<div class="input-group mb-3">
+<div class="input-group">
     <div class="input-group-prepend">
       <span class="input-group-text" id="search-icon"><img src="/assets/search.png" width="20" height="20"/></span>
     </div>
-    <input [(ngModel)]="query" (keyup.enter)="this.enterPressed()" class="form-control" placeholder="Search for a movie or actor" 
-          aria-label="Search for a movie or actor" aria-describedby="search-icon">
+    <input [(ngModel)]="query" (keyup.enter)="this.enterPressed()" class="form-control" placeholder="Search for a movie or actor" aria-label="Search for a movie or actor" aria-describedby="search-icon">
 </div>
 <!-- Modal -->
 <div class="modal fade" id="creditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
