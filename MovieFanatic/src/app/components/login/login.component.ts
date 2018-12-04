@@ -8,28 +8,26 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username ='';
-  password ='';
+  username = '';
+  password = '';
   output: string;
   currentUser: User;
 
   constructor(private loginService: LoginService) {
-    console.log('inside of login')
-   }
+    console.log('inside of login');
+  }
 
   ngOnInit() {
   }
 
-  login(){
-    console.log('inside of login method');
-    this.currentUser = this.loginService.validateUser(this.username,this.password);
-    if((this.currentUser == null)||(this.currentUser == undefined)){
-      this.output ='Invalid Credentials';
+  login() {
+    this.currentUser = this.loginService.validateUser(this.username, this.password);
+    if (this.currentUser == null || this.currentUser === undefined) {
+      this.output = 'Invalid Credentials';
 
-    }
-    else{
+    } else {
       this.output = `Welcome ${this.username}`;
     }
   }
+}
 
-} 
