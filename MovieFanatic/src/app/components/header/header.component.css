@@ -31,7 +31,6 @@ a {
     font-weight: bold;
 }
 
-.input-group {
-    line-height: 10px;
-    padding: 0px;
+form-control {
+    width: 100%;
 }
