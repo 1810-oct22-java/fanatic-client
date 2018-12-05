@@ -41,6 +41,7 @@ export class SearchViewComponent implements OnInit {
 
   getAllMovies(){
     this.movieArray = [];
+    this.actorArray = [];
     this.tempMovie = [];
     this.movieService.getMoviesByString(this.query).subscribe(
       (movie) =>  {
