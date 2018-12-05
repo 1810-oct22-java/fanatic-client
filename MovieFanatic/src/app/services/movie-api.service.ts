@@ -24,7 +24,16 @@ export class MovieAPIService {
   }
 
   getMoviesByYear() {
-    return this.http.get<MovieAPI[]>(ConfigAPI.base_url + 'discover/movie' + ConfigAPI.api_key + ConfigAPI.query_params + 'primary_release_year=2018&sort_by=vote_average.desc');
+    return this.http.get<MovieAPI[]>(ConfigAPI.base_url + 'discover/movie' + ConfigAPI.api_key + ConfigAPI.query_params
+    + 'primary_release_year=2018&sort_by=vote_average.desc');
+  }
+
+  getDramas() {
+    return this.http.get<MovieAPI[]>(ConfigAPI.base_url + 'discover/movie' + ConfigAPI.api_key + ConfigAPI.query_params + 'sort_by=popularity.desc&with_genres=18');
+  }
+
+  getComedies() {
+    return this.http.get<MovieAPI[]>(ConfigAPI.base_url + 'discover/movie' + ConfigAPI.api_key + ConfigAPI.query_params + 'sort_by=popularity.desc&with_genres=35');
   }
 
   getDramas() {
@@ -40,7 +49,7 @@ export class MovieAPIService {
   }
 
   getOMDB(imdb_id: string) {
-    return this.http.get<OMDBAPI>(ConfigAPI.omdapi_base_url + '?i=' + imdb_id + 
+    return this.http.get<OMDBAPI>(ConfigAPI.omdapi_base_url + '?i=' + imdb_id +
       '&plot=full&' + ConfigAPI.omdapi_key);
   }
 
@@ -51,7 +60,6 @@ export class MovieAPIService {
   /**
    * Angular doesn't like url() because its "unsafe"  The URL needs to be scrubbed
    * as a SafeStyle
-   * @param backdrop 
    */
   public getBackground(backdrop) {
     return {'background-image': `url(${ConfigAPI.image_url}${backdrop})`};
