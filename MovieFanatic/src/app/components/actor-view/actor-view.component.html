@@ -10,7 +10,7 @@ background-repeat: no-repeat; background-size: cover; background-position: cente
       <div class="col-6 round-border" id = "actorstats">
         <div id = "cb">
         <h1 style = "background-image: linear-gradient(rgb(197, 202, 211), rgb(121, 128, 146)); padding: 10px; border-radius: 2px 2px 20px 20px;
-         box-shadow: 3px 3px 5px rgb(56, 55, 55);">{{this.actor.name}}</h1>
+         box-shadow: 3px 3px 5px rgb(56, 55, 55); color: white;">{{this.actor.name}}</h1>
         <hr class="line-break">
         <div [ngSwitch]="this.actor.gender">
           <h6 id = 'gender' *ngSwitchCase="1" >Gender: <small>Female</small></h6>
