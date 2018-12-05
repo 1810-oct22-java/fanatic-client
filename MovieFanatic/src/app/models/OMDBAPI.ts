@@ -1,5 +1,5 @@
 // http://www.omdbapi.com/
-import { ratingsAPI } from "src/app/models/ratingsAPI";
+import { ratingsAPI } from 'src/app/models/ratingsAPI';
 
 export interface OMDBAPI {
     id: number;

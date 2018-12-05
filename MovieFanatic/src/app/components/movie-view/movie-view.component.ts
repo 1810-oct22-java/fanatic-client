@@ -6,7 +6,7 @@ import { ConfigAPI } from 'src/app/models/configAPI';
 import { CastAPI } from 'src/app/models/castAPI';
 import { CrewAPI } from 'src/app/models/crewAPI';
 import { OMDBAPI } from 'src/app/models/OMDBAPI';
-import { ColorService } from 'src/app/services/color.service'
+import { ColorService } from 'src/app/services/color.service';
 
 @Component({
   selector: 'app-movie-view',
@@ -19,13 +19,13 @@ export class MovieViewComponent implements OnInit {
   public ratings: OMDBAPI;
   public credits = [];
   public cast = [];
-  public castList = "";
-  public directorList="";
-  public producerList="";
-  
+  public castList = '';
+  public directorList = '';
+  public producerList = '';
+
   constructor(
     public route: ActivatedRoute,
-    public movieService: MovieAPIService, 
+    public movieService: MovieAPIService,
     public colorService: ColorService,
     public router: Router
   ) {}
@@ -39,8 +39,8 @@ export class MovieViewComponent implements OnInit {
                     this.movie = movie;
                     this.movie.poster_path = this.movieService.formatImage(this.movie.poster_path);
                     this.movieService.getOMDB(this.movie.imdb_id).subscribe(
-                      (omdb) => { 
-                                  this.ratings = omdb; 
+                      (omdb) => {
+                                  this.ratings = omdb;
                                   this.getRottenTomatoes();
                                   this.getMovieFanatic();
                                 });
@@ -56,31 +56,30 @@ export class MovieViewComponent implements OnInit {
                       }
     );
   }
-  
+
   /**
-   * forwards on to the review screen. 
+   * forwards on to the review screen.
    */
   goMovieReview() {
-    this.router.navigateByUrl("/movie/review/" + this.movie.id);
+    this.router.navigateByUrl('/movie/review/' + this.movie.id);
   }
 
   /**
    * Angular doesn't like url() because its "unsafe"  The URL needs to be scrubbed
    * as a SafeStyle
-   * @param backdrop 
    */
   public getBackground() {
     return {'background-image': `url(${ConfigAPI.image_url}${this.movie.backdrop_path})`};
   }
 
-  time_convert(num) { 
-    var hours = Math.floor(num / 60);  
-    var minutes = num % 60;
-    return hours + ' hr ' + minutes + ' min';         
+  time_convert(num) {
+    const hours = Math.floor(num / 60);
+    const minutes = num % 60;
+    return hours + ' hr ' + minutes + ' min';
   }
 
   date_convert(date: string) {
-    var parts = date.split('-');
+    const parts = date.split('-');
     return parts[0];
   }
 
@@ -89,7 +88,7 @@ export class MovieViewComponent implements OnInit {
    */
   private getRottenTomatoes() {
     this.ratings.Ratings.forEach(element => {
-      if(element.Source == "Rotten Tomatoes") {
+      if (element.Source === 'Rotten Tomatoes') {
         this.ratings.RottenTomatoes = element.Value;
       }
     });
@@ -99,20 +98,19 @@ export class MovieViewComponent implements OnInit {
    * get the Movie Fanatic rating score
    */
   private getMovieFanatic() {
-    this.ratings.MovieFanatic = "4/5";
+    this.ratings.MovieFanatic = '4/5';
   }
 
   /**
    * sort the cast list
-   * @param data 
    */
   public sortCast(data: CastAPI[]): CastAPI[] {
     // sort the cast list based on the credit order
      return data.sort((c1, c2) => {
-      if(c1.order > c2.order) {
+      if (c1.order > c2.order) {
         return 1;
       }
-      if(c1.order < c2.order) {
+      if (c1.order < c2.order) {
         return -1;
       }
       return 0;
@@ -127,21 +125,19 @@ export class MovieViewComponent implements OnInit {
     let first = true;
 
     this.cast.forEach(element => {
-      if(first) {
-        first=false;
-      } 
+      if (first) {
+        first = false;
+      }
       else {
-        castList = castList + "&nbsp;&bull;&nbsp;" + this.buildCastLink(element.name, element.id);
+        castList = castList + '&nbsp;&bull;&nbsp;' + this.buildCastLink(element.name, element.id);
       }
     });
-      
+
     this.castList = castList;
   }
 
   /**
    * build the cast list link html
-   * @param name 
-   * @param link 
    */
   private buildCastLink(name: string, link: string) {
     return `<a class='cast-link' href='/actor/${link}'>${name}</a>`;
@@ -149,29 +145,28 @@ export class MovieViewComponent implements OnInit {
 
   /**
    * populate the Director and Producer html
-   * @param data 
    */
   private getDirectorProducerLists(data: CrewAPI[]) {
-    let firstDirector=true;
-    let firstProducer=true;
+    let firstDirector = true;
+    let firstProducer = true;
 
     data.forEach(element => {
-      if(element.job == "Director") {
-        if(firstDirector) {
+      if (element.job === 'Director') {
+        if (firstDirector) {
           firstDirector = false;
           this.directorList = element.name;
         }
         else {
-          this.directorList = this.directorList + ", " + element.name;
+          this.directorList = this.directorList + ', ' + element.name;
         }
       }
-      else if(element.job == "Producer") {
-        if(firstProducer) {
+      else if (element.job === 'Producer') {
+        if (firstProducer) {
           firstProducer = false;
           this.producerList = element.name;
         }
         else {
-          this.producerList = this.producerList + ", " + element.name;
+          this.producerList = this.producerList + ', ' + element.name;
         }
       }
     });
