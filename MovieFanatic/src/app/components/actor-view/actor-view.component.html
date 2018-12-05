@@ -1,14 +1,16 @@
 <div *ngIf="this.actor">
 
-<div class="jumbotron jumbotron-fluid">
+<div id = "bg" class="jumbotron jumbotron-fluid"  style = "background-image: url('https://cdn.hipwallpaper.com/i/68/37/cjLsNC.jpg'); 
+background-repeat: no-repeat; background-size: cover; background-position: center;">
   <div class="container">
-    <div class="row justify-content-sm">
+    <div class="row justify-content-sm" >
       <div class="col-6" id = "pic">
         <img class="w3-card-4" src="{{this.actor.profile_path}}" id = 'act'>
       </div>
       <div class="col-6 round-border" id = "actorstats">
+        <div id = "cb">
         <h1 style = "background-image: linear-gradient(rgb(197, 202, 211), rgb(121, 128, 146)); padding: 10px; border-radius: 2px 2px 20px 20px;
-         box-shadow: 3px 3px 5px rgb(56, 55, 55);">{{this.actor.name}}</h1>
+         box-shadow: 3px 3px 5px rgb(56, 55, 55); color: white;">{{this.actor.name}}</h1>
         <hr class="line-break">
         <div [ngSwitch]="this.actor.gender">
           <h6 id = 'gender' *ngSwitchCase="1" >Gender: <small>Female</small></h6>
@@ -21,5 +23,6 @@
         <br class="line-break">
         <p id = 'biography'>{{this.actor.biography}}</p>
       </div>
+    </div>
     </div>
   </div>
