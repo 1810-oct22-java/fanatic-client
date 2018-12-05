@@ -7,17 +7,18 @@
         <img class="w3-card-4" src="{{this.actor.profile_path}}" id = 'act'>
       </div>
       <div class="col-6 round-border" id = "actorstats">
-        <h1>{{this.actor.name}}</h1>
+        <h1 style = "background-image: linear-gradient(rgb(197, 202, 211), rgb(121, 128, 146)); padding: 10px; border-radius: 2px 2px 20px 20px;
+         box-shadow: 3px 3px 5px rgb(56, 55, 55);">{{this.actor.name}}</h1>
         <hr class="line-break">
         <div [ngSwitch]="this.actor.gender">
-          <h5 id = 'gender' *ngSwitchCase="1" >Gender: Female</h5>
-          <h5 id = 'gender' *ngSwitchCase="2" >Gender: Male</h5>
+          <h6 id = 'gender' *ngSwitchCase="1" >Gender: <small>Female</small></h6>
+          <h6 id = 'gender' *ngSwitchCase="2" >Gender: <small>Male</small></h6>
         </div>
-        <h5 id = 'birth'>Birth: {{this.actor.birthday}}</h5>
-        <h5 id = 'place_of_birth'>Place of Birth: {{this.actor.place_of_birth}}</h5>
-        <h5 id = 'popularity'>Popularity: {{this.actor.popularity}}</h5>
-        <hr class="line-break">
-        <p id = 'biography'>Biography: {{this.actor.biography}}</p>
+        <h6 id = 'birth'>Birth: <small>{{this.actor.birthday}}</small></h6>
+        <h6 id = 'place_of_birth'>Place of Birth: <small>{{this.actor.place_of_birth}}</small></h6>
+        <h6 id = 'popularity'>Popularity: <small>{{this.actor.popularity}}</small></h6>
+        <br class="line-break">
+        <p id = 'biography'>{{this.actor.biography}}</p>
       </div>
     </div>
   </div>
