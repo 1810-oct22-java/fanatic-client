@@ -1,5 +1,6 @@
-div {
-    -webkit-border-image: round;
-    border-image: stretch;
+#jum {
+    background-color: rgb(0, 0, 0, 0.4);
+    box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.60);
+    color: aliceblue;
 }
 
