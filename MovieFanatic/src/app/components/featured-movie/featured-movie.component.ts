@@ -3,7 +3,6 @@ import { MovieAPIService } from '../../services/movie-api.service';
 import { MovieAPI } from 'src/app/models/movieAPI';
 import { ConfigAPI } from 'src/app/models/configAPI';
 
-
 @Component({
   selector: 'app-featured-movie',
   templateUrl: './featured-movie.component.html',
