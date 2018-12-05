@@ -46,9 +46,10 @@ import { ComedicMoviesComponent } from './components/comedic-movies/comedic-movi
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule 
   ],
   providers: [
+    
   ],
   bootstrap: [AppComponent]
 })
