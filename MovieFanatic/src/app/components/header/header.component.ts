@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   public query: string;
 
-  constructor(public router: Router) { 
+  constructor(public router: Router) {
   }
 
   ngOnInit() {
@@ -19,10 +19,10 @@ export class HeaderComponent implements OnInit {
   /**
    * user keyed in search and we need to send it to the search results window
    */
-  enterPressed() { 
-    var query: string = this.query.replace(/\s/g, '+');
-    this.query = "";
+  enterPressed() {
+    const query: string = this.query.replace(/\s/g, '+');
+    this.query = '';
     // change the spaces to plusses and sends it on its way
-    this.router.navigateByUrl("/movie_results/" + query);
+    this.router.navigateByUrl('/movie_results/' + query);
   }
 }

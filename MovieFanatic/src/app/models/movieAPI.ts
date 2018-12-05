@@ -1,4 +1,4 @@
-import { SafeStyle } from "@angular/platform-browser";
+import { SafeStyle } from '@angular/platform-browser';
 
 export interface MovieAPI {
     id: number;
