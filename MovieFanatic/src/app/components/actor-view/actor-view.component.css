@@ -1,17 +1,24 @@
 #pic{
-
-}
-#act{
     
 
 }
+#act{
+
+    border-top: 15px white solid;
+    border-bottom: 80px white solid;
+    border-left: 15px white solid;
+    border-right: 15px white solid;
+    border-radius: 2px;
+    box-shadow: 3px 3px 10px;
+
+}
 #actorstats{
-    border-top: 2px brown solid;
-    border-bottom: 10px brown solid;
-    border-left: 6px brown solid;
-    border-right: 6px brown solid;
-    border-radius: 2px 2px 20px 20px;
-    box-shadow: 3px 3px 5px grey;
+    border-top: 4px brown solid;
+    border-bottom: 20px brown solid;
+    border-left: 12px brown solid;
+    border-right: 12px brown solid;
+    border-radius: 10px 10px 40px 40px;
+    box-shadow: 3px 3px 20px rgb(20, 12, 12);
     background-color: white; 
 
 }
