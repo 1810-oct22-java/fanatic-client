@@ -1,5 +1,5 @@
-<div class="body" [ngStyle]="this.getBackground()">
-  <div *ngIf="this.featMovie" class="container-fluid">
+<div *ngIf="this.featMovie" class="container-fluid">
+    <div class="body" [ngStyle]="this.getBackground()">
       <div class="container">
           <div class="row justify-content-md-center">
               <div class="col-3">
@@ -14,7 +14,6 @@
                               <h6 class="tag-line">{{featMovie.tagline}}</h6>
                           </div>
                       </div>
-                  <div>
                   <p>{{featMovie.overview}}</p>
               </div>
           </div>
