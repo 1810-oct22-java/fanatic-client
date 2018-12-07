@@ -11,12 +11,13 @@
       <div>
         <a routerLink="#" data-toggle="modal" data-target="#creditModal">Credits</a>
         &nbsp;&bull;&nbsp;
-        <a routerLink="/login">Login</a>
+        <a routerLink="#" data-toggle="modal" data-target="#myModal">Login</a>
         &nbsp;&bull;&nbsp;
         <a routerLink="/profile-view">Sign up</a>
        &nbsp;
       </div>
     </div>
+  </div>
 </nav>
 <div class="input-group">
     <div class="input-group-prepend">
@@ -24,7 +25,7 @@
     </div>
     <input [(ngModel)]="query" (keyup.enter)="this.enterPressed()" class="form-control" placeholder="Search for a movie or actor" aria-label="Search for a movie or actor" aria-describedby="search-icon">
 </div>
-<!-- Modal -->
+<!-- Credit Modal -->
 <div class="modal fade" id="creditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -57,5 +58,39 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- Login Modal-->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header" style="padding:35px 50px;">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4><span class="glyphicon glyphicon-lock"></span> Login {{output}}</h4>
+      </div>
+      <div class="modal-body" style="padding:40px 50px;">
+        <form role="form">
+          <div class="form-group">
+              
+            <label for="username"><span class="fa fa-user"></span> Username</label>
+            <br>
+            <input type="text" [(ngModel)]="username" name="username" class='form-control col-6' placeholder='Enter Username' size="35">
+          </div><style></style>
+          <div class="form-group">
+            <label for="password"><span class="fa fa-unlock-alt"></span> Password</label>
+            <br>
+            <input type="password" [(ngModel)]="password" name="password" class='form-control col-6' placeholder='Enter Password' size="35">
+          </div>
+          <button class="btn btn-submit" (click)="login()">Login</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancel</button>
+      </div>
+      
+    </div>
+
   </div>
 </div>

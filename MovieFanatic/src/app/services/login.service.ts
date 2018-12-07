@@ -10,6 +10,7 @@ export class LoginService {
   constructor() {
     this.userList.push(new User('admin', 'password'));
   }
+
   public validateUser(username: string, password: string): User {
     for (const u of this.userList) {
       if (u.username.toLowerCase() === username) {
