@@ -1,5 +1,5 @@
 // http://www.omdbapi.com/
-export interface ratingsAPI {
+export interface RatingsAPI {
     id: number;
     Source: string;
     Value: string;
