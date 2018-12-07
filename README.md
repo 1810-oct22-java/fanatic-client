@@ -1,6 +1,6 @@
 Project 2 client side work for:
 
-Ted Airy<br>
+Ted Airey<br>
 Davidson Bock<br>
 Phil Gerringer<br>
 Andrew Newman<br>

@@ -8,7 +8,7 @@
                         <tr>
                             <td class="header-poster"><img class="poster" id="movie-poster" src='{{this.movie.poster_path}}'></td>
                             <td class="header-meta">
-                                <a class="title" href="{{this.movie.homepage}}">{{this.movie.title}}</a>
+                                <span class="title">{{this.movie.title}}</span>
                                 <span>({{this.date_convert(this.movie.release_date)}})</span>
                                 <h6 class="tag-line">{{this.movie.tagline}}</h6>
                                 <h5 class="meta-data">{{this.ratings.Rated}}&nbsp;&bull;&nbsp;
@@ -68,6 +68,45 @@
             </div>
         </div>
     </div>
+<!-- Modal -->
+<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add a Review - {{ this.movie.title }}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                    <table>
+                            <tr>
+                                <td class="header-poster"><img class="poster" id="movie-poster" src='{{this.movie.poster_path}}'></td>
+                                <td class="header-meta">
+                                    {{this.movie.title}}
+                                    <span>({{this.date_convert(this.movie.release_date)}})</span>
+                                    <h6 class="tag-line">{{this.movie.tagline}}</h6>
+                                    Your Rating:&nbsp;{{ this.add_rating }} &nbsp; <span class="fa fa-star on"></span>
+                                    <span class="fa fa-star on"></span>
+                                    <span class="fa fa-star on"></span>
+                                    <span class="fa fa-star on"></span>
+                                    <span class="fa fa-star on"></span>
+                                    
+                                </td>
+                            </tr>
+                        </table>
+                <div class="input-group">
+                    <br><br>Your Review:
+                    <textarea class="form-control" aria-label="With textarea"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Submit</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
 </div>
 </div>
 <!-- Modal -->
