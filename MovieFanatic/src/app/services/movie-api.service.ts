@@ -20,7 +20,7 @@ export class MovieAPIService {
   }
 
   getMoviesByActor(id: string) {
-    
+    return this.http.get<MovieAPI[]>(ConfigAPI.base_url + 'discover/movie' + ConfigAPI.api_key + ConfigAPI.query_params + 'sort_by=popularity.desc&with_cast='+id);
   }
 
   getPopularMovies() {
