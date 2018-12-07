@@ -25,7 +25,7 @@ export class SearchViewComponent implements OnInit {
 
   constructor(
     public route: ActivatedRoute,
-    public movieService: MovieAPIService, 
+    public movieService: MovieAPIService,
     public colorService: ColorService
   ) {}
 
@@ -39,7 +39,7 @@ export class SearchViewComponent implements OnInit {
     });
   }
 
-  getAllMovies(){
+  getAllMovies() {
     this.movieArray = [];
     this.actorArray = [];
     this.tempMovie = [];
@@ -50,35 +50,32 @@ export class SearchViewComponent implements OnInit {
                     this.total_pages = this.tempMovie[0].total_pages;
                     console.log(this.total_pages);
                     this.current_page = 1;
-                    
-                    for (let i = 0; i < this.tempMovie[0].results.length; i++){
-                      if(this.tempMovie[0].results[i].media_type === "movie"){
-                        if(this.tempMovie[0].results[i].poster_path == null){
+                    for (let i = 0; i < this.tempMovie[0].results.length; i++) {
+                      if (this.tempMovie[0].results[i].media_type === 'movie') {
+                        if (this.tempMovie[0].results[i].poster_path == null) {
                           this.imglink = '/assets/noMovie.jpeg';
-                        }else{
+                        } else {
                           this.imglink = this.movieService.formatImage(this.tempMovie[0].results[i].poster_path);
                         }
-                        
-                        this.movieArray.push({"title": this.tempMovie[0].results[i].original_title,
-                                              "id": this.tempMovie[0].results[i].id,
-                                              "Poster" : this.imglink  });
-                      }else if(this.tempMovie[0].results[i].media_type === "person"){
-                        if(this.tempMovie[0].results[i].profile_path == null){
+                        this.movieArray.push({'title': this.tempMovie[0].results[i].original_title,
+                                              'id': this.tempMovie[0].results[i].id,
+                                              'Poster' : this.imglink  });
+                      } else if (this.tempMovie[0].results[i].media_type === 'person') {
+                        if (this.tempMovie[0].results[i].profile_path == null) {
                           this.imglink = '/assets/noActor.jpeg';
-                        }else{
+                        } else {
                           this.imglink = this.movieService.formatImage(this.tempMovie[0].results[i].profile_path);
                         }
-                        this.actorArray.push({"name": this.tempMovie[0].results[i].name,
-                        "id": this.tempMovie[0].results[i].id,
-                        "Profile" : this.imglink });
+                        this.actorArray.push({'name': this.tempMovie[0].results[i].name,
+                        'id': this.tempMovie[0].results[i].id,
+                        'Profile' : this.imglink });
                       }
                     }
 
-                    if(this.actorArray.length >= 1){
+                    if (this.actorArray.length >= 1) {
                       this.actorNotEmpty = true;
                     }
-                    
-                    if(this.movieArray.length >= 1){
+                    if (this.movieArray.length >= 1) {
                       this.movieNotEmpty = true;
                     }
                   });

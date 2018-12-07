@@ -24,21 +24,21 @@ export class FeaturedMovieComponent implements OnInit {
     this.getFeaturedMovie();
   }
 
-  getFeaturedMovie(){ 
+  getFeaturedMovie() {
     this.movieService.getPopularMovies().subscribe(
       (movie) =>  {
                     this.tempFeatMovie.push(movie);
                     this.total_pages = this.tempFeatMovie[0].total_pages;
                     this.current_page = 1;
-                    this.featMovie = ({"title": this.tempFeatMovie[0].results[0].original_title,
-                                            "Poster" : this.movieService.formatImage(this.tempFeatMovie[0].results[0].poster_path),
-                                            "id" : this.tempFeatMovie[0].results[0].id,
-                                            "tagline" : this.tempFeatMovie[0].results[0].tagline,
-                                            "background" : this.tempFeatMovie[0].results[0].backdrop_path,
-                                            "overview" : this.tempFeatMovie[0].results[0].overview  });
+                    this.featMovie = ({'title': this.tempFeatMovie[0].results[0].original_title,
+                                            'Poster' : this.movieService.formatImage(this.tempFeatMovie[0].results[0].poster_path),
+                                            'id' : this.tempFeatMovie[0].results[0].id,
+                                            'tagline' : this.tempFeatMovie[0].results[0].tagline,
+                                            'background' : this.tempFeatMovie[0].results[0].backdrop_path,
+                                            'overview' : this.tempFeatMovie[0].results[0].overview  });
                   });
   }
-  
+
   public getBackground() {
     return {'background-image': `url(${ConfigAPI.image_url}${this.featMovie.background})`};
   }
