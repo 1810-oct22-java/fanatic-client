@@ -21,7 +21,7 @@ export class PopularMoviesComponent implements OnInit {
     this.getPopularMovies();
   }
 
-  getPopularMovies(){ 
+  getPopularMovies() {
     this.movieService.getPopularMovies().subscribe(
       (movie) =>  {
                     console.log(movie);
@@ -29,11 +29,10 @@ export class PopularMoviesComponent implements OnInit {
                     this.total_pages = this.tempPopMovie[0].total_pages;
                     console.log(this.total_pages);
                     this.current_page = 1;
-                    
-                    for (let i = 1; i < 7; i++){
-                      this.popMovieArray.push({"title": this.tempPopMovie[0].results[i].original_title,
-                                            "Poster" : this.movieService.formatImage(this.tempPopMovie[0].results[i].poster_path),
-                                            "id" : this.tempPopMovie[0].results[i].id  });
+                    for (let i = 1; i < 7; i++) {
+                      this.popMovieArray.push({'title': this.tempPopMovie[0].results[i].original_title,
+                                            'Poster' : this.movieService.formatImage(this.tempPopMovie[0].results[i].poster_path),
+                                            'id' : this.tempPopMovie[0].results[i].id  });
                     }
                     console.log(this.popMovieArray);
                   });

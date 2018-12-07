@@ -11,28 +11,28 @@
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            <a class="title" href="{{this.movie.homepage}}">{{this.movie.title}}</a>
+                            <a class="title" routerLink="{{this.movie.homepage}}">{{this.movie.title}}</a>
                                 <span>({{this.date_convert(this.movie.release_date)}})</span>
-                            <h6 class="tag-line">{{this.movie.tagline}}</h6>
+                            <h6 *ngIf="this.movie.tagline != null" class="tag-line">{{this.movie.tagline}}</h6>
                         </div>
                         <div class="col-auto">
                             <table> 
                                 <tr class='ratings-header'> 
-                                    <th><a href="https://www.metacritic.com">Metacritic</a></th> 
-                                    <th><a href="https://www.imdb.com">IMDB</a></th> 
-                                    <th><a href="https://www.rottentomatoes.com">Rotten<br>Tomatoes</a></th> 
+                                    <th *ngIf="this.ratings.Metascore != 'N/A'"><a routerLink="https://www.metacritic.com">Metacritic</a></th> 
+                                    <th *ngIf="this.ratings.imdbRating != null"><a routerLink="https://www.imdb.com">IMDB</a></th> 
+                                    <th *ngIf="this.ratings.RottenTomatoes != null"><a routerLink="https://www.rottentomatoes.com">Rotten<br>Tomatoes</a></th> 
                                     <th>Movie<br>Fanatic</th> 
                                 </tr> 
                                 <tr class='ratings-detail'> 
-                                    <td>{{this.ratings.Metascore}}</td>
-                                    <td>{{this.ratings.imdbRating}}<span class="tag-line">/10</span></td>
-                                    <td>{{this.ratings.RottenTomatoes}}</td>
+                                    <td *ngIf="this.ratings.Metascore != 'N/A'">{{this.ratings.Metascore}}</td>
+                                    <td *ngIf="this.ratings.imdbRating != null">{{this.ratings.imdbRating}}<span class="tag-line">/10</span></td>
+                                    <td *ngIf="this.ratings.RottenTomatoes != null">{{this.ratings.RottenTomatoes}}</td>
                                     <td><button type="button" (click)="goMovieReview()" class="btn btn-outline-light" value="{{this.ratings.MovieFanatic}}">{{this.ratings.MovieFanatic}}</button></td>
                                 </tr> 
                                 <tr class='ratings-header'> 
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td *ngIf="this.ratings.Metascore != 'N/A'"></td>
+                                        <td *ngIf="this.ratings.imdbRating != null"></td>
+                                        <td *ngIf="this.ratings.RottenTomatoes != null"></td>
                                         <td>Click For Reviews</td>
                                     </tr> 
                             </table>
@@ -49,7 +49,10 @@
                 <h6><span class="category">Budget: </span>{{this.movie.budget | currency }}</h6>
                 <div>
                     <h6 class="category">Cast:</h6>
-                    <div [innerHTML]='castList'></div>
+                    <span *ngFor="let c of this.cast">
+                        <span *ngIf="this.cast[0].id != c.id">&nbsp;&bull;&nbsp;</span>
+                        <a routerLink="/actor/{{c.id}}">{{c.name}}</a>
+                    </span>
                 </div>
             </div>
         </div>

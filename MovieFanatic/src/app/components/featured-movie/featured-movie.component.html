@@ -3,14 +3,14 @@
       <div class="container">
           <div class="row justify-content-md-center">
               <div class="col-3">
-                  <a href="movie/{{featMovie.id}}">
+                  <a routerLink="/movie/{{featMovie.id}}">
                   <img class="poster" id="movie-poster" src='{{this.featMovie.Poster}}'></a>
               </div>
               <div class="col-6 round-border">
                   <div class="container">
                       <div class="row">
                           <div class="col">
-                              <a class="title" href="movie/{{featMovie.id}}">{{featMovie.title}}</a>
+                              <a class="title" routerLink="/movie/{{featMovie.id}}" routerLinkActive="active">{{featMovie.title}}</a>
                               <h6 class="tag-line">{{featMovie.tagline}}</h6>
                           </div>
                       </div>
