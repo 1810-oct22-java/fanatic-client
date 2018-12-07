@@ -12,10 +12,7 @@
     <div>
       <a href="#" data-toggle="modal" data-target="#creditModal">Credits</a>
       &nbsp;&bull;&nbsp;
-
       <a href="#" data-toggle="modal" data-target="#myModal">Login</a>
-      <!-- <a href="#" data-toggle="modal" data-target="#loginModal">Login</a> -->
-      <!-- <a href="/login">login</a> -->
       &nbsp;&bull;&nbsp;
       <a href="/edit-profile">Sign up</a>
       &nbsp;
@@ -24,7 +21,9 @@
 </nav>
 <div class="input-group">
   <div class="input-group-prepend">
-    <span class="input-group-text" id="search-icon"><img src="/assets/search.png" width="20" height="20" /></span>
+    <span class="input-group-text" id="search-icon"><i class="fa fa-search"></i></span>
+    
+    <!-- ><img src="/assets/search.png" width="20" height="20" /></span> -->
   </div>
   <input [(ngModel)]="query" (keyup.enter)="this.enterPressed()" class="form-control" placeholder="Search for a movie or actor"
     aria-label="Search for a movie or actor" aria-describedby="search-icon">
@@ -74,7 +73,7 @@
     <div class="modal-content">
       <div class="modal-header" style="padding:35px 50px;">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
+        <h4><span class="glyphicon glyphicon-lock"></span> Login {{output}}</h4>
       </div>
       <div class="modal-body" style="padding:40px 50px;">
         <form role="form">
@@ -95,7 +94,7 @@
       <div class="modal-footer">
         <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancel</button>
       </div>
-      {{output}}
+      
     </div>
 
   </div>
