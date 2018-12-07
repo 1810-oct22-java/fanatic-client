@@ -10,7 +10,7 @@ body {font-family: Roboto, Helvetica, sans-serif;}
 
 .navbar li { color: #000 }
 
-.navbar-brand {
+.brand {
     padding: 0px;
     color: white;
 }
