@@ -5,3 +5,6 @@ body {
     background-image: url("assets/cjLsNC.jpg");
     background-size: 100%;
 }
+.card {
+    box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.60);
+}
