@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieAPIService } from '../../services/movie-api.service'; 
+import { MovieAPIService } from '../../services/movie-api.service';
 
 @Component({
   selector: 'app-dramatic-movies',
@@ -21,7 +21,7 @@ export class DramaticMoviesComponent implements OnInit {
     this.getDramas();
   }
 
-  getDramas(){ 
+  getDramas() {
     this.movieService.getDramas().subscribe(
       (movie) =>  {
                     console.log(movie);
@@ -29,11 +29,10 @@ export class DramaticMoviesComponent implements OnInit {
                     this.total_pages = this.tempDramaMovie[0].total_pages;
                     console.log(this.total_pages);
                     this.current_page = 1;
-                    
-                    for (let i = 0; i < 6; i++){
-                      this.dramaMovieArray.push({"title": this.tempDramaMovie[0].results[i].original_title,
-                                            "Poster" : this.movieService.formatImage(this.tempDramaMovie[0].results[i].poster_path),
-                                            "id" : this.tempDramaMovie[0].results[i].id  });
+                    for (let i = 0; i < 6; i++) {
+                      this.dramaMovieArray.push({'title': this.tempDramaMovie[0].results[i].original_title,
+                                            'Poster' : this.movieService.formatImage(this.tempDramaMovie[0].results[i].poster_path),
+                                            'id' : this.tempDramaMovie[0].results[i].id  });
                     }
                     console.log(this.dramaMovieArray);
                   });

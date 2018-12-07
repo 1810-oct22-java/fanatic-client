@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Http , Response } from '@angular/http';
 import { ConfigAPI } from 'src/app/models/configAPI';
 import { Actor } from '../models/actor';
 import { HttpClient } from '@angular/common/http';
