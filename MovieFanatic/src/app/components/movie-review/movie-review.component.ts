@@ -28,20 +28,20 @@ export class MovieReviewComponent implements OnInit {
                     this.movie = movie;
                     this.movie.poster_path = this.movieService.formatImage(this.movie.poster_path);
                     this.movieService.getOMDB(this.movie.imdb_id).subscribe(
-                      (omdb) => { 
-                                  this.ratings = omdb; 
+                      (omdb) => {
+                                  this.ratings = omdb;
                                 });
                   });
   }
-  
-  time_convert(num) { 
-    var hours = Math.floor(num / 60);  
-    var minutes = num % 60;
-    return hours + ' hr ' + minutes + ' min';         
+
+  time_convert(num) {
+    const hours = Math.floor(num / 60);
+    const minutes = num % 60;
+    return hours + ' hr ' + minutes + ' min';
   }
 
   date_convert(date: string) {
-    var parts = date.split('-');
+    const parts = date.split('-');
     return parts[0];
   }
 }

@@ -1,37 +1,63 @@
-<div class = "container">
-  <div class="row">
-  <div class="jumbotron col-12">
-    <div> <span class="glyphicon glyphicon-user" id="jum"></span></div>
-    <h3 class="display-4" align = "right">{{title}}</h3>
+<br>
+
+<div class = "container emp-profile">
+  <div class="jumbotron" class="row justify-content-md-center rounded" id="jum">
+    <div class="col-1"></div>
+  <div class="col-3">
+      <br>
+      <div class="center">
+      <img src="/assets/userprof.png" width="120" height="120"/>
+      </div>
+  </div>
+  <div class="col-8">
+    
     <h3 class="display-4" align= "right">{{firstname}} {{lastname}}</h3>
+    <hr color="white">
+    <div class="row">
+        <div class="col-12">
+          <div class="row">
+            <div class="col-6">
+              <label>Username</label>
+            </div>
+            <div class = "col-6">
+              <p>{{username}}</p>
+            </div>
+            <div class="col-6">
+              <label>Password</label>
+            </div>
+            <div class="col-6">
+              <p>{{password}}</p>
+            </div>
+            <div class="col-6">
+              <label>Firstname</label>
+            </div>
+            <div class="col-6">
+              <p>{{firstname}}</p>
+            </div>
+            <div class="col-6">
+              <label>Lastname</label>
+            </div>
+            <div class="col-6">
+              <p>{{lastname}}</p>
+            </div>
+            <div class="col-6">
+              <label>Email</label>
+            </div>
+            <div class="col-6">
+              <p>{{email}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-1"></div>
   </div>
-</div>
-<div class ="row">
-  <div class="jumbotron col-4 round-border" id="jum">
-    <h4 class = "display-4" id ="header1">Username: </h4>
-    <h4 class = "display-4" id = "header1">Password: </h4>
-    <h4 class ="display-4" id = "header1">First Name: </h4>
-    <h4 class = "display-4" id = "header1">Last Name: </h4>
-    <h4 class="display-4" id="header1">Email: </h4>
-  </div>
-  <div class="col-1"></div>
-  <div class="jumbotron col-7 round-border" id="jum">
-    <h6 class = "display-4" id = "header2">{{username}}</h6>
-    <h4 class = "display-4" id = "header2">{{password}}</h4>
-    <h4 class ="display-4" id = "header2">{{firstname}}</h4>
-    <h4 class = "display-4" id="header2">{{lastname}}</h4>
-    <h4 class="display-4" id ="header2">{{email}}</h4>
-  </div>
-</div>
+ 
 
-<div class = "row">
-
-
-</div>
-
+  <br>
 <div class="row">
-  <div class = "jumbotron col-12 text-center">
-    <button routerLinkActive = "active" class ="btn btn-secondary btn-lg btn-block" align = "center"><a routerLink="/edit-profile">Edit Profile</a></button>
+  <div class = "jumbotron col-12 text-center" id="jum">
+    <button class ="submit"><a routerLink="/edit-profile">Edit Profile</a></button>
   </div>
 </div>
     

@@ -28,7 +28,6 @@ export class HeaderComponent implements OnInit {
   /**
    * user keyed in search and we need to send it to the search results window
    */
-
   enterPressed() {
     var query: string = this.query.replace(/\s/g, '+');
     this.query = '';
@@ -45,6 +44,5 @@ export class HeaderComponent implements OnInit {
     } else {
       this.output = `Welcome ${this.username}`;
     }
-
   }
 }

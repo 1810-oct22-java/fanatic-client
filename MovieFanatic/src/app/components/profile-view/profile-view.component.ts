@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ProfileViewComponent implements OnInit {
   title = 'User Profile';
   username = 'syoung11';
-  password = 'password';
+  password = '123';
   firstname = 'Sean';
   lastname = 'Young';
   email = 'seanyoung@gmail';

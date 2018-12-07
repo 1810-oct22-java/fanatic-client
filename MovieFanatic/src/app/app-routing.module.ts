@@ -12,20 +12,23 @@ import { HeaderComponent } from './components/header/header.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
-  { path: 'main', component: MainViewComponent },
-  { path: 'movie', component: MovieViewComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'movie_results/:query', component: SearchViewComponent },
-  { path: 'movie/:id', component: MovieViewComponent },
-  { path: 'movie/review/:id', component: MovieReviewComponent },
+  { path: 'header', component: HeaderComponent },
+  { path: 'main', component: MainViewComponent},
+  { path: 'movie', component: MovieViewComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'movie_results/:query', component: SearchViewComponent, runGuardsAndResolvers: 'always'},
+  { path: 'movie/:id', component: MovieViewComponent},
+  { path: 'movie/review/:id', component: MovieReviewComponent},
   { path: 'actor/:id', component: ActorViewComponent },
-  { path: 'profile-view', component: ProfileViewComponent },
-  { path: 'edit-profile', component: EditProfileComponent },
-  { path: 'header', component: HeaderComponent }
+  { path: 'profile-view', component: ProfileViewComponent},
+  { path: 'edit-profile', component: EditProfileComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(
+    routes,
+    { enableTracing: true } // <-- debugging purposes only
+  )],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
