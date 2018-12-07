@@ -1,11 +1,11 @@
 // http://www.omdbapi.com/
-import { ratingsAPI } from 'src/app/models/ratingsAPI';
+import { RatingsAPI } from 'src/app/models/ratingsAPI';
 
 export interface OMDBAPI {
     id: number;
     Title: string;
     Genre: string;
-    Ratings: ratingsAPI[];
+    Ratings: RatingsAPI[];
     Rated: string;
     Metascore: string;
     imdbRating: string;

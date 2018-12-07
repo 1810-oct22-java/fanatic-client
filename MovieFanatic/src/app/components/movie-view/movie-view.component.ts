@@ -22,6 +22,7 @@ export class MovieViewComponent implements OnInit {
   public castList = '';
   public directorList = '';
   public producerList = '';
+  public listOfCast = [];
 
   constructor(
     public route: ActivatedRoute,
@@ -37,7 +38,7 @@ export class MovieViewComponent implements OnInit {
     this.movieService.getMovie(this.id).subscribe(
       (movie) =>  {
                     this.movie = movie;
-                    this.movie.poster_path = this.movieService.formatImage(this.movie.poster_path);
+                    this.movie.poster_path = this.movieService.formatPosterImage(this.movie.poster_path);
                     this.movieService.getOMDB(this.movie.imdb_id).subscribe(
                       (omdb) => {
                                   this.ratings = omdb;
@@ -51,7 +52,6 @@ export class MovieViewComponent implements OnInit {
       (creditList) => {
                         this.credits.push(creditList);
                         this.cast = this.sortCast(this.credits[0].cast);
-                        this.getCastList();
                         this.getDirectorProducerLists(this.credits[0].crew);
                       }
     );
@@ -117,30 +117,8 @@ export class MovieViewComponent implements OnInit {
     });
   }
 
-  /**
-   * populate the cast list html
-   */
-  private getCastList() {
-    let castList = this.buildCastLink(this.cast[0].name, this.cast[0].id);
-    let first = true;
-
-    this.cast.forEach(element => {
-      if (first) {
-        first = false;
-      }
-      else {
-        castList = castList + '&nbsp;&bull;&nbsp;' + this.buildCastLink(element.name, element.id);
-      }
-    });
-
-    this.castList = castList;
-  }
-
-  /**
-   * build the cast list link html
-   */
-  private buildCastLink(name: string, link: string) {
-    return `<a class='cast-link' href='/actor/${link}'>${name}</a>`;
+  public routeActor(id: number) {
+    this.router.navigateByUrl('/actor/' + id);
   }
 
   /**
@@ -155,17 +133,14 @@ export class MovieViewComponent implements OnInit {
         if (firstDirector) {
           firstDirector = false;
           this.directorList = element.name;
-        }
-        else {
+        } else {
           this.directorList = this.directorList + ', ' + element.name;
         }
-      }
-      else if (element.job === 'Producer') {
+      } else if (element.job === 'Producer') {
         if (firstProducer) {
           firstProducer = false;
           this.producerList = element.name;
-        }
-        else {
+        } else {
           this.producerList = this.producerList + ', ' + element.name;
         }
       }
