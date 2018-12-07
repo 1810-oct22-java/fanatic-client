@@ -87,6 +87,7 @@ table, tr, th, td {
     table-layout: fixed;
     width: 60px;
 }
+
 .ratings-header {
     font-size: 10px;
     line-height: 85%;

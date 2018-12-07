@@ -14,10 +14,10 @@ const routes: Routes = [
   { path: 'main', component: MainViewComponent},
   { path: 'movie', component: MovieViewComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'movie_results/:query', component: SearchViewComponent, runGuardsAndResolvers:"always"},
-  { path:'movie/:id', component: MovieViewComponent},
-  { path:'movie/review/:id', component: MovieReviewComponent},
-  { path:'actor/:id', component: ActorViewComponent },
+  { path: 'movie_results/:query', component: SearchViewComponent, runGuardsAndResolvers: 'always'},
+  { path: 'movie/:id', component: MovieViewComponent},
+  { path: 'movie/review/:id', component: MovieReviewComponent},
+  { path: 'actor/:id', component: ActorViewComponent },
   { path: 'profile-view', component: ProfileViewComponent},
   { path: 'edit-profile', component: EditProfileComponent}
 ];
