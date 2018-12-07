@@ -45,6 +45,14 @@ export class MovieAPIService {
       '&plot=full&' + ConfigAPI.omdapi_key);
   }
 
+  formatPosterImage(image: string): string {
+    if (image == null) {
+      return '/assets/noMovie.jpeg';
+    }
+
+    return this.formatImage(image);
+  }
+
   formatImage(image: string): string {
     return ConfigAPI.image_url + image;
   }
