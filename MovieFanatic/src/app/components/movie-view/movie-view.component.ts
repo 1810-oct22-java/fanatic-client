@@ -20,8 +20,8 @@ export class MovieViewComponent implements OnInit {
   public credits = [];
   public cast = [];
   public castList = '';
-  public directorList = '';
-  public producerList = '';
+  public directorList = [];
+  public producerList = [];
   public listOfCast = [];
 
   constructor(
@@ -52,7 +52,7 @@ export class MovieViewComponent implements OnInit {
       (creditList) => {
                         this.credits.push(creditList);
                         this.cast = this.sortCast(this.credits[0].cast);
-                        this.getDirectorProducerLists(this.credits[0].crew);
+                        this.buildDirectorProducerLists(this.credits[0].crew);
                       }
     );
   }
@@ -121,28 +121,41 @@ export class MovieViewComponent implements OnInit {
     this.router.navigateByUrl('/actor/' + id);
   }
 
-  /**
-   * populate the Director and Producer html
-   */
-  private getDirectorProducerLists(data: CrewAPI[]) {
-    let firstDirector = true;
-    let firstProducer = true;
+  // /**
+  //  * populate the Director and Producer html
+  //  */
+  // private getDirectorProducerLists(data: CrewAPI[]) {
+  //   let firstDirector = true;
+  //   let firstProducer = true;
 
+  //   data.forEach(element => {
+  //     if (element.job === 'Director') {
+  //       if (firstDirector) {
+  //         firstDirector = false;
+  //         this.directorList = element.name;
+  //       } else {
+  //         this.directorList = this.directorList + ', ' + element.name;
+  //       }
+  //     } else if (element.job === 'Producer') {
+  //       if (firstProducer) {
+  //         firstProducer = false;
+  //         this.producerList = element.name;
+  //       } else {
+  //         this.producerList = this.producerList + ', ' + element.name;
+  //       }
+  //     }
+  //   });
+  // }
+
+  /**
+   * populate the Director and Producer lists
+   */
+  private buildDirectorProducerLists(data: CrewAPI[]) {
     data.forEach(element => {
       if (element.job === 'Director') {
-        if (firstDirector) {
-          firstDirector = false;
-          this.directorList = element.name;
-        } else {
-          this.directorList = this.directorList + ', ' + element.name;
-        }
+        this.directorList.push(element);
       } else if (element.job === 'Producer') {
-        if (firstProducer) {
-          firstProducer = false;
-          this.producerList = element.name;
-        } else {
-          this.producerList = this.producerList + ', ' + element.name;
-        }
+        this.producerList.push(element);
       }
     });
   }

@@ -35,7 +35,7 @@ img.poster {
     background-color:  rgb(226, 225, 225,0.9);
 }
 
-a.title {
+.title {
     font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
     font-weight: bold;
     color: white;
@@ -60,9 +60,8 @@ h5.meta-data {
 }
 
 .category {
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
     color: rgb(80, 80, 80);
-    text-transform: uppercase;
-    font-weight: bold;
 }
 
 .cast-link {
