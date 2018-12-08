@@ -7,6 +7,7 @@ import { CastAPI } from 'src/app/models/castAPI';
 import { CrewAPI } from 'src/app/models/crewAPI';
 import { OMDBAPI } from 'src/app/models/OMDBAPI';
 import { ColorService } from 'src/app/services/color.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-movie-view',
@@ -20,15 +21,16 @@ export class MovieViewComponent implements OnInit {
   public credits = [];
   public cast = [];
   public castList = '';
-  public directorList = '';
-  public producerList = '';
+  public directorList = [];
+  public producerList = [];
   public listOfCast = [];
 
   constructor(
     public route: ActivatedRoute,
     public movieService: MovieAPIService,
     public colorService: ColorService,
-    public router: Router
+    public router: Router,
+    public loginService: LoginService
   ) {}
 
   ngOnInit() {
@@ -52,7 +54,7 @@ export class MovieViewComponent implements OnInit {
       (creditList) => {
                         this.credits.push(creditList);
                         this.cast = this.sortCast(this.credits[0].cast);
-                        this.getDirectorProducerLists(this.credits[0].crew);
+                        this.buildDirectorProducerLists(this.credits[0].crew);
                       }
     );
   }
@@ -98,7 +100,7 @@ export class MovieViewComponent implements OnInit {
    * get the Movie Fanatic rating score
    */
   private getMovieFanatic() {
-    this.ratings.MovieFanatic = '4/5';
+    this.ratings.MovieFanatic = 4;
   }
 
   /**
@@ -122,27 +124,14 @@ export class MovieViewComponent implements OnInit {
   }
 
   /**
-   * populate the Director and Producer html
+   * populate the Director and Producer lists
    */
-  private getDirectorProducerLists(data: CrewAPI[]) {
-    let firstDirector = true;
-    let firstProducer = true;
-
+  private buildDirectorProducerLists(data: CrewAPI[]) {
     data.forEach(element => {
       if (element.job === 'Director') {
-        if (firstDirector) {
-          firstDirector = false;
-          this.directorList = element.name;
-        } else {
-          this.directorList = this.directorList + ', ' + element.name;
-        }
+        this.directorList.push(element);
       } else if (element.job === 'Producer') {
-        if (firstProducer) {
-          firstProducer = false;
-          this.producerList = element.name;
-        } else {
-          this.producerList = this.producerList + ', ' + element.name;
-        }
+        this.producerList.push(element);
       }
     });
   }

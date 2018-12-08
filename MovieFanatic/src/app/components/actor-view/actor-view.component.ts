@@ -4,6 +4,7 @@ import { Actor } from 'src/app/models/actor';
 import { Tabulator } from 'tabulator-tables/dist/js/tabulator.min.js';
 import { ActorApiService } from 'src/app/services/actor-api.service';
 import { OMDBAPI } from 'src/app/models/OMDBAPI';
+import { MovieAPIService } from 'src/app/services/movie-api.service';
 
 @Component({
   selector: 'app-actor-view',
@@ -17,10 +18,16 @@ export class ActorViewComponent implements OnInit {
   public age: number;
   public actor: Actor;
 
+  public actMovieArray = [];
+  public total_pages: number;
+  public current_page: number;
+  public tempActMovie = [];
+
 
   constructor(
     public route: ActivatedRoute,
-    public actorService: ActorApiService
+    public actorService: ActorApiService,
+    public movieService: MovieAPIService
   ) {}
 
  
@@ -34,6 +41,32 @@ export class ActorViewComponent implements OnInit {
                     
         console.log(this.actor);
       });
-    }
+    this.getMovies();
+  }
+
+  getMovies() {
+    this.movieService.getMoviesByActor(this.id).subscribe(
+      (movie) =>  {
+                    console.log(movie);
+                    this.tempActMovie.push(movie);
+                    this.total_pages = this.tempActMovie[0].total_pages;
+                    console.log(this.total_pages);
+                    this.current_page = 1;
+                    var nums;
+                    if (this.tempActMovie[0].total_results < 6) {
+                      nums = this.tempActMovie[0].total_results;
+                    } 
+                    else {
+                      nums = 6;
+                    }
+                    for (let i = 0; i < nums; i++) {
+                      this.actMovieArray.push({'title': this.tempActMovie[0].results[i].original_title,
+                                            'Poster' : this.movieService.formatImage(this.tempActMovie[0].results[i].poster_path),
+                                            'id' : this.tempActMovie[0].results[i].id  });
+                    }
+                    console.log(this.actMovieArray);
+                  });
+  }
+    
 
 }
