@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 /*login component*/
@@ -11,6 +11,7 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  @ViewChild('cancelBtn') closeBtn: ElementRef;
   public query: string;
 
   username = '';
@@ -20,7 +21,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     public router: Router,
-    private loginService: LoginService) {
+    public loginService: LoginService) {
   }
 
   ngOnInit() {
@@ -29,7 +30,7 @@ export class HeaderComponent implements OnInit {
    * user keyed in search and we need to send it to the search results window
    */
   enterPressed() {
-    var query: string = this.query.replace(/\s/g, '+');
+    const query: string = this.query.replace(/\s/g, '+');
     this.query = '';
     // change the spaces to plusses and sends it on its way
     this.router.navigateByUrl('/movie_results/' + query);
@@ -42,7 +43,11 @@ export class HeaderComponent implements OnInit {
       this.output = 'Invalid Credentials';
 
     } else {
-      this.output = `Welcome ${this.username}`;
+      this.closeBtn.nativeElement.click();
     }
+  }
+
+  logout() {
+    this.loginService.logout();
   }
 }

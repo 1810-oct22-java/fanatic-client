@@ -4,7 +4,7 @@ import { MovieAPIService } from 'src/app/services/movie-api.service';
 import { MovieAPI } from 'src/app/models/movieAPI';
 import { OMDBAPI } from 'src/app/models/OMDBAPI';
 import { Review } from 'src/app/models/review';
-
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-movie-review',
@@ -31,6 +31,7 @@ export class MovieReviewComponent implements OnInit {
   constructor(
     public route: ActivatedRoute,
     public movieService: MovieAPIService,
+    public loginService: LoginService
   ) { }
 
   ngOnInit() {
