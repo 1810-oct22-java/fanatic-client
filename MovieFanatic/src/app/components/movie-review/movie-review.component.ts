@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieAPIService } from 'src/app/services/movie-api.service';
 import { MovieAPI } from 'src/app/models/movieAPI';
 import { OMDBAPI } from 'src/app/models/OMDBAPI';
 import { Review } from 'src/app/models/review';
+import { ReviewBean } from 'src/app/models/reviewBean';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -12,6 +13,7 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./movie-review.component.css']
 })
 export class MovieReviewComponent implements OnInit {
+  @ViewChild('cancelBtn') closeBtn: ElementRef;
   public id: string;
   public movie: MovieAPI;
   public ratings: OMDBAPI;
@@ -27,6 +29,7 @@ export class MovieReviewComponent implements OnInit {
   ];
 
   public add_rating = 0;
+  public add_review = '';
 
   constructor(
     public route: ActivatedRoute,
@@ -60,8 +63,28 @@ export class MovieReviewComponent implements OnInit {
     return parts[0];
   }
 
-  getStars(rating: number) {
+  submit() {
+    // create the review to send to the DB
+    const review: ReviewBean = new ReviewBean(
+      null,
+      0,  // user_id
+      this.movie.id,
+      this.add_review,
+      this.add_rating,
+      null,
+      null,
+      null
+    );
 
-    return '<i class="fas fa-star"></i>';
+    // submit the insert
+    this.dataSource.push(new Review(100, 'schmitty', '12/8/2018', 'Venom', review.rating, review.review, '08/08/2000', 12, 24));
+
+    // clean up the local vars
+    this.add_rating = 0;
+    this.add_review = '';
+
+    // close the modal
+    this.closeBtn.nativeElement.click();
+    console.log(review);
   }
 }
