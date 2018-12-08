@@ -33,11 +33,13 @@ export class MovieAPIService {
   }
 
   getDramas() {
-    return this.http.get<MovieAPI[]>(ConfigAPI.base_url + 'discover/movie' + ConfigAPI.api_key + ConfigAPI.query_params + 'sort_by=popularity.desc&with_genres=18');
+    return this.http.get<MovieAPI[]>(ConfigAPI.base_url + 'discover/movie' + ConfigAPI.api_key + ConfigAPI.query_params
+    + 'sort_by=popularity.desc&with_genres=18');
   }
 
   getComedies() {
-    return this.http.get<MovieAPI[]>(ConfigAPI.base_url + 'discover/movie' + ConfigAPI.api_key + ConfigAPI.query_params + 'sort_by=popularity.desc&with_genres=35');
+    return this.http.get<MovieAPI[]>(ConfigAPI.base_url + 'discover/movie' + ConfigAPI.api_key + ConfigAPI.query_params
+    + 'sort_by=popularity.desc&with_genres=35');
   }
 
   getCredits(id: string) {
