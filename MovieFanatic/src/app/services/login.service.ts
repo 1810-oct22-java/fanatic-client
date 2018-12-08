@@ -27,14 +27,19 @@ export class LoginService {
   private persistLogin(user: User) {
     localStorage.setItem('email', user.email);
     localStorage.setItem('loggedIn', 'true');
+  }
 
-console.log(User);
+  public getUserName(): string {
+    return localStorage.getItem('email');
   }
 
   public isLoggedIn(): boolean {
     const loggedIn = localStorage.getItem('loggedIn');
-console.log(loggedIn);
-
     return (loggedIn === 'true');
+  }
+
+  public logout() {
+    localStorage.removeItem('email');
+    localStorage.removeItem('loggedIn');
   }
 }
