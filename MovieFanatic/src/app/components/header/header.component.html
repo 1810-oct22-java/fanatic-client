@@ -12,16 +12,16 @@
         <span *ngIf="this.loginService.isLoggedIn()">
           <b><i>{{ this.loginService.getUserName() }}</i></b>
           &nbsp;&bull;&nbsp;
-          <a routerLink="#" data-toggle="modal" data-target="#creditModal">Credits</a>
+          <a routerLink="{{this.router.url}}" (click)="logout()">Logout</a>
           &nbsp;&bull;&nbsp;
-          <a routerLink="#" (click)="logout()">Logout</a>
+          <a routerLink="#" data-toggle="modal" data-target="#creditModal">Credits</a>
         </span>
         <span *ngIf="!this.loginService.isLoggedIn()">
-          <a routerLink="#" data-toggle="modal" data-target="#creditModal">Credits</a>
+          <a routerLink="/profile-view">Sign up</a>
           &nbsp;&bull;&nbsp;
           <a routerLink="#" data-toggle="modal" data-target="#myModal">Login</a>
           &nbsp;&bull;&nbsp;
-          <a routerLink="/profile-view">Sign up</a>
+          <a routerLink="#" data-toggle="modal" data-target="#creditModal">Credits</a>
         </span>
         &nbsp;
       </div>

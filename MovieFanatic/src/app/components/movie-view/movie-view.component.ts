@@ -7,6 +7,7 @@ import { CastAPI } from 'src/app/models/castAPI';
 import { CrewAPI } from 'src/app/models/crewAPI';
 import { OMDBAPI } from 'src/app/models/OMDBAPI';
 import { ColorService } from 'src/app/services/color.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-movie-view',
@@ -28,7 +29,8 @@ export class MovieViewComponent implements OnInit {
     public route: ActivatedRoute,
     public movieService: MovieAPIService,
     public colorService: ColorService,
-    public router: Router
+    public router: Router,
+    public loginService: LoginService
   ) {}
 
   ngOnInit() {
@@ -98,7 +100,7 @@ export class MovieViewComponent implements OnInit {
    * get the Movie Fanatic rating score
    */
   private getMovieFanatic() {
-    this.ratings.MovieFanatic = '4/5';
+    this.ratings.MovieFanatic = 4;
   }
 
   /**
@@ -120,32 +122,6 @@ export class MovieViewComponent implements OnInit {
   public routeActor(id: number) {
     this.router.navigateByUrl('/actor/' + id);
   }
-
-  // /**
-  //  * populate the Director and Producer html
-  //  */
-  // private getDirectorProducerLists(data: CrewAPI[]) {
-  //   let firstDirector = true;
-  //   let firstProducer = true;
-
-  //   data.forEach(element => {
-  //     if (element.job === 'Director') {
-  //       if (firstDirector) {
-  //         firstDirector = false;
-  //         this.directorList = element.name;
-  //       } else {
-  //         this.directorList = this.directorList + ', ' + element.name;
-  //       }
-  //     } else if (element.job === 'Producer') {
-  //       if (firstProducer) {
-  //         firstProducer = false;
-  //         this.producerList = element.name;
-  //       } else {
-  //         this.producerList = this.producerList + ', ' + element.name;
-  //       }
-  //     }
-  //   });
-  // }
 
   /**
    * populate the Director and Producer lists
