@@ -20,6 +20,7 @@ import { YearMoviesComponent } from './components/year-movies/year-movies.compon
 import { FeaturedMovieComponent } from './components/featured-movie/featured-movie.component';
 import { DramaticMoviesComponent } from './components/dramatic-movies/dramatic-movies.component';
 import { ComedicMoviesComponent } from './components/comedic-movies/comedic-movies.component';
+import { FavoriteMoviesComponent } from './components/favorite-movies/favorite-movies.component';
 
 @NgModule({
 
@@ -40,7 +41,8 @@ import { ComedicMoviesComponent } from './components/comedic-movies/comedic-movi
     UserViewComponent,
     FeaturedMovieComponent,
     DramaticMoviesComponent,
-    ComedicMoviesComponent
+    ComedicMoviesComponent,
+    FavoriteMoviesComponent
   ],
   imports: [
     BrowserModule,
