@@ -17,14 +17,15 @@ export class MovieReviewComponent implements OnInit {
   public ratings: OMDBAPI;
 
   // table vars
-  public dataSource = [
-    new Review(1, 'bob', '10-20-2000', 'Bobby', 2, 'or even clipped your toe nails', '10-20-2000', 2000, 50),
-    new Review(2, 'chester', '10-20-2000', 'Bobby', 3, 'or played a video game', '10-14-2018', 100, 20),
-    new Review(2, 'lester', '10-20-2000', 'Bobby', 1, 'You could have went bowling.', '10-14-2018', 100, 20),
-    new Review(2, 'carmen', '10-20-2000', 'Bobby', 4, 'I want some popcorn.', '10-14-2018', 100, 20),
-    new Review(2, 'bart', '10-20-2000', 'Bobby', 3, 'I cant believe it either.', '10-14-2018', 100, 20),
-    new Review(2, 'smoking', '10-20-2000', 'Bobby', 1, 'I cant believe I watched the whole thing.', '10-14-2018', 100, 20)
-  ];
+  public dataSource;
+  //  = [
+  //   new Review(1, 'bob', '10-20-2000', 'Bobby', 2, 'or even clipped your toe nails', '10-20-2000', 2000, 50),
+  //   new Review(2, 'chester', '10-20-2000', 'Bobby', 3, 'or played a video game', '10-14-2018', 100, 20),
+  //   new Review(2, 'lester', '10-20-2000', 'Bobby', 1, 'You could have went bowling.', '10-14-2018', 100, 20),
+  //   new Review(2, 'carmen', '10-20-2000', 'Bobby', 4, 'I want some popcorn.', '10-14-2018', 100, 20),
+  //   new Review(2, 'bart', '10-20-2000', 'Bobby', 3, 'I cant believe it either.', '10-14-2018', 100, 20),
+  //   new Review(2, 'smoking', '10-20-2000', 'Bobby', 1, 'I cant believe I watched the whole thing.', '10-14-2018', 100, 20)
+  // ];
 
   public add_rating = 0;
 
@@ -44,6 +45,11 @@ export class MovieReviewComponent implements OnInit {
                     this.movieService.getOMDB(this.movie.imdb_id).subscribe(
                       (omdb) => {
                                   this.ratings = omdb;
+                                  this.movieService.getMovieReviews('399360','1').subscribe(
+                                    (reviewList) => {
+                                      this.dataSource = reviewList;
+                                    }
+                                  );
                                 });
                   });
   }
