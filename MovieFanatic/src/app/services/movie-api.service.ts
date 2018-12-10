@@ -4,6 +4,7 @@ import { ConfigAPI } from 'src/app/models/configAPI';
 import { MovieAPI } from 'src/app/models/movieAPI';
 import { CreditsAPI } from 'src/app/models/creditsAPI';
 import { OMDBAPI } from 'src/app/models/OMDBAPI';
+import { Favorite } from 'src/app/models/favorite';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,10 @@ export class MovieAPIService {
   getComedies() {
     return this.http.get<MovieAPI[]>(ConfigAPI.base_url + 'discover/movie' + ConfigAPI.api_key + ConfigAPI.query_params
     + 'sort_by=popularity.desc&with_genres=35');
+  }
+
+  getFavorites(id: number) {
+    return this.http.get<Favorite[]>("localhost:8080/favorite/"+id);
   }
 
   getCredits(id: string) {
