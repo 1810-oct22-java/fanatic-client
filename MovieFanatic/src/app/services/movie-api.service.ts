@@ -54,8 +54,8 @@ export class MovieAPIService {
       '&plot=full&' + ConfigAPI.omdapi_key);
   }
 
-  getMovieReviews(movie_id: string, source_id: string) {
-    return this.http.get<Review>(ConfigAPI.spring_url + 'review/view/' 
+  getMovieReviews(movie_id: number, source_id: number) {
+    return this.http.get<Review[]>(ConfigAPI.spring_url + 'review/view/' 
       + movie_id + '/' + source_id);
   }
 

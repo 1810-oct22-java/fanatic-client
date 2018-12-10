@@ -1,5 +1,6 @@
 <div *ngIf="this.movie">
 <div *ngIf="this.ratings">
+<div *ngIf="this.dataSource">    
     <div class="body">
         <div class="container">
             <div class="row justify-content-md-center">
@@ -31,29 +32,29 @@
             <div class="row justify-content-md-center">
                 <div class="col-12 round-border">
                     <ul>
-                    <li *ngFor="let review of dataSource" class='review'>
+                    <li *ngFor="let review of this.dataSource" class='review'>
                         <div class="container review-container">
                             <div class="row justify-content-between review_header">
                                 <div class="col-3">
-                                    <span class="user_name">{{ review.user_name }}</span> <span class="join_date">({{ review.join_date }})</span>    
+                                    <span class="user_name">{{ review[1] }}</span> <span class="join_date">({{ review[2] }})</span>    
                                 </div>
                                 <div class="col-3 text-right">
-                                    {{ review.review_date }}&nbsp;
-                                    <span *ngIf="review.rating >= 1" class="fa fa-star on"></span>
-                                    <span *ngIf="review.rating >= 2" class="fa fa-star on"></span>
-                                    <span *ngIf="review.rating >= 3" class="fa fa-star on"></span>
-                                    <span *ngIf="review.rating >= 4" class="fa fa-star on"></span>
-                                    <span *ngIf="review.rating >= 5" class="fa fa-star on"></span>
-                                    <span *ngIf="review.rating < 1" class="fa fa-star off"></span>
-                                    <span *ngIf="review.rating < 2" class="fa fa-star off"></span>
-                                    <span *ngIf="review.rating < 3" class="fa fa-star off"></span>
-                                    <span *ngIf="review.rating < 4" class="fa fa-star off"></span>
-                                    <span *ngIf="review.rating < 5" class="fa fa-star off"></span>
+                                    {{ review[3] }}&nbsp;
+                                    <span *ngIf="review[4] >= 1" class="fa fa-star on"></span>
+                                    <span *ngIf="review[4] >= 2" class="fa fa-star on"></span>
+                                    <span *ngIf="review[4] >= 3" class="fa fa-star on"></span>
+                                    <span *ngIf="review[4] >= 4" class="fa fa-star on"></span>
+                                    <span *ngIf="review[4] >= 5" class="fa fa-star on"></span>
+                                    <span *ngIf="review[4] < 1" class="fa fa-star off"></span>
+                                    <span *ngIf="review[4] < 2" class="fa fa-star off"></span>
+                                    <span *ngIf="review[4] < 3" class="fa fa-star off"></span>
+                                    <span *ngIf="review[4] < 4" class="fa fa-star off"></span>
+                                    <span *ngIf="review[4] < 5" class="fa fa-star off"></span>
                                 </div>
                             </div>
                             <div class="row justify-content-md-center">
                                 <div class="col-12">
-                                    <p>{{ review.review }}</p>
+                                    <p>{{ review[5] }}</p>
                                 </div>
                             </div>
                             <div class="row justify-content-md-center">
@@ -115,5 +116,6 @@
           </div>
         </div>
       </div>
+</div>
 </div>
 </div>

@@ -19,7 +19,7 @@ export class MovieReviewComponent implements OnInit {
   public ratings: OMDBAPI;
 
   // table vars
-  public dataSource;
+  public dataSource: Review[];
   //  = [
   //   new Review(1, 'bob', '10-20-2000', 'Bobby', 2, 'or even clipped your toe nails', '10-20-2000', 2000, 50),
   //   new Review(2, 'chester', '10-20-2000', 'Bobby', 3, 'or played a video game', '10-14-2018', 100, 20),
@@ -49,9 +49,15 @@ export class MovieReviewComponent implements OnInit {
                     this.movieService.getOMDB(this.movie.imdb_id).subscribe(
                       (omdb) => {
                                   this.ratings = omdb;
-                                  this.movieService.getMovieReviews('399360','1').subscribe(
+                                  this.movieService.getMovieReviews(this.movie.id,this.loginService.getUserID()).subscribe(
                                     (reviewList) => {
-                                      this.dataSource = reviewList;
+                                      console.log(reviewList);
+                                                    for (let i = 0; i < reviewList.length; i++) {
+                                                      this.dataSource.push(<Review>reviewList[i]);
+                                                    }
+
+                                                    //this.dataSource = reviewList;
+                                                    console.log(this.dataSource);
                                     }
                                   );
                                 });
@@ -82,8 +88,8 @@ export class MovieReviewComponent implements OnInit {
       null
     );
 
-    // submit the insert
-    this.dataSource.push(new Review(100, 'schmitty', '12/8/2018', 'Venom', review.rating, review.review, '08/08/2000', 12, 24));
+    // // submit the insert
+    // this.dataSource.push(new Review(100, 'schmitty', '12/8/2018', 'Venom', review.rating, review.review, '08/08/2000', 12, 24));
 
     // clean up the local vars
     this.add_rating = 0;
