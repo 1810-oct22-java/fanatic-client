@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieAPIService } from '../../services/movie-api.service';
 import { Favorite } from 'src/app/models/favorite';
+import { MovieAPI } from 'src/app/models/MovieAPI';
 
 @Component({
   selector: 'app-favorite-movies',
@@ -9,12 +10,9 @@ import { Favorite } from 'src/app/models/favorite';
 })
 export class FavoriteMoviesComponent implements OnInit {
 
-  public favorites = [];
-
+  public favArray = [];
   public favMovieArray = [];
-  public total_pages: number;
-  public current_page: number;
-  public tempFavMovie = [];
+  public tempMovie: MovieAPI;
 
   constructor(
     public movieService: MovieAPIService
@@ -27,21 +25,30 @@ export class FavoriteMoviesComponent implements OnInit {
   getFavorites() {
     this.movieService.getFavorites(1).subscribe(
       (favorite) => {
-        console.log(favorite);
+        for(let i = 0; i < favorite.length; i++) {
+          this.favArray.push(favorite[i].movieId);
+        }
+        this.getFavMovies();
       }
     );
-  
-    this.movieService.getComedies().subscribe(
-      (movie) =>  {
-                    this.tempFavMovie.push(movie);
-                    this.total_pages = this.tempFavMovie[0].total_pages;
-                    this.current_page = 1;
-                    for (let i = 0; i < 6; i++) {
-                      this.favMovieArray.push({'title': this.tempFavMovie[0].results[i].original_title,
-                                            'Poster' : this.movieService.formatImage(this.tempFavMovie[0].results[i].poster_path),
-                                            'id' : this.tempFavMovie[0].results[i].id  });
-                    }
-                  });
+  }
+
+  getFavMovies() {
+    let num;
+    if (this.favArray.length > 12) {
+      num=12;
+    }
+    else {
+      num=this.favArray.length;
+    }
+    for (let i = 0; i < num; i++) {
+      this.movieService.getMovie(this.favArray[i]).subscribe(
+        (movie) =>  {
+                      this.tempMovie = movie;
+                      this.tempMovie.poster_path = this.movieService.formatPosterImage(this.tempMovie.poster_path);
+                      this.favMovieArray.push(movie);
+        });
+    }
   }
 
 }

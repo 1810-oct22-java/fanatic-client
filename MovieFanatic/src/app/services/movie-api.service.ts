@@ -44,7 +44,7 @@ export class MovieAPIService {
   }
 
   getFavorites(id: number) {
-    return this.http.get<Favorite[]>("localhost:8080/favorite/"+id);
+    return this.http.get<Favorite[]>("http://localhost:8088/MovieFanatics/favorite/"+id);
   }
 
   getCredits(id: string) {
