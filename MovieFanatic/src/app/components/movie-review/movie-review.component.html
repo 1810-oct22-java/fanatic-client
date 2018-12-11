@@ -1,6 +1,5 @@
 <div *ngIf="this.movie">
 <div *ngIf="this.ratings">
-<div *ngIf="this.dataSource">    
     <div class="body">
         <div class="container">
             <div class="row justify-content-md-center">
@@ -27,7 +26,7 @@
         </div>
     </div>
     <br>
-    <div class="body">
+    <div *ngIf="this.dataSource" class="body">
         <div class="container">
             <div class="row justify-content-md-center">
                 <div class="col-12 round-border">
@@ -36,29 +35,39 @@
                         <div class="container review-container">
                             <div class="row justify-content-between review_header">
                                 <div class="col-3">
-                                    <span class="user_name">{{ review[1] }}</span> <span class="join_date">({{ review[2] }})</span>    
+                                    <span class="user_name">{{ this.review.user_name }}</span> <span class="join_date">({{ this.review.join_date }})</span>    
                                 </div>
                                 <div class="col-3 text-right">
-                                    {{ review[3] }}&nbsp;
-                                    <span *ngIf="review[4] >= 1" class="fa fa-star on"></span>
-                                    <span *ngIf="review[4] >= 2" class="fa fa-star on"></span>
-                                    <span *ngIf="review[4] >= 3" class="fa fa-star on"></span>
-                                    <span *ngIf="review[4] >= 4" class="fa fa-star on"></span>
-                                    <span *ngIf="review[4] >= 5" class="fa fa-star on"></span>
-                                    <span *ngIf="review[4] < 1" class="fa fa-star off"></span>
-                                    <span *ngIf="review[4] < 2" class="fa fa-star off"></span>
-                                    <span *ngIf="review[4] < 3" class="fa fa-star off"></span>
-                                    <span *ngIf="review[4] < 4" class="fa fa-star off"></span>
-                                    <span *ngIf="review[4] < 5" class="fa fa-star off"></span>
+                                    {{ this.review.review_date }}&nbsp;
+                                    <span *ngIf="this.review.rating >= 1" class="fa fa-star on"></span>
+                                    <span *ngIf="this.review.rating >= 2" class="fa fa-star on"></span>
+                                    <span *ngIf="this.review.rating >= 3" class="fa fa-star on"></span>
+                                    <span *ngIf="this.review.rating >= 4" class="fa fa-star on"></span>
+                                    <span *ngIf="this.review.rating >= 5" class="fa fa-star on"></span>
+                                    <span *ngIf="this.review.rating < 1" class="fa fa-star off"></span>
+                                    <span *ngIf="this.review.rating < 2" class="fa fa-star off"></span>
+                                    <span *ngIf="this.review.rating < 3" class="fa fa-star off"></span>
+                                    <span *ngIf="this.review.rating < 4" class="fa fa-star off"></span>
+                                    <span *ngIf="this.review.rating < 5" class="fa fa-star off"></span>
                                 </div>
                             </div>
                             <div class="row justify-content-md-center">
                                 <div class="col-12">
-                                    <p>{{ review[5] }}</p>
+                                    <p>{{ this.review.review }}</p>
                                 </div>
                             </div>
                             <div class="row justify-content-md-center">
-                                <div class="col-12">
+                                <div class="col-12" *ngIf="this.loginService.isLoggedIn()">
+                                    <span class="off" *ngIf="this.review.already_reviewed">
+                                        <i class="fa fa-thumbs-up">&nbsp;{{ review.thumbs_up }}</i>&nbsp;&nbsp;
+                                        <i class="fa fa-thumbs-down">&nbsp;{{ review.thumbs_down }}</i>
+                                    </span>
+                                    <span class="on" *ngIf="!this.review.already_reviewed">
+                                        <i class="fa fa-thumbs-up" (click)="postUp(review.id)">&nbsp;{{ review.thumbs_up }}</i>&nbsp;&nbsp;
+                                        <i class="fa fa-thumbs-down" (click)="postDown(review.id)">&nbsp;{{ review.thumbs_down }}</i>
+                                    </span>
+                                </div>
+                                <div class="col-12" *ngIf="!this.loginService.isLoggedIn()">
                                     <i class="fa fa-thumbs-up">&nbsp;{{ review.thumbs_up }}</i>&nbsp;&nbsp;
                                     <i class="fa fa-thumbs-down">&nbsp;{{ review.thumbs_down }}</i>
                                 </div>
@@ -116,6 +125,5 @@
           </div>
         </div>
       </div>
-</div>
 </div>
 </div>

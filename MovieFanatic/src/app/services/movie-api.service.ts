@@ -55,7 +55,7 @@ export class MovieAPIService {
   }
 
   getMovieReviews(movie_id: number, source_id: number) {
-    return this.http.get<Review[]>(ConfigAPI.spring_url + 'review/view/' 
+    return this.http.get<Review[]>(ConfigAPI.spring_url + 'review/view/'
       + movie_id + '/' + source_id);
   }
 
