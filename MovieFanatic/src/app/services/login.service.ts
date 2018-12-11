@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { User } from '../models/user.model';
 
 @Injectable({
@@ -9,7 +8,7 @@ export class LoginService {
   userList: User[] = [];
 
   constructor() {
-    this.userList.push(new User('admin', 'admin@movie.com', 'password', 'password'));
+    this.userList.push(new User(3, 'admin', 'admin@movie.com', 'password', 'password'));
   }
 
   public validateUser(username: string, password: string): User {
@@ -25,12 +24,17 @@ export class LoginService {
   }
 
   private persistLogin(user: User) {
-    localStorage.setItem('email', user.email);
+    localStorage.setItem('id', user.id.toString());
+    localStorage.setItem('user_name', user.user_name);
     localStorage.setItem('loggedIn', 'true');
   }
 
   public getUserName(): string {
-    return localStorage.getItem('email');
+    return localStorage.getItem('user_name');
+  }
+
+  public getUserID(): number {
+    return Number(localStorage.getItem('id'));
   }
 
   public isLoggedIn(): boolean {
@@ -39,7 +43,8 @@ export class LoginService {
   }
 
   public logout() {
-    localStorage.removeItem('email');
+    localStorage.removeItem('id');
+    localStorage.removeItem('user_name');
     localStorage.removeItem('loggedIn');
   }
 }
