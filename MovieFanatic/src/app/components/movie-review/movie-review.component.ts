@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieAPIService } from 'src/app/services/movie-api.service';
+import { ReviewApiService } from 'src/app/services/review-api.service';
 import { MovieAPI } from 'src/app/models/movieAPI';
 import { OMDBAPI } from 'src/app/models/OMDBAPI';
 import { Review } from 'src/app/models/review';
@@ -35,6 +36,7 @@ export class MovieReviewComponent implements OnInit {
   constructor(
     public route: ActivatedRoute,
     public movieService: MovieAPIService,
+    public reviewService: ReviewApiService,
     public loginService: LoginService
   ) { }
 
@@ -49,18 +51,21 @@ export class MovieReviewComponent implements OnInit {
                     this.movieService.getOMDB(this.movie.imdb_id).subscribe(
                       (omdb) => {
                                   this.ratings = omdb;
-                                  this.movieService.getMovieReviews(this.movie.id,this.loginService.getUserID()).subscribe(
+                                  this.reviewService.getMovieReviews(this.movie.id, this.loginService.getUserID()).subscribe(
                                     (reviewList) => {
-                                      console.log(reviewList);
-                                                    for (let i = 0; i < reviewList.length; i++) {
-                                                      this.dataSource.push(<Review>reviewList[i]);
-                                                    }
-
-                                                    //this.dataSource = reviewList;
-                                                    console.log(this.dataSource);
+                                                  reviewList.forEach(element => {
+                                                    const review: Review = new Review(element[0], element[1], element[2], element[3],
+                                                                                      element[4], element[5], element[6],
+                                                                                      this.zero(element[7]),
+                                                                                      this.zero(element[8]));
+                                                    console.log(review);
+                                                    this.dataSource.push(review);
+                                                                                });
                                     }
                                   );
-                                });
+                                }
+                    );
+                  console.log(this.dataSource);
                   });
   }
 
@@ -77,9 +82,9 @@ export class MovieReviewComponent implements OnInit {
 
   submit() {
     // create the review to send to the DB
-    const review: ReviewBean = new ReviewBean(
+    let review: ReviewBean = new ReviewBean(
       null,
-      0,  // user_id
+      10000, // this.loginService.getUserID(),
       this.movie.id,
       this.add_review,
       this.add_rating,
@@ -88,8 +93,11 @@ export class MovieReviewComponent implements OnInit {
       null
     );
 
-    // // submit the insert
-    // this.dataSource.push(new Review(100, 'schmitty', '12/8/2018', 'Venom', review.rating, review.review, '08/08/2000', 12, 24));
+    // submit the update
+    this.reviewService.newReview(review).subscribe(
+      (r) =>  {
+        review = r;
+      });
 
     // clean up the local vars
     this.add_rating = 0;
@@ -98,5 +106,20 @@ export class MovieReviewComponent implements OnInit {
     // close the modal
     this.closeBtn.nativeElement.click();
     console.log(review);
+  }
+
+  zero(int: number) {
+    if (int == null) {
+      return 0;
+    }
+    return int;
+  }
+
+  postUp(review_id: number) {
+
+  }
+
+  postDown(review_id: number) {
+
   }
 }

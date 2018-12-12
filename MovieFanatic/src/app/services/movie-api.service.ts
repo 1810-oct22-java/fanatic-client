@@ -7,6 +7,7 @@ import { MovieAPI } from 'src/app/models/movieAPI';
 import { CreditsAPI } from 'src/app/models/creditsAPI';
 import { OMDBAPI } from 'src/app/models/OMDBAPI';
 import { Review } from '../models/review';
+import { Favorite } from 'src/app/models/favorite';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,8 @@ export class MovieAPIService {
   }
 
   getMoviesByActor(id: string) {
-    return this.http.get<MovieAPI[]>(ConfigAPI.base_url + 'discover/movie' + ConfigAPI.api_key + ConfigAPI.query_params + 'sort_by=popularity.desc&with_cast='+id);
+    return this.http.get<MovieAPI[]>(ConfigAPI.base_url + 'discover/movie' + ConfigAPI.api_key + ConfigAPI.query_params
+    + 'sort_by=popularity.desc&with_cast=' + id);
   }
 
   getPopularMovies() {
@@ -45,6 +47,10 @@ export class MovieAPIService {
     + 'sort_by=popularity.desc&with_genres=35');
   }
 
+  getFavorites(id: number) {
+    return this.http.get<Favorite[]>(ConfigAPI.spring_url + 'favorite/' + id);
+  }
+
   getCredits(id: string) {
     return this.http.get<CreditsAPI[]>(ConfigAPI.base_url + 'movie/' + id + '/credits' + ConfigAPI.api_key);
   }
@@ -55,7 +61,7 @@ export class MovieAPIService {
   }
 
   getMovieReviews(movie_id: number, source_id: number) {
-    return this.http.get<Review[]>(ConfigAPI.spring_url + 'review/view/' 
+    return this.http.get<Review[]>(ConfigAPI.spring_url + 'review/view/'
       + movie_id + '/' + source_id);
   }
 
