@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { HttpClientModule } from '@angular/common/http'; 
-import { HttpModule } from '@angular/http';
 import { ConfigAPI } from 'src/app/models/configAPI';
 import { MovieAPI } from 'src/app/models/movieAPI';
 import { CreditsAPI } from 'src/app/models/creditsAPI';
 import { OMDBAPI } from 'src/app/models/OMDBAPI';
-import { Review } from '../models/review';
 import { Favorite } from 'src/app/models/favorite';
 
 @Injectable({
@@ -24,7 +21,8 @@ export class MovieAPIService {
   }
 
   getMoviesByActor(id: string) {
-    return this.http.get<MovieAPI[]>(ConfigAPI.base_url + 'discover/movie' + ConfigAPI.api_key + ConfigAPI.query_params + 'sort_by=popularity.desc&with_cast='+id);
+    return this.http.get<MovieAPI[]>(ConfigAPI.base_url + 'discover/movie' + ConfigAPI.api_key + ConfigAPI.query_params
+    + 'sort_by=popularity.desc&with_cast=' + id);
   }
 
   getPopularMovies() {
@@ -47,7 +45,7 @@ export class MovieAPIService {
   }
 
   getFavorites(id: number) {
-    return this.http.get<Favorite[]>("http://localhost:8088/MovieFanatics/favorite/"+id);
+    return this.http.get<Favorite[]>(ConfigAPI.spring_url + 'favorite/' + id);
   }
 
   getCredits(id: string) {
@@ -57,11 +55,6 @@ export class MovieAPIService {
   getOMDB(imdb_id: string) {
     return this.http.get<OMDBAPI>(ConfigAPI.omdapi_base_url + '?i=' + imdb_id +
       '&plot=full&' + ConfigAPI.omdapi_key);
-  }
-
-  getMovieReviews(movie_id: number, source_id: number) {
-    return this.http.get<Review[]>(ConfigAPI.spring_url + 'review/view/'
-      + movie_id + '/' + source_id);
   }
 
   formatPosterImage(image: string): string {
