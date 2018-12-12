@@ -24,7 +24,8 @@ export class MovieAPIService {
   }
 
   getMoviesByActor(id: string) {
-    return this.http.get<MovieAPI[]>(ConfigAPI.base_url + 'discover/movie' + ConfigAPI.api_key + ConfigAPI.query_params + 'sort_by=popularity.desc&with_cast='+id);
+    return this.http.get<MovieAPI[]>(ConfigAPI.base_url + 'discover/movie' + ConfigAPI.api_key + ConfigAPI.query_params
+    + 'sort_by=popularity.desc&with_cast=' + id);
   }
 
   getPopularMovies() {
@@ -47,7 +48,7 @@ export class MovieAPIService {
   }
 
   getFavorites(id: number) {
-    return this.http.get<Favorite[]>("http://localhost:8088/MovieFanatics/favorite/"+id);
+    return this.http.get<Favorite[]>(ConfigAPI.spring_url + 'favorite/' + id);
   }
 
   getCredits(id: string) {
