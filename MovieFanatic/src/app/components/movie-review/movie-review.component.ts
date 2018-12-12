@@ -112,6 +112,5 @@ export class MovieReviewComponent implements OnInit {
 
   postDown(review_id: number) {
 
-
   }
 }
