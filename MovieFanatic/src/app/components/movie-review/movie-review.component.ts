@@ -19,7 +19,7 @@ export class MovieReviewComponent implements OnInit {
   public ratings: OMDBAPI;
 
   // table vars
-  public dataSource: Review[];
+  public dataSource: Review[] = [];
   //  = [
   //   new Review(1, 'bob', '10-20-2000', 'Bobby', 2, 'or even clipped your toe nails', '10-20-2000', 2000, 50),
   //   new Review(2, 'chester', '10-20-2000', 'Bobby', 3, 'or played a video game', '10-14-2018', 100, 20),
