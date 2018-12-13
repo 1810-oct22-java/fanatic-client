@@ -52,8 +52,8 @@
                             <span *ngIf="this.ratings.MovieFanatic < 3" class="fa fa-star off"></span>
                             <span *ngIf="this.ratings.MovieFanatic < 4" class="fa fa-star off"></span>
                             <span *ngIf="this.ratings.MovieFanatic < 5" class="fa fa-star off"></span>
-                            <span>&nbsp;
-                                <a routerLink="/movie/review/{{this.movie.id}}">{{ this.num_of_reviews }}<br>Click to Review</a>
+                            <span>&nbsp;{{ this.num_of_reviews }}<br>
+                                <a routerLink="/movie/review/{{this.movie.id}}">Click to Review</a>
                             </span>
                         </div>
                     </div>
