@@ -1,26 +1,29 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { ConfigAPI } from '../models/configAPI';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class LoginService {
-  userList: User[] = [];
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
+  User usr = new User(0, '', '', '', '');
+//  public usr:User;
 
-  constructor() {
-    this.userList.push(new User(3, 'admin', 'admin@movie.com', 'password', 'password'));
-  }
+  constructor(private http: HttpClient) { }
 
-  public validateUser(username: string, password: string): User {
-    for (const u of this.userList) {
-      if (u.user_name.toLowerCase() === username) {
-        if (u.password.toLowerCase() === password) {
-          this.persistLogin(u);
-          return u;
-        }
-      }
-    }
-    return null;
+  // public validateUser(username: String, password: String) {
+  public validateUser(username, password) {
+    this.usr.user_name = username;
+    this.usr.password = password;
+    console.log(this.usr);
+    return this.http.post<User>(ConfigAPI.spring_url + 'user/login/', this.usr);
   }
 
   private persistLogin(user: User) {
