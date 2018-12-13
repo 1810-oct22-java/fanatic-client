@@ -37,7 +37,7 @@ export class HeaderComponent implements OnInit {
   }
 
   /*Login*/
-  
+
   login() {
     this.loginService.validateUser(this.username, this.password).subscribe(
       (user) => {
@@ -55,7 +55,7 @@ export class HeaderComponent implements OnInit {
         }
       });
   }
-  
+
   logout() {
     this.loginService.logout();
   }
