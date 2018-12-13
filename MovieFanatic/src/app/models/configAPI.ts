@@ -7,5 +7,5 @@ export const ConfigAPI = {
     query_params: '&include_adult=false&language=en-US&query=',
 
     // params for DB access
-    spring_url: 'http://localhost:8080/MovieFanatics/'
+    spring_url: 'http://localhost:8081/MovieFanatics/'
 };
