@@ -12,6 +12,7 @@ import { ReviewApiService } from 'src/app/services/review-api.service';
 import { CompileShallowModuleMetadata } from '@angular/compiler';
 import { Favorite } from 'src/app/models/favorite';
 
+
 @Component({
   selector: 'app-movie-view',
   templateUrl: './movie-view.component.html',
