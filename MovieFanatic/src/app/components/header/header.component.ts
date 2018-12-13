@@ -4,8 +4,6 @@ import { User } from 'src/app/models/user.model';
 /*login component*/
 import { LoginService } from 'src/app/services/login.service';
 import { Observable } from 'rxjs';
-// import { httpFactory } from '@angular/http/src/http_module';
-
 
 @Component({
   selector: 'app-header',
@@ -39,7 +37,7 @@ export class HeaderComponent implements OnInit {
   }
 
   /*Login*/
-
+  
   login() {
     this.loginService.validateUser(this.username, this.password).subscribe(
       (user) => {
@@ -57,7 +55,7 @@ export class HeaderComponent implements OnInit {
         }
       });
   }
-
+  
   logout() {
     this.loginService.logout();
   }

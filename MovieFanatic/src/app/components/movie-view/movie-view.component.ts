@@ -9,6 +9,8 @@ import { OMDBAPI } from 'src/app/models/OMDBAPI';
 import { ColorService } from 'src/app/services/color.service';
 import { LoginService } from 'src/app/services/login.service';
 import { ReviewApiService } from 'src/app/services/review-api.service';
+import { CompileShallowModuleMetadata } from '@angular/compiler';
+import { Favorite } from 'src/app/models/favorite';
 
 @Component({
   selector: 'app-movie-view',
@@ -19,6 +21,7 @@ export class MovieViewComponent implements OnInit {
   private id: string;
   public movie: MovieAPI;
   public ratings: OMDBAPI;
+  public favorite: Favorite;
   public credits = [];
   public cast = [];
   public castList = '';
@@ -63,8 +66,8 @@ export class MovieViewComponent implements OnInit {
     // get the review count
     this.reviewService.getReviewCount(this.id).subscribe(
       (reviewCount) => {
-                        this.num_of_reviews = reviewCount.num_of_reviews;
-                        this.ratings.MovieFanatic = reviewCount.movie_rating;
+                        this.num_of_reviews = reviewCount.total;  
+                        this.ratings.MovieFanatic = reviewCount.rating;
                         });
   }
 
@@ -137,4 +140,11 @@ export class MovieViewComponent implements OnInit {
       }
     });
   }
+
+  public addFavorite() {
+    this.favorite.userId = this.loginService.getUserID();
+    this.favorite.movieId = parseInt(this.id);
+    this.movieService.addFavorite(this.favorite);
+  }
+
 }

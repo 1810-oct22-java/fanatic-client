@@ -27,14 +27,14 @@ export class ReviewApiService {
   }
 
   getReviewCount(movie_id: string) {
-    console.log(ConfigAPI.spring_url + 'view/' + movie_id);
-    return this.http.get<ReviewCount>(ConfigAPI.spring_url + 'view/' + movie_id);
+    console.log(ConfigAPI.spring_url + 'view/rating/' + movie_id);
+    return this.http.get<ReviewCount>(ConfigAPI.spring_url + 'view/rating/' + movie_id);
   }
 
   newReview(review: ReviewBean) {
     const url = ConfigAPI.spring_url + 'review/new';
 
     console.log(review + '   ' + url);
-    return this.http.put<ReviewBean>(url, review, this.httpOptions);
+    return this.http.post<ReviewBean>(url, review, this.httpOptions);
   }
 }

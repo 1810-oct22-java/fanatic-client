@@ -14,18 +14,15 @@ export class LoginService {
     })
   };
   usr: User;
-//  public usr:User;
-
   constructor(private http: HttpClient) { }
 
-  
-  // public validateUser(username: String, password: String) {
   public validateUser(username, password) {
     this.usr = new User(0, '', '', '', '');
     this.usr.username = username;
     this.usr.password = password;
     console.log(this.usr);
     console.log(ConfigAPI.spring_url + 'user/login/');
+
     return this.http.post<User>(ConfigAPI.spring_url + 'user/login/', this.usr);
   }
 
