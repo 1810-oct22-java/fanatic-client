@@ -41,7 +41,7 @@
                                     {{this.time_convert(this.movie.runtime)}}&nbsp;&bull;&nbsp;
                                     {{this.ratings.Genre}}</h5>
                         </div>
-                        <div class="col-auto">
+                        <div class="col-auto" *ngIf="this.num_of_reviews > -1">
                             <span *ngIf="this.ratings.MovieFanatic >= 1" class="fa fa-star on"></span>
                             <span *ngIf="this.ratings.MovieFanatic >= 2" class="fa fa-star on"></span>
                             <span *ngIf="this.ratings.MovieFanatic >= 3" class="fa fa-star on"></span>
@@ -52,7 +52,9 @@
                             <span *ngIf="this.ratings.MovieFanatic < 3" class="fa fa-star off"></span>
                             <span *ngIf="this.ratings.MovieFanatic < 4" class="fa fa-star off"></span>
                             <span *ngIf="this.ratings.MovieFanatic < 5" class="fa fa-star off"></span>
-                            <span>&nbsp;&nbsp;<a routerLink="/movie/review/{{this.movie.id}}">See Reviews</a></span>
+                            <span>&nbsp;
+                                <a routerLink="/movie/review/{{this.movie.id}}">{{ this.num_of_reviews }}<br>Click to Review</a>
+                            </span>
                         </div>
                     </div>
                 <div>

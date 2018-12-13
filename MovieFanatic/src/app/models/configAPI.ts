@@ -4,5 +4,8 @@ export const ConfigAPI = {
     image_url: 'https://image.tmdb.org/t/p/w500',
     omdapi_key: 'apikey=60048595&',
     omdapi_base_url: 'http://www.omdbapi.com/',
-    query_params: '&include_adult=false&language=en-US&query='
+    query_params: '&include_adult=false&language=en-US&query=',
+
+    // params for DB access
+    spring_url: 'http://localhost:8080/MovieFanatics/'
 };
