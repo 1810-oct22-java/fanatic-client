@@ -51,6 +51,10 @@ export class MovieAPIService {
     return this.http.get<Favorite[]>(ConfigAPI.spring_url + 'favorite/' + id);
   }
 
+  addFavorite(fav: Favorite) {
+    return this.http.post<Favorite>(ConfigAPI.spring_url + 'favorite/',fav);
+  }
+
   getCredits(id: string) {
     return this.http.get<CreditsAPI[]>(ConfigAPI.base_url + 'movie/' + id + '/credits' + ConfigAPI.api_key);
   }
