@@ -22,6 +22,7 @@ export class MovieViewComponent implements OnInit {
   public movie: MovieAPI;
   public ratings: OMDBAPI;
   public favorite: Favorite;
+  public isFavorite = false;
   public credits = [];
   public cast = [];
   public castList = '';
@@ -69,6 +70,9 @@ export class MovieViewComponent implements OnInit {
                         this.num_of_reviews = reviewCount.total;  
                         this.ratings.MovieFanatic = reviewCount.rating;
                         });
+
+    this.getFavorites();
+
   }
 
   /**
@@ -147,4 +151,15 @@ export class MovieViewComponent implements OnInit {
     this.movieService.addFavorite(this.favorite);
   }
 
+  getFavorites() {
+    this.movieService.getFavorites(this.loginService.getUserID()).subscribe(
+      (favorite) => {
+        for(let i = 0; i < favorite.length; i++) {
+          if (favorite[i].movieId == parseInt(this.id)) {
+            this.isFavorite=true;
+          }
+        }
+      }
+    );
+  }
 }
