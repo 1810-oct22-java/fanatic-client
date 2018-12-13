@@ -7,6 +7,11 @@
 <h2 class="text-center">Featured Movie</h2>
 <app-featured-movie></app-featured-movie>
 <br>
+<div *ngIf="this.loginService.isLoggedIn()">
+<h2 class="text-center">Your Favorites</h2>
+<app-favorite-movies></app-favorite-movies>
+<br>
+</div>
 <h2 class="text-center">Popular Movies</h2>
 <br>
 <app-popular-movies></app-popular-movies>

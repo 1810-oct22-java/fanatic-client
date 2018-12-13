@@ -24,17 +24,14 @@ export class YearMoviesComponent implements OnInit {
   getMoviesByYear () {
     this.movieService.getMoviesByYear().subscribe(
       (movie) =>  {
-                  console.log(movie);
                   this.tempYearMovie.push(movie);
                   this.total_pages = this.tempYearMovie[0].total_pages;
-                  console.log(this.total_pages);
                   this.current_page = 1;
                   for (let i = 0; i < 6; i++) {
                     this.yearMovieArray.push({'title': this.tempYearMovie[0].results[i].original_title,
                                           'Poster' : this.movieService.formatImage(this.tempYearMovie[0].results[i].poster_path),
                                           'id' : this.tempYearMovie[0].results[i].id });
                   }
-                  console.log(this.yearMovieArray);
                   });
 
   }

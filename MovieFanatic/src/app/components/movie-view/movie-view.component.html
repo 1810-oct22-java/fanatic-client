@@ -21,27 +21,43 @@
                                     <th *ngIf="this.ratings.Metascore != 'N/A'"><a routerLink="https://www.metacritic.com">Metacritic</a></th> 
                                     <th *ngIf="this.ratings.imdbRating != null"><a routerLink="https://www.imdb.com">IMDB</a></th> 
                                     <th *ngIf="this.ratings.RottenTomatoes != null"><a routerLink="https://www.rottentomatoes.com">Rotten<br>Tomatoes</a></th> 
-                                    <th>Movie<br>Fanatic</th> 
                                 </tr> 
                                 <tr class='ratings-detail'> 
                                     <td *ngIf="this.ratings.Metascore != 'N/A'">{{this.ratings.Metascore}}</td>
                                     <td *ngIf="this.ratings.imdbRating != null">{{this.ratings.imdbRating}}<span class="tag-line">/10</span></td>
                                     <td *ngIf="this.ratings.RottenTomatoes != null">{{this.ratings.RottenTomatoes}}</td>
-                                    <td><button type="button" (click)="goMovieReview()" class="btn btn-outline-light" value="{{this.ratings.MovieFanatic}}">{{this.ratings.MovieFanatic}}</button></td>
                                 </tr> 
                                 <tr class='ratings-header'> 
-                                        <td *ngIf="this.ratings.Metascore != 'N/A'"></td>
-                                        <td *ngIf="this.ratings.imdbRating != null"></td>
-                                        <td *ngIf="this.ratings.RottenTomatoes != null"></td>
-                                        <td>Click For Reviews</td>
-                                    </tr> 
+                                    <td *ngIf="this.ratings.Metascore != 'N/A'"></td>
+                                    <td *ngIf="this.ratings.imdbRating != null"></td>
+                                    <td *ngIf="this.ratings.RottenTomatoes != null"></td>
+                                </tr> 
                             </table>
                         </div>
                     </div>
-                <div>
-                <h5 class="meta-data">{{this.ratings.Rated}}&nbsp;&bull;&nbsp;
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="meta-data">{{this.ratings.Rated}}&nbsp;&bull;&nbsp;
                                     {{this.time_convert(this.movie.runtime)}}&nbsp;&bull;&nbsp;
                                     {{this.ratings.Genre}}</h5>
+                        </div>
+                        <div class="col-auto" *ngIf="this.num_of_reviews > -1">
+                            <span *ngIf="this.ratings.MovieFanatic >= 1" class="fa fa-star on"></span>
+                            <span *ngIf="this.ratings.MovieFanatic >= 2" class="fa fa-star on"></span>
+                            <span *ngIf="this.ratings.MovieFanatic >= 3" class="fa fa-star on"></span>
+                            <span *ngIf="this.ratings.MovieFanatic >= 4" class="fa fa-star on"></span>
+                            <span *ngIf="this.ratings.MovieFanatic >= 5" class="fa fa-star on"></span>
+                            <span *ngIf="this.ratings.MovieFanatic < 1" class="fa fa-star off"></span>
+                            <span *ngIf="this.ratings.MovieFanatic < 2" class="fa fa-star off"></span>
+                            <span *ngIf="this.ratings.MovieFanatic < 3" class="fa fa-star off"></span>
+                            <span *ngIf="this.ratings.MovieFanatic < 4" class="fa fa-star off"></span>
+                            <span *ngIf="this.ratings.MovieFanatic < 5" class="fa fa-star off"></span>
+                            <span>&nbsp;{{ this.num_of_reviews }}<br>
+                                <a routerLink="/movie/review/{{this.movie.id}}">Click to Review</a>
+                            </span>
+                        </div>
+                    </div>
+                <div>
                 <hr class="line-break">
                 <p>{{this.movie.overview}}</p>
                 <h6><span class="category">Directed by: 

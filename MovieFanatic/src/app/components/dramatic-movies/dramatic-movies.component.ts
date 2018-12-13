@@ -24,17 +24,14 @@ export class DramaticMoviesComponent implements OnInit {
   getDramas() {
     this.movieService.getDramas().subscribe(
       (movie) =>  {
-                    console.log(movie);
                     this.tempDramaMovie.push(movie);
                     this.total_pages = this.tempDramaMovie[0].total_pages;
-                    console.log(this.total_pages);
                     this.current_page = 1;
                     for (let i = 0; i < 6; i++) {
                       this.dramaMovieArray.push({'title': this.tempDramaMovie[0].results[i].original_title,
                                             'Poster' : this.movieService.formatImage(this.tempDramaMovie[0].results[i].poster_path),
                                             'id' : this.tempDramaMovie[0].results[i].id  });
                     }
-                    console.log(this.dramaMovieArray);
                   });
   }
 
