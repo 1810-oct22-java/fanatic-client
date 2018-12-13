@@ -9,6 +9,8 @@ import { ActorViewComponent } from 'src/app/components/actor-view/actor-view.com
 import { SearchViewComponent } from './components/search-view/search-view.component';
 import { MainViewComponent } from './components/main-view/main-view.component';
 import { HeaderComponent } from './components/header/header.component';
+import { UserViewComponent } from './components/user-view/user-view.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
@@ -21,7 +23,8 @@ const routes: Routes = [
   { path: 'movie/review/:id', component: MovieReviewComponent},
   { path: 'actor/:id', component: ActorViewComponent },
   { path: 'profile-view', component: ProfileViewComponent},
-  { path: 'edit-profile', component: EditProfileComponent}
+  { path: 'edit-profile', component: EditProfileComponent},
+  { path: 'user-profile', component: UserViewComponent }
 ];
 
 @NgModule({
