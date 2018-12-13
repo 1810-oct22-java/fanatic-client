@@ -28,7 +28,7 @@ export class FavoriteMoviesComponent implements OnInit {
     this.movieService.getFavorites(this.loginService.getUserID()).subscribe(
       (favorite) => {
         for(let i = 0; i < favorite.length; i++) {
-          this.favArray.push(favorite[i].movieId);
+          this.favArray.push(favorite[i].movie_id);
         }
         this.getFavMovies();
       }
