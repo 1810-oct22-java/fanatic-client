@@ -27,8 +27,8 @@ export class ReviewApiService {
   }
 
   getReviewCount(movie_id: string) {
-    console.log(ConfigAPI.spring_url + 'view/' + movie_id);
-    return this.http.get<ReviewCount>(ConfigAPI.spring_url + 'view/' + movie_id);
+    console.log(ConfigAPI.spring_url + 'view/rating/' + movie_id);
+    return this.http.get<ReviewCount>(ConfigAPI.spring_url + 'view/rating/' + movie_id);
   }
 
   newReview(review: ReviewBean) {
