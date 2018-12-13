@@ -33,7 +33,7 @@ export class LoginService {
   }
 
   public getUserName(): string {
-    return localStorage.getItem('user_name');
+    return localStorage.getItem('username');
   }
 
   public getUserID(): number {
@@ -47,7 +47,7 @@ export class LoginService {
 
   public logout() {
     localStorage.removeItem('id');
-    localStorage.removeItem('user_name');
+    localStorage.removeItem('username');
     localStorage.removeItem('loggedIn');
   }
 }
