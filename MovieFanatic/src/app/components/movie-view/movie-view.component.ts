@@ -8,6 +8,7 @@ import { CrewAPI } from 'src/app/models/crewAPI';
 import { OMDBAPI } from 'src/app/models/OMDBAPI';
 import { ColorService } from 'src/app/services/color.service';
 import { LoginService } from 'src/app/services/login.service';
+import { ReviewApiService } from 'src/app/services/review-api.service';
 
 @Component({
   selector: 'app-movie-view',
@@ -24,10 +25,12 @@ export class MovieViewComponent implements OnInit {
   public directorList = [];
   public producerList = [];
   public listOfCast = [];
+  public num_of_reviews = -1;
 
   constructor(
     public route: ActivatedRoute,
     public movieService: MovieAPIService,
+    public reviewService: ReviewApiService,
     public colorService: ColorService,
     public router: Router,
     public loginService: LoginService
@@ -45,7 +48,6 @@ export class MovieViewComponent implements OnInit {
                       (omdb) => {
                                   this.ratings = omdb;
                                   this.getRottenTomatoes();
-                                  this.getMovieFanatic();
                                 });
                   });
 
@@ -55,8 +57,15 @@ export class MovieViewComponent implements OnInit {
                         this.credits.push(creditList);
                         this.cast = this.sortCast(this.credits[0].cast);
                         this.buildDirectorProducerLists(this.credits[0].crew);
-                      }
-    );
+                      });
+
+
+    // get the review count
+    this.reviewService.getReviewCount(this.id).subscribe(
+      (reviewCount) => {
+                        this.num_of_reviews = reviewCount.num_of_reviews;
+                        this.ratings.MovieFanatic = reviewCount.movie_rating;
+                        });
   }
 
   /**
@@ -94,13 +103,6 @@ export class MovieViewComponent implements OnInit {
         this.ratings.RottenTomatoes = element.Value;
       }
     });
-  }
-
-  /**
-   * get the Movie Fanatic rating score
-   */
-  private getMovieFanatic() {
-    this.ratings.MovieFanatic = 4;
   }
 
   /**
