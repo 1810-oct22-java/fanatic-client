@@ -13,12 +13,17 @@ export class LoginService {
       'Content-Type': 'application/json'
     })
   };
+  User usr = new User(0, '', '', '', '');
+//  public usr:User;
 
   constructor(private http: HttpClient) { }
 
   // public validateUser(username: String, password: String) {
   public validateUser(username, password) {
-    return this.http.get<User>(ConfigAPI.spring_url + 'login/' + username + '/' + password);
+    this.usr.user_name = username;
+    this.usr.password = password;
+    console.log(this.usr);
+    return this.http.post<User>(ConfigAPI.spring_url + 'user/login/', this.usr);
   }
 
   private persistLogin(user: User) {

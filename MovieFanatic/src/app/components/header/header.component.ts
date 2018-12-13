@@ -4,7 +4,7 @@ import { User } from 'src/app/models/user.model';
 /*login component*/
 import { LoginService } from 'src/app/services/login.service';
 import { Observable } from 'rxjs';
-import { httpFactory } from '@angular/http/src/http_module';
+// import { httpFactory } from '@angular/http/src/http_module';
 
 
 @Component({
