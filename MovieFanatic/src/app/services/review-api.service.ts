@@ -35,6 +35,6 @@ export class ReviewApiService {
     const url = ConfigAPI.spring_url + 'review/new';
 
     console.log(review + '   ' + url);
-    return this.http.put<ReviewBean>(url, review, this.httpOptions);
+    return this.http.post<ReviewBean>(url, review, this.httpOptions);
   }
 }

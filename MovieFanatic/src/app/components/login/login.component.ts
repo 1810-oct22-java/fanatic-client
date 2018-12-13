@@ -20,14 +20,14 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login() {
-    this.currentUser = this.loginService.validateUser(this.username, this.password);
-    if (this.currentUser == null || this.currentUser === undefined) {
-      this.output = 'Invalid Credentials';
+  // login() {
+  //   this.currentUser = this.loginService.validateUser(this.username, this.password);
+  //   if (this.currentUser == null || this.currentUser === undefined) {
+  //     this.output = 'Invalid Credentials';
 
-    } else {
-      this.output = `Welcome ${this.username}`;
-    }
-  }
+  //   } else {
+  //     this.output = `Welcome ${this.username}`;
+  //   }
+  // }
 }
 

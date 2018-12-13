@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieAPIService } from '../../services/movie-api.service';
 import { Favorite } from 'src/app/models/favorite';
-import { MovieAPI } from 'src/app/models/MovieAPI';
+import { MovieAPI } from 'src/app/models/movieAPI';
 
 @Component({
   selector: 'app-favorite-movies',
