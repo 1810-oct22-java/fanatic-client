@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { User } from '../models/user.model';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { ConfigAPI } from '../models/configAPI';
@@ -14,21 +14,21 @@ export class LoginService {
     })
   };
   usr: User;
-//  public usr:User;
-
   constructor(private http: HttpClient) { }
 
-  // public validateUser(username: String, password: String) {
   public validateUser(username, password) {
+    this.usr = new User(0, '', '', '', '');
     this.usr.username = username;
     this.usr.password = password;
     console.log(this.usr);
+    console.log(ConfigAPI.spring_url + 'user/login/');
+
     return this.http.post<User>(ConfigAPI.spring_url + 'user/login/', this.usr);
   }
 
-  private persistLogin(user: User) {
+  public persistLogin(user: User) {
     localStorage.setItem('id', user.id.toString());
-    localStorage.setItem('user_name', user.username);
+    localStorage.setItem('username', user.username);
     localStorage.setItem('loggedIn', 'true');
   }
 

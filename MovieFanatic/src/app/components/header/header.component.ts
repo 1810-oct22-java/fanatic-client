@@ -4,8 +4,6 @@ import { User } from 'src/app/models/user.model';
 /*login component*/
 import { LoginService } from 'src/app/services/login.service';
 import { Observable } from 'rxjs';
-// import { httpFactory } from '@angular/http/src/http_module';
-
 
 @Component({
   selector: 'app-header',
@@ -20,7 +18,6 @@ export class HeaderComponent implements OnInit {
   password = '';
   output: string;
   public currentUser: User;
-  //currentUser.subscribe(User);
 
   constructor(
     public router: Router,
@@ -40,32 +37,25 @@ export class HeaderComponent implements OnInit {
   }
 
   /*Login*/
-
+  
   login() {
-    const currentUser = this.loginService.validateUser(this.username, this.password);
-    if (this.currentUser == null || this.currentUser === undefined) {
-      console.log('Invalid Credentials' + this.username);
-      this.output = 'Invalid Credentials';
-
-    } else {
-      this.closeBtn.nativeElement.click();
-    }
+    this.loginService.validateUser(this.username, this.password).subscribe(
+      (user) => {
+        this.currentUser = new User(0, '', '', '', '');
+        this.currentUser.username = user.username;
+        this.currentUser.password = user.password;
+        this.currentUser.id = user.id;
+        console.log(this.currentUser);
+        if (this.currentUser == null || this.currentUser === undefined) {
+          console.log('Invalid Credentials' + this.username);
+          this.output = 'Invalid Credentials';
+        } else {
+          this.closeBtn.nativeElement.click();
+          this.loginService.persistLogin(this.currentUser);
+        }
+      });
   }
-
-
-  // login(username: string, password: string) {
-  //   this.loginService.validateUser(this.username, this.password);//.subscribe(this.username,this.password);
-  // }
-
-  // login() {
-  //   this.loginService.validateUser().subscribe(
-  //   (user) => {
-  //     this.username.push(user);
-  //     this.password.push(user);
-  //   }
-  //   )
-  // }
-
+  
   logout() {
     this.loginService.logout();
   }

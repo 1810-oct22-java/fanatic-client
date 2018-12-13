@@ -162,5 +162,4 @@ export class MovieViewComponent implements OnInit {
       }
     );
   }
-
 }
