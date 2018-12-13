@@ -9,6 +9,7 @@ import { OMDBAPI } from 'src/app/models/OMDBAPI';
 import { ColorService } from 'src/app/services/color.service';
 import { LoginService } from 'src/app/services/login.service';
 import { ReviewApiService } from 'src/app/services/review-api.service';
+import { CompileShallowModuleMetadata } from '@angular/compiler';
 
 @Component({
   selector: 'app-movie-view',
@@ -63,8 +64,8 @@ export class MovieViewComponent implements OnInit {
     // get the review count
     this.reviewService.getReviewCount(this.id).subscribe(
       (reviewCount) => {
-                        this.num_of_reviews = reviewCount.num_of_reviews;
-                        this.ratings.MovieFanatic = reviewCount.movie_rating;
+                        this.num_of_reviews = reviewCount.total;  
+                        this.ratings.MovieFanatic = reviewCount.rating;
                         });
   }
 
