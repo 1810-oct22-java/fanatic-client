@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieAPIService } from '../../services/movie-api.service';
 import { Favorite } from 'src/app/models/favorite';
-import { MovieAPI } from 'src/app/models/MovieAPI';
+import { MovieAPI } from 'src/app/models/movieAPI';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -28,7 +28,7 @@ export class FavoriteMoviesComponent implements OnInit {
     this.movieService.getFavorites(this.loginService.getUserID()).subscribe(
       (favorite) => {
         for(let i = 0; i < favorite.length; i++) {
-          this.favArray.push(favorite[i].movieId);
+          this.favArray.push(favorite[i].movie_id);
         }
         this.getFavMovies();
       }

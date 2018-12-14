@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { User } from '../models/user.model';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { ConfigAPI } from '../models/configAPI';
@@ -13,27 +13,27 @@ export class LoginService {
       'Content-Type': 'application/json'
     })
   };
-  User usr = new User(0, '', '', '', '');
-//  public usr:User;
-
+  usr: User;
   constructor(private http: HttpClient) { }
 
-  // public validateUser(username: String, password: String) {
   public validateUser(username, password) {
-    this.usr.user_name = username;
+    this.usr = new User(0, '', '', '', '');
+    this.usr.username = username;
     this.usr.password = password;
     console.log(this.usr);
+    console.log(ConfigAPI.spring_url + 'user/login/');
+
     return this.http.post<User>(ConfigAPI.spring_url + 'user/login/', this.usr);
   }
 
-  private persistLogin(user: User) {
+  public persistLogin(user: User) {
     localStorage.setItem('id', user.id.toString());
-    localStorage.setItem('user_name', user.user_name);
+    localStorage.setItem('username', user.username);
     localStorage.setItem('loggedIn', 'true');
   }
 
   public getUserName(): string {
-    return localStorage.getItem('user_name');
+    return localStorage.getItem('username');
   }
 
   public getUserID(): number {
@@ -47,7 +47,7 @@ export class LoginService {
 
   public logout() {
     localStorage.removeItem('id');
-    localStorage.removeItem('user_name');
+    localStorage.removeItem('username');
     localStorage.removeItem('loggedIn');
   }
 }
