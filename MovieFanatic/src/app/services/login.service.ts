@@ -51,6 +51,7 @@ export class LoginService {
     return Number(localStorage.getItem(this.ID));
   }
 
+
   public isLoggedIn(): boolean {
     let loggedIn = localStorage.getItem(this.LOGGEDIN);
 
