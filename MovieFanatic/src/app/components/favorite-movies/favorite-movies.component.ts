@@ -25,23 +25,24 @@ export class FavoriteMoviesComponent implements OnInit {
   }
 
   getFavorites() {
-    this.movieService.getFavorites(this.loginService.getUserID()).subscribe(
-      (favorite) => {
-        for(let i = 0; i < favorite.length; i++) {
-          this.favArray.push(favorite[i].movieId);
+    if (this.loginService.isLoggedIn()) {
+      this.movieService.getFavorites(this.loginService.getUserID()).subscribe(
+        (favorite) => {
+          for (let i = 0; i < favorite.length; i++) {
+            this.favArray.push(favorite[i].movie_id);
+          }
+          this.getFavMovies();
         }
-        this.getFavMovies();
-      }
-    );
+      );
+    }
   }
 
   getFavMovies() {
     let num;
     if (this.favArray.length > 12) {
-      num=12;
-    }
-    else {
-      num=this.favArray.length;
+      num = 12;
+    } else {
+      num = this.favArray.length;
     }
     for (let i = 0; i < num; i++) {
       this.movieService.getMovie(this.favArray[i]).subscribe(

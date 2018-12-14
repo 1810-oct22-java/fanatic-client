@@ -59,6 +59,11 @@
                     </div>
                 <div>
                 <hr class="line-break">
+                <div *ngIf="service.isLoggedIn()"> 
+                    <div *ngIf="this.isFavorite">
+                        <button (click)="addFavorite">Add Movie as Favorite</button>
+                    </div>
+                </div>
                 <p>{{this.movie.overview}}</p>
                 <h6><span class="category">Directed by: 
                     <span *ngFor="let d of this.directorList">

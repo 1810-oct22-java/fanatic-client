@@ -38,38 +38,38 @@ export class MovieViewComponent implements OnInit {
     public colorService: ColorService,
     public router: Router,
     public loginService: LoginService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
 
     // get the movie data
     this.movieService.getMovie(this.id).subscribe(
-      (movie) =>  {
-                    this.movie = movie;
-                    this.movie.poster_path = this.movieService.formatPosterImage(this.movie.poster_path);
-                    this.movieService.getOMDB(this.movie.imdb_id).subscribe(
-                      (omdb) => {
-                                  this.ratings = omdb;
-                                  this.getRottenTomatoes();
-                                });
-                  });
+      (movie) => {
+        this.movie = movie;
+        this.movie.poster_path = this.movieService.formatPosterImage(this.movie.poster_path);
+        this.movieService.getOMDB(this.movie.imdb_id).subscribe(
+          (omdb) => {
+            this.ratings = omdb;
+            this.getRottenTomatoes();
+          });
+      });
 
     // get the credits of the movie
     this.movieService.getCredits(this.id).subscribe(
       (creditList) => {
-                        this.credits.push(creditList);
-                        this.cast = this.sortCast(this.credits[0].cast);
-                        this.buildDirectorProducerLists(this.credits[0].crew);
-                      });
+        this.credits.push(creditList);
+        this.cast = this.sortCast(this.credits[0].cast);
+        this.buildDirectorProducerLists(this.credits[0].crew);
+      });
 
 
     // get the review count
     this.reviewService.getReviewCount(this.id).subscribe(
       (reviewCount) => {
-                        this.num_of_reviews = reviewCount.total;
-                        this.ratings.MovieFanatic = reviewCount.rating;
-                        });
+        this.num_of_reviews = reviewCount.total;
+        this.ratings.MovieFanatic = reviewCount.rating;
+      });
 
     this.getFavorites();
 
@@ -87,7 +87,7 @@ export class MovieViewComponent implements OnInit {
    * as a SafeStyle
    */
   public getBackground() {
-    return {'background-image': `url(${ConfigAPI.image_url}${this.movie.backdrop_path})`};
+    return { 'background-image': `url(${ConfigAPI.image_url}${this.movie.backdrop_path})` };
   }
 
   time_convert(num) {
@@ -117,7 +117,7 @@ export class MovieViewComponent implements OnInit {
    */
   public sortCast(data: CastAPI[]): CastAPI[] {
     // sort the cast list based on the credit order
-     return data.sort((c1, c2) => {
+    return data.sort((c1, c2) => {
       if (c1.order > c2.order) {
         return 1;
       }
@@ -146,17 +146,18 @@ export class MovieViewComponent implements OnInit {
   }
 
   public addFavorite() {
-    this.favorite.userId = this.loginService.getUserID();
-    this.favorite.movieId = parseInt(this.id);
+    this.favorite.user_id = this.loginService.getUserID();
+    this.favorite.movie_id = Number(this.id);
     this.movieService.addFavorite(this.favorite);
   }
 
   getFavorites() {
     this.movieService.getFavorites(this.loginService.getUserID()).subscribe(
       (favorite) => {
-        for(let i = 0; i < favorite.length; i++) {
-          if (favorite[i].movieId == parseInt(this.id)) {
-            this.isFavorite=true;
+
+        for (let i = 0; i < favorite.length; i++) {
+          if (favorite[i].movie_id === Number(this.id)) {
+            this.isFavorite = true;
           }
         }
       }
