@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 /*login component*/
 import { LoginService } from 'src/app/services/login.service';
-
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   username = '';
   password = '';
   output: string;
-  currentUser: User;
+  public currentUser: User;
 
   constructor(
     public router: Router,
@@ -37,6 +37,7 @@ export class HeaderComponent implements OnInit {
   }
 
   /*Login*/
+  
   login() {
     this.loginService.validateUser(this.username, this.password).subscribe(
       (user) => {
@@ -54,7 +55,6 @@ export class HeaderComponent implements OnInit {
         }
       });
   }
-
   logout() {
     this.loginService.logout();
   }

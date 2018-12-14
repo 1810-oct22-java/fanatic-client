@@ -1,17 +1,12 @@
 
 <br>
-  <h1 class="text-center">
-    <img src="../../../assets/favicon.png" height="80" width="80" class="center">Welcome to Movie Fanatic!
-  </h1>
-  
+<h1 class="text-center">
+  <img src="../../../assets/favicon.png" height="80" width="80" class="center">Welcome to Movie Fanatic!
+</h1>
 <h2 class="text-center">Featured Movie</h2>
 <app-featured-movie></app-featured-movie>
 <br>
-<div *ngIf="this.loginService.isLoggedIn()">
-<h2 class="text-center">Your Favorites</h2>
 <app-favorite-movies></app-favorite-movies>
-<br>
-</div>
 <h2 class="text-center">Popular Movies</h2>
 <br>
 <app-popular-movies></app-popular-movies>
