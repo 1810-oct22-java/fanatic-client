@@ -83,14 +83,14 @@ export class MovieReviewComponent implements OnInit {
   submit() {
     // create the review to send to the DB
     let review: ReviewBean = new ReviewBean(
-      null,
-      10000, // this.loginService.getUserID(),
+      0,
+      this.loginService.getUserID(),
       this.movie.id,
       this.add_review,
       this.add_rating,
-      null,
-      null,
-      null
+      0,
+      new Date(),
+      new Date()
     );
 
     // submit the update
