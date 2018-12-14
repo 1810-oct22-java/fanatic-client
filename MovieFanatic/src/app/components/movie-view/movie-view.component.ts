@@ -71,8 +71,16 @@ export class MovieViewComponent implements OnInit {
         this.ratings.MovieFanatic = reviewCount.rating;
       });
 
-    this.getFavorites();
-
+    // get the favorites  
+    this.movieService.getFavorites(this.loginService.getUserID()).subscribe(
+      (favorite) => {
+        for (let i = 0; i < favorite.length; i++) {
+          if (favorite[i].movie_id === Number(this.id)) {
+            this.isFavorite = true;
+          }
+        }
+      }
+    );
   }
 
   /**

@@ -10,14 +10,14 @@
       </ul>
       <div>
         <span *ngIf="this.loginService.isLoggedIn()">
-          <b><i>{{ this.loginService.getUserName() }}</i></b>
+          <a routerLink="/profile-view">{{ this.loginService.getFullName() }}</a>
           &nbsp;&bull;&nbsp;
           <a routerLink="{{this.router.url}}" (click)="logout()">Logout</a>
           &nbsp;&bull;&nbsp;
           <a routerLink="#" data-toggle="modal" data-target="#creditModal">Credits</a>
         </span>
         <span *ngIf="!this.loginService.isLoggedIn()">
-          <a routerLink="/profile-view">Sign up</a>
+          <a routerLink="/edit-profile">Sign up</a>
           &nbsp;&bull;&nbsp;
           <a routerLink="#" data-toggle="modal" data-target="#myModal">Login</a>
           &nbsp;&bull;&nbsp;
