@@ -147,20 +147,20 @@ export class MovieViewComponent implements OnInit {
 
   public addFavorite() {
     this.favorite.user_id = this.loginService.getUserID();
-    this.favorite.movie_id = parseInt(this.id);
+    this.favorite.movie_id = Number(this.id);
     this.movieService.addFavorite(this.favorite);
   }
 
   getFavorites() {
     this.movieService.getFavorites(this.loginService.getUserID()).subscribe(
       (favorite) => {
+
         for (let i = 0; i < favorite.length; i++) {
-          if (favorite[i].movie_id == parseInt(this.id)) {
+          if (favorite[i].movie_id === Number(this.id)) {
             this.isFavorite = true;
           }
         }
       }
     );
   }
-
 }
