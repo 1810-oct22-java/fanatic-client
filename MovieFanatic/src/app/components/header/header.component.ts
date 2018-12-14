@@ -38,13 +38,21 @@ export class HeaderComponent implements OnInit {
 
   /*Login*/
   login() {
-    this.currentUser = this.loginService.validateUser(this.username, this.password);
-    if (this.currentUser == null || this.currentUser === undefined) {
-      this.output = 'Invalid Credentials';
-
-    } else {
-      this.closeBtn.nativeElement.click();
-    }
+    this.loginService.validateUser(this.username, this.password).subscribe(
+      (user) => {
+        this.currentUser = new User(0, '', '', '', '');
+        this.currentUser.username = user.username;
+        this.currentUser.password = user.password;
+        this.currentUser.id = user.id;
+        console.log(this.currentUser);
+        if (this.currentUser == null || this.currentUser === undefined) {
+          console.log('Invalid Credentials' + this.username);
+          this.output = 'Invalid Credentials';
+        } else {
+          this.closeBtn.nativeElement.click();
+          this.loginService.persistLogin(this.currentUser);
+        }
+      });
   }
 
   logout() {
