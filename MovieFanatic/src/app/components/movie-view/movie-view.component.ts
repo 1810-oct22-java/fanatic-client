@@ -156,8 +156,7 @@ export class MovieViewComponent implements OnInit {
   public addFavorite() {
     this.favorite.user_id = this.loginService.getUserID();
     this.favorite.movie_id = Number(this.id);
-    this.movieService.addFavorite(this.favorite);
-  }
+    
 
   getFavorites() {
     this.movieService.getFavorites(this.loginService.getUserID()).subscribe(
