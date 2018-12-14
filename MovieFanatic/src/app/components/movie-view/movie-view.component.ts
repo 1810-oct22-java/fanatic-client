@@ -143,7 +143,7 @@ export class MovieViewComponent implements OnInit {
 
   public addFavorite() {
     this.favorite.userId = this.loginService.getUserID();
-    this.favorite.movieId = parseInt(this.id);
+    this.favorite.movieId = Number(this.id);
     this.movieService.addFavorite(this.favorite);
   }
 
