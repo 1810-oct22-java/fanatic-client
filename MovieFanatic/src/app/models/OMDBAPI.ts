@@ -10,5 +10,5 @@ export interface OMDBAPI {
     Metascore: string;
     imdbRating: string;
     RottenTomatoes: string;
-    MovieFanatic: string;
+    MovieFanatic: number;
 }

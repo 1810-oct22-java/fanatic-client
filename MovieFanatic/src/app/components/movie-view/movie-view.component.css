@@ -96,3 +96,13 @@ table, tr, th, td {
     font-size: 20px;
     padding: 0px 0px 0px 0px;
 }
+
+span.on {
+    font-size: 20px;
+    color:gold; 
+}
+
+span.off {
+    font-size: 20px; 
+    
+}

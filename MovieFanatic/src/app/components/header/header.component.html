@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light">
-    <img src="/assets/favicon.png" width="60" height="60"/>
-    <a class="navbar-brand" routerLink="/main">Movie Fanatics</a>
+    <a class="brand" routerLink="/main">
+      <img src="/assets/favicon.png" width="60" height="60"/>Movie Fanatics</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,12 +9,21 @@
       <ul class="navbar-nav mr-auto">
       </ul>
       <div>
-        <a routerLink="#" data-toggle="modal" data-target="#creditModal">Credits</a>
-        &nbsp;&bull;&nbsp;
-        <a routerLink="#" data-toggle="modal" data-target="#myModal">Login</a>
-        &nbsp;&bull;&nbsp;
-        <a routerLink="/profile-view">Sign up</a>
-       &nbsp;
+        <span *ngIf="this.loginService.isLoggedIn()">
+          <b><i>{{ this.loginService.getUserName() }}</i></b>
+          &nbsp;&bull;&nbsp;
+          <a routerLink="{{this.router.url}}" (click)="logout()">Logout</a>
+          &nbsp;&bull;&nbsp;
+          <a routerLink="#" data-toggle="modal" data-target="#creditModal">Credits</a>
+        </span>
+        <span *ngIf="!this.loginService.isLoggedIn()">
+          <a routerLink="/profile-view">Sign up</a>
+          &nbsp;&bull;&nbsp;
+          <a routerLink="#" data-toggle="modal" data-target="#myModal">Login</a>
+          &nbsp;&bull;&nbsp;
+          <a routerLink="#" data-toggle="modal" data-target="#creditModal">Credits</a>
+        </span>
+        &nbsp;
       </div>
     </div>
 
@@ -87,7 +96,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancel</button>
+        <button type="submit" #cancelBtn class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancel</button>
       </div>
 
   </div>

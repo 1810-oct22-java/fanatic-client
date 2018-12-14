@@ -7,6 +7,9 @@ import { CastAPI } from 'src/app/models/castAPI';
 import { CrewAPI } from 'src/app/models/crewAPI';
 import { OMDBAPI } from 'src/app/models/OMDBAPI';
 import { ColorService } from 'src/app/services/color.service';
+import { LoginService } from 'src/app/services/login.service';
+import { ReviewApiService } from 'src/app/services/review-api.service';
+import { CompileShallowModuleMetadata } from '@angular/compiler';
 
 @Component({
   selector: 'app-movie-view',
@@ -23,12 +26,15 @@ export class MovieViewComponent implements OnInit {
   public directorList = [];
   public producerList = [];
   public listOfCast = [];
+  public num_of_reviews = -1;
 
   constructor(
     public route: ActivatedRoute,
     public movieService: MovieAPIService,
+    public reviewService: ReviewApiService,
     public colorService: ColorService,
-    public router: Router
+    public router: Router,
+    public loginService: LoginService
   ) {}
 
   ngOnInit() {
@@ -43,7 +49,6 @@ export class MovieViewComponent implements OnInit {
                       (omdb) => {
                                   this.ratings = omdb;
                                   this.getRottenTomatoes();
-                                  this.getMovieFanatic();
                                 });
                   });
 
@@ -53,8 +58,15 @@ export class MovieViewComponent implements OnInit {
                         this.credits.push(creditList);
                         this.cast = this.sortCast(this.credits[0].cast);
                         this.buildDirectorProducerLists(this.credits[0].crew);
-                      }
-    );
+                      });
+
+
+    // get the review count
+    this.reviewService.getReviewCount(this.id).subscribe(
+      (reviewCount) => {
+                        this.num_of_reviews = reviewCount.total;  
+                        this.ratings.MovieFanatic = reviewCount.rating;
+                        });
   }
 
   /**
@@ -95,13 +107,6 @@ export class MovieViewComponent implements OnInit {
   }
 
   /**
-   * get the Movie Fanatic rating score
-   */
-  private getMovieFanatic() {
-    this.ratings.MovieFanatic = '4/5';
-  }
-
-  /**
    * sort the cast list
    */
   public sortCast(data: CastAPI[]): CastAPI[] {
@@ -120,32 +125,6 @@ export class MovieViewComponent implements OnInit {
   public routeActor(id: number) {
     this.router.navigateByUrl('/actor/' + id);
   }
-
-  // /**
-  //  * populate the Director and Producer html
-  //  */
-  // private getDirectorProducerLists(data: CrewAPI[]) {
-  //   let firstDirector = true;
-  //   let firstProducer = true;
-
-  //   data.forEach(element => {
-  //     if (element.job === 'Director') {
-  //       if (firstDirector) {
-  //         firstDirector = false;
-  //         this.directorList = element.name;
-  //       } else {
-  //         this.directorList = this.directorList + ', ' + element.name;
-  //       }
-  //     } else if (element.job === 'Producer') {
-  //       if (firstProducer) {
-  //         firstProducer = false;
-  //         this.producerList = element.name;
-  //       } else {
-  //         this.producerList = this.producerList + ', ' + element.name;
-  //       }
-  //     }
-  //   });
-  // }
 
   /**
    * populate the Director and Producer lists
