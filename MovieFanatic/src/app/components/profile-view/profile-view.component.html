@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <br>
 <div class = "container emp-profile">
   <div class="jumbotron" class="row justify-content-md-center rounded" id="jum">
@@ -63,3 +64,70 @@
 
 </div>
 
+=======
+<br>
+<div class = "container emp-profile">
+  <div class="jumbotron" class="row justify-content-md-center rounded" id="jum">
+    <div class="col-1"></div>
+  <div class="col-3">
+      <br>
+      <div class="center">
+      <img src="/assets/userprof.png" width="120" height="120"/>
+      </div>
+  </div>
+  <div class="col-8">
+    
+    <h3 class="display-4" align= "right" *ngIf="user">{{this.user.firstname}} {{this.user.lastname}}</h3>
+    <hr color="white">
+    <div class="row">
+        <div class="col-12">
+          <div class="row">
+            <div class="col-6">
+              <label>Username</label>
+            </div>
+            <div class = "col-6" *ngIf="user">
+              <p>{{this.user.username}}</p>
+            </div>
+            <div class="col-6" *ngIf="user">
+              <label>Password</label>
+            </div>
+            <div class="col-6">
+              <p>{{this.user.password}}</p>
+            </div>
+            <div class="col-6">
+              <label>Firstname</label>
+            </div>
+            <div class="col-6" *ngIf="user">
+              <p>{{this.user.firstname}}</p>
+            </div>
+            <div class="col-6">
+              <label>Lastname</label>
+            </div>
+            <div class="col-6" *ngIf="user">
+              <p>{{this.user.lastname}}</p>
+            </div>
+            <div class="col-6">
+              <label>Email</label>
+            </div>
+            <div class="col-6" *ngIf="user">
+              <p>{{this.user.email}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-1"></div>
+  </div>
+ 
+
+  <br>
+<div class="row">
+  <div class = "jumbotron col-12 text-center" id="jum">
+    <button class ="submit"><a routerLink="/edit-profile">Edit Profile</a></button>
+  </div>
+</div>
+    
+
+</div>
+
+>>>>>>> master
