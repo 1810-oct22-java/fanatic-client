@@ -52,7 +52,7 @@ export class MovieAPIService {
   }
 
   addFavorite(fav: Favorite) {
-    return this.http.post<Favorite>(ConfigAPI.spring_url + 'favorite/',fav);
+    return this.http.post<Favorite>(ConfigAPI.spring_url + 'favorite/', fav);
   }
 
   getCredits(id: string) {
