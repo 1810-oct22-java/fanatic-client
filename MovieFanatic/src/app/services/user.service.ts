@@ -19,6 +19,7 @@ export class UserService {
 
     return this.http.post<NewUser>(this.userUrl, user);
   }
+
   findById(id: number) {
     return this.http.get<NewUser>(this.userUrl1 + '/' + id);
   }

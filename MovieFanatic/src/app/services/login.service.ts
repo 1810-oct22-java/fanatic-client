@@ -66,6 +66,7 @@ export class LoginService {
   private USERNAME = 'username';
   private ID = 'id';
   private TOKEN = 'token';
+  private FULLNAME = "fullname";
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -79,7 +80,7 @@ export class LoginService {
   }
 
   public validateUser(username, password) {
-    this.usr = new User(0, '', '', '', '');
+    this.usr = new User(0, '', '', '', '', '', '');
     this.usr.username = username;
     this.usr.password = password;
     return this.http.post<User>(ConfigAPI.spring_url + 'user/login/', this.usr);
@@ -89,6 +90,7 @@ export class LoginService {
     localStorage.setItem(this.ID, user.id.toString());
     localStorage.setItem(this.USERNAME, user.username);
     localStorage.setItem(this.TOKEN, user.token);
+    localStorage.setItem(this.FULLNAME, user.firstname + ' ' + user.lastname);
     localStorage.setItem(this.LOGGEDIN, 'true');
   }
 
@@ -96,9 +98,14 @@ export class LoginService {
     return localStorage.getItem(this.USERNAME);
   }
 
+  public getFullName(): string {
+    return localStorage.getItem(this.FULLNAME);
+  }
+
   public getUserID(): number {
     return Number(localStorage.getItem(this.ID));
   }
+
 
   public isLoggedIn(): boolean {
     let loggedIn = localStorage.getItem(this.LOGGEDIN);
@@ -116,6 +123,7 @@ export class LoginService {
     localStorage.removeItem(this.ID);
     localStorage.removeItem(this.USERNAME);
     localStorage.removeItem(this.TOKEN);
+    localStorage.removeItem(this.FULLNAME);
     localStorage.setItem(this.LOGGEDIN, 'false');
   }
 }
