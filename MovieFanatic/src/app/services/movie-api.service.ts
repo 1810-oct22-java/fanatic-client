@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { ConfigAPI } from 'src/app/models/configAPI';
 import { MovieAPI } from 'src/app/models/movieAPI';
 import { CreditsAPI } from 'src/app/models/creditsAPI';
@@ -23,7 +25,7 @@ export class MovieAPIService {
 
   getMoviesByActor(id: string) {
     return this.http.get<MovieAPI[]>(ConfigAPI.base_url + 'discover/movie' + ConfigAPI.api_key + ConfigAPI.query_params
-    + 'sort_by=popularity.desc&with_cast=' + id);
+      + 'sort_by=popularity.desc&with_cast=' + id);
   }
 
   getPopularMovies() {
@@ -32,17 +34,17 @@ export class MovieAPIService {
 
   getMoviesByYear() {
     return this.http.get<MovieAPI[]>(ConfigAPI.base_url + 'discover/movie' + ConfigAPI.api_key + ConfigAPI.query_params
-    + 'primary_release_year=2018&sort_by=vote_average.desc');
+      + 'primary_release_year=2018&sort_by=vote_average.desc');
   }
 
   getDramas() {
     return this.http.get<MovieAPI[]>(ConfigAPI.base_url + 'discover/movie' + ConfigAPI.api_key + ConfigAPI.query_params
-    + 'sort_by=popularity.desc&with_genres=18');
+      + 'sort_by=popularity.desc&with_genres=18');
   }
 
   getComedies() {
     return this.http.get<MovieAPI[]>(ConfigAPI.base_url + 'discover/movie' + ConfigAPI.api_key + ConfigAPI.query_params
-    + 'sort_by=popularity.desc&with_genres=35');
+      + 'sort_by=popularity.desc&with_genres=35');
   }
 
   /**
@@ -90,6 +92,6 @@ export class MovieAPIService {
    * as a SafeStyle
    */
   public getBackground(backdrop) {
-    return {'background-image': `url(${ConfigAPI.image_url}${backdrop})`};
+    return { 'background-image': `url(${ConfigAPI.image_url}${backdrop})` };
   }
 }
