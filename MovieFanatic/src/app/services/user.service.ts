@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NewUser } from 'src/app/models/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ConfigAPI } from 'src/app/models/configAPI';
 
 
 @Injectable({
@@ -17,10 +18,10 @@ export class UserService {
 
   public createUser(user) {
 
-    return this.http.post<NewUser>(this.userUrl, user);
+    return this.http.post<NewUser>(ConfigAPI.spring_url + 'user/new/', + user);
   }
 
   findById(id: number) {
-    return this.http.get<NewUser>(this.userUrl1 + '/' + id);
+    return this.http.get<NewUser>(ConfigAPI.spring_url + 'user/' + id);
   }
 }

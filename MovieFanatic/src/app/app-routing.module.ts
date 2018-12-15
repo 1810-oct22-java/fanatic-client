@@ -14,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
   { path: 'header', component: HeaderComponent },
-  { path: 'main', component: MainViewComponent},
+  { path: 'main', component: MainViewComponent, runGuardsAndResolvers: 'always'},
   { path: 'movie', component: MovieViewComponent},
   { path: 'movie_results/:query', component: SearchViewComponent, runGuardsAndResolvers: 'always'},
   { path: 'movie/:id', component: MovieViewComponent},
