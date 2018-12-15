@@ -39,8 +39,5 @@ export class ReviewApiService {
   newApproval(approval: Approval) {
     return this.http.post<Approval>(ConfigAPI.spring_url + 'approval/', approval, this.httpOptions);
   }
-
-  newApproval(approval: Approval) {
-    return this.http.post<Approval>(ConfigAPI.spring_url + 'review/', approval, this.httpOptions);
-  }
 }
+  
