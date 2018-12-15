@@ -10,7 +10,7 @@
       </ul>
       <div>
         <span *ngIf="this.loginService.isLoggedIn()">
-          <a routerLink="/profile-view">{{ this.loginService.getFullName() }}</a>
+          <a routerLink="/profile-view" class="FullName">{{ this.loginService.getFullName() }}</a>
           &nbsp;&bull;&nbsp;
           <a routerLink="{{this.router.url}}" (click)="logout()">Logout</a>
           &nbsp;&bull;&nbsp;

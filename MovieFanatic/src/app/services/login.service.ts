@@ -7,11 +7,11 @@ import { ConfigAPI } from '../models/configAPI';
  providedIn: 'root'
 })
 export class LoginService {
- private LOGGEDIN = 'loggedIn';
- private USERNAME = 'username';
- private ID = 'id';
- private TOKEN = 'token';
- private FULLNAME = "fullname";
+  private LOGGEDIN = 'loggedIn';
+  private USERNAME = 'username';
+  private ID = 'id';
+  private TOKEN = 'token';
+  private FULLNAME = 'fullname';
 
  httpOptions = {
    headers: new HttpHeaders({

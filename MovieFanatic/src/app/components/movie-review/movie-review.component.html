@@ -18,7 +18,11 @@
                                 {{this.ratings.Genre}}</h5>
                         </div>
                         <div class="col-auto">
-                            <span *ngIf="this.loginService.isLoggedIn()"><a routerLink="#" data-toggle="modal" data-target="#reviewModal">Add a Review</a></span>        
+                            <span *ngIf="this.loginService.isLoggedIn()">
+                                <span *ngIf="!this.allreadyReviewed">
+                                    <a routerLink="#" data-toggle="modal" data-target="#reviewModal">Add a Review</a>
+                                </span>
+                            </span>        
                         </div>
                     </div>
                 </div>
@@ -63,8 +67,8 @@
                                         <i class="fa fa-thumbs-down">&nbsp;{{ review.thumbs_down }}</i>
                                     </span>
                                     <span class="on" *ngIf="!this.review.already_reviewed">
-                                        <i class="fa fa-thumbs-up" (click)="postUp(review.id)">&nbsp;{{ review.thumbs_up }}</i>&nbsp;&nbsp;
-                                        <i class="fa fa-thumbs-down" (click)="postDown(review.id)">&nbsp;{{ review.thumbs_down }}</i>
+                                        <button type="button" (click)="postUp(review.id)" class="btn btn-light"><i class="fa fa-thumbs-up">&nbsp;{{ review.thumbs_up }}</i></button>&nbsp;&nbsp;
+                                        <button type="button" (click)="postDown(review.id)" class="btn btn-light"><i class="fa fa-thumbs-down">&nbsp;{{ review.thumbs_down }}</i></button>
                                     </span>
                                 </div>
                                 <div class="col-12" *ngIf="!this.loginService.isLoggedIn()">

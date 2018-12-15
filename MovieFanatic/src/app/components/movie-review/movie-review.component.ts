@@ -7,6 +7,7 @@ import { OMDBAPI } from 'src/app/models/OMDBAPI';
 import { Review } from 'src/app/models/review';
 import { ReviewBean } from 'src/app/models/reviewBean';
 import { LoginService } from 'src/app/services/login.service';
+import { Approval } from 'src/app/models/approval';
 
 @Component({
   selector: 'app-movie-review',
@@ -18,6 +19,7 @@ export class MovieReviewComponent implements OnInit {
   public id: string;
   public movie: MovieAPI;
   public ratings: OMDBAPI;
+  public alreadyReviewed = false;
 
   // table vars
   public dataSource: Review[] = [];
@@ -58,6 +60,9 @@ export class MovieReviewComponent implements OnInit {
                                                                                       element[4], element[5], element[6],
                                                                                       this.zero(element[7]),
                                                                                       this.zero(element[8]));
+                                                    if (review.already_reviewed) {
+                                                      this.alreadyReviewed = true;
+                                                    }
                                                     console.log(review);
                                                     this.dataSource.push(review);
                                                                                 });
@@ -97,11 +102,22 @@ export class MovieReviewComponent implements OnInit {
     this.reviewService.newReview(review).subscribe(
       (r) =>  {
         review = r;
-      });
 
-    // clean up the local vars
-    this.add_rating = 0;
-    this.add_review = '';
+        this.dataSource.push(new Review(r.approval_id,
+                                        this.loginService.getUserName(),
+                                        null,
+                                        r.review_date.toString(),
+                                        r.rating,
+                                        r.review,
+                                        1,
+                                        0,
+                                        0));
+        this.alreadyReviewed = true;
+        // clean up the local vars
+        this.add_rating = 0;
+        this.add_review = '';
+      }
+    );
 
     // close the modal
     this.closeBtn.nativeElement.click();
@@ -116,10 +132,16 @@ export class MovieReviewComponent implements OnInit {
   }
 
   postUp(review_id: number) {
-
+    this.newApproval(new Approval(0, review_id, 1, this.loginService.getUserID()));
   }
 
   postDown(review_id: number) {
+    this.newApproval(new Approval(0, review_id, 0, this.loginService.getUserID()));
+  }
 
+  newApproval(approval: Approval) {
+    this.reviewService.newApproval(approval).subscribe(
+      (a) => { console.log(a); }
+    );
   }
 }

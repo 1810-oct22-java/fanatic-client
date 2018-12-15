@@ -47,10 +47,16 @@ export class MovieAPIService {
       + 'sort_by=popularity.desc&with_genres=35');
   }
 
+  /**
+   * return the list of favorites for the user
+   */
   getFavorites(id: number) {
     return this.http.get<Favorite[]>(ConfigAPI.spring_url + 'favorite/' + id);
   }
 
+  /**
+   * save the favorite to the user
+   */
   addFavorite(fav: Favorite) {
     return this.http.post<Favorite>(ConfigAPI.spring_url + 'favorite/', fav);
   }
