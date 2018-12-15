@@ -93,8 +93,8 @@ export class MovieReviewComponent implements OnInit {
       this.add_review,
       this.add_rating,
       0,
-      new Date(),
-      new Date()
+      null,
+      null
     );
 
     // submit the update
