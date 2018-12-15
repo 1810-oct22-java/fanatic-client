@@ -53,21 +53,7 @@ export class MovieReviewComponent implements OnInit {
                     this.movieService.getOMDB(this.movie.imdb_id).subscribe(
                       (omdb) => {
                                   this.ratings = omdb;
-                                  this.reviewService.getMovieReviews(this.movie.id, this.loginService.getUserID()).subscribe(
-                                    (reviewList) => {
-                                                  reviewList.forEach(element => {
-                                                    const review: Review = new Review(element[0], element[1], element[2], element[3],
-                                                                                      element[4], element[5], element[6],
-                                                                                      this.zero(element[7]),
-                                                                                      this.zero(element[8]));
-                                                    if (review.already_reviewed) {
-                                                      this.alreadyReviewed = true;
-                                                    }
-                                                    console.log(review);
-                                                    this.dataSource.push(review);
-                                                                                });
-                                    }
-                                  );
+                                  this.getMovieReviews();
                                 }
                     );
                   console.log(this.dataSource);
@@ -103,15 +89,7 @@ export class MovieReviewComponent implements OnInit {
       (r) =>  {
         review = r;
 
-        this.dataSource.push(new Review(r.approval_id,
-                                        this.loginService.getUserName(),
-                                        null,
-                                        r.review_date.toString(),
-                                        r.rating,
-                                        r.review,
-                                        1,
-                                        0,
-                                        0));
+        this.getMovieReviews();
         this.alreadyReviewed = true;
         // clean up the local vars
         this.add_rating = 0;
@@ -141,7 +119,29 @@ export class MovieReviewComponent implements OnInit {
 
   newApproval(approval: Approval) {
     this.reviewService.newApproval(approval).subscribe(
-      (a) => { console.log(a); }
+      (a) => { this.getMovieReviews(); }
+    );
+  }
+
+  getMovieReviews() {
+    // make sure the dataSource is clear
+    this.dataSource = [];
+
+    this.reviewService.getMovieReviews(this.movie.id, this.loginService.getUserID()).subscribe(
+      (reviewList) => {
+                    reviewList.forEach(element => {
+                      const review: Review = new Review(element[0], element[1], element[2], element[3],
+                                                        element[4], element[5], element[6],
+                                                        this.zero(element[7]),
+                                                        this.zero(element[8])); console.log(element[6]);
+                      if (review.username === this.loginService.getUserName()) {
+                        this.alreadyReviewed = true;
+                      }
+                      console.log(review);
+                      this.dataSource.push(review);
+                                                  }
+                                      );
+      }
     );
   }
 }
