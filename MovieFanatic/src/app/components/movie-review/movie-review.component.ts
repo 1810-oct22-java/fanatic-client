@@ -7,6 +7,7 @@ import { OMDBAPI } from 'src/app/models/OMDBAPI';
 import { Review } from 'src/app/models/review';
 import { ReviewBean } from 'src/app/models/reviewBean';
 import { LoginService } from 'src/app/services/login.service';
+import { Approval } from 'src/app/models/approval';
 
 @Component({
   selector: 'app-movie-review',
@@ -93,8 +94,8 @@ export class MovieReviewComponent implements OnInit {
       this.add_review,
       this.add_rating,
       0,
-      null,
-      null
+      new Date(),
+      new Date()
     );
 
     // submit the update
@@ -131,10 +132,16 @@ export class MovieReviewComponent implements OnInit {
   }
 
   postUp(review_id: number) {
-
+    this.newApproval(new Approval(0, review_id, 1, this.loginService.getUserID()));
   }
 
   postDown(review_id: number) {
+    this.newApproval(new Approval(0, review_id, 0, this.loginService.getUserID()));
+  }
 
+  newApproval(approval: Approval) {
+    this.reviewService.newApproval(approval).subscribe(
+      (a) => { console.log(a); }
+    );
   }
 }
