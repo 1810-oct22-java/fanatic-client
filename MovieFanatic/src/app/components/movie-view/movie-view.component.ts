@@ -52,6 +52,12 @@ export class MovieViewComponent implements OnInit {
           (omdb) => {
             this.ratings = omdb;
             this.getRottenTomatoes();
+            // get the review count
+            this.reviewService.getReviewCount(this.id).subscribe(
+              (reviewCount) => {
+                this.num_of_reviews = reviewCount.total;
+                this.ratings.MovieFanatic = reviewCount.rating;
+            });
           });
       });
 
@@ -63,15 +69,7 @@ export class MovieViewComponent implements OnInit {
         this.buildDirectorProducerLists(this.credits[0].crew);
       });
 
-
-    // get the review count
-    this.reviewService.getReviewCount(this.id).subscribe(
-      (reviewCount) => {
-        this.num_of_reviews = reviewCount.total;
-        this.ratings.MovieFanatic = reviewCount.rating;
-      });
-
-    // get the favorites  
+    // get the favorites
     this.movieService.getFavorites(this.loginService.getUserID()).subscribe(
       (favorite) => {
         for (let i = 0; i < favorite.length; i++) {
@@ -154,9 +152,10 @@ export class MovieViewComponent implements OnInit {
   }
 
   public addFavorite() {
-    this.favorite.user_id = this.loginService.getUserID();
-    this.favorite.movie_id = Number(this.id);
-    this.movieService.addFavorite(this.favorite);
+    this.favorite = new Favorite(0, this.loginService.getUserID(), Number(this.id));
+    this.movieService.addFavorite(this.favorite).subscribe (
+      (favorite) => { this.isFavorite = true; }
+    );
   }
 
   getFavorites() {
