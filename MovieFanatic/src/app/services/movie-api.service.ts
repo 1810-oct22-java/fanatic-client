@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { HttpClientModule } from '@angular/common/http'; 
-import { HttpModule } from '@angular/http';
 import { ConfigAPI } from 'src/app/models/configAPI';
 import { MovieAPI } from 'src/app/models/movieAPI';
 import { CreditsAPI } from 'src/app/models/creditsAPI';
@@ -47,12 +45,18 @@ export class MovieAPIService {
     + 'sort_by=popularity.desc&with_genres=35');
   }
 
+  /**
+   * return the list of favorites for the user
+   */
   getFavorites(id: number) {
     return this.http.get<Favorite[]>(ConfigAPI.spring_url + 'favorite/' + id);
   }
 
+  /**
+   * save the favorite to the user
+   */
   addFavorite(fav: Favorite) {
-    return this.http.post<Favorite>(ConfigAPI.spring_url + 'favorite/',fav);
+    return this.http.post<Favorite>(ConfigAPI.spring_url + 'favorite/', fav);
   }
 
   getCredits(id: string) {

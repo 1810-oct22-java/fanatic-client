@@ -18,6 +18,7 @@ export class MovieReviewComponent implements OnInit {
   public id: string;
   public movie: MovieAPI;
   public ratings: OMDBAPI;
+  public alreadyReviewed = false;
 
   // table vars
   public dataSource: Review[] = [];
@@ -58,6 +59,9 @@ export class MovieReviewComponent implements OnInit {
                                                                                       element[4], element[5], element[6],
                                                                                       this.zero(element[7]),
                                                                                       this.zero(element[8]));
+                                                    if (review.already_reviewed) {
+                                                      this.alreadyReviewed = true;
+                                                    }
                                                     console.log(review);
                                                     this.dataSource.push(review);
                                                                                 });
@@ -83,25 +87,36 @@ export class MovieReviewComponent implements OnInit {
   submit() {
     // create the review to send to the DB
     let review: ReviewBean = new ReviewBean(
-      null,
-      10000, // this.loginService.getUserID(),
+      0,
+      this.loginService.getUserID(),
       this.movie.id,
       this.add_review,
       this.add_rating,
-      null,
-      null,
-      null
+      0,
+      new Date(),
+      new Date()
     );
 
     // submit the update
     this.reviewService.newReview(review).subscribe(
       (r) =>  {
         review = r;
-      });
 
-    // clean up the local vars
-    this.add_rating = 0;
-    this.add_review = '';
+        this.dataSource.push(new Review(r.approval_id,
+                                        this.loginService.getUserName(),
+                                        null,
+                                        r.review_date.toString(),
+                                        r.rating,
+                                        r.review,
+                                        1,
+                                        0,
+                                        0));
+        this.alreadyReviewed = true;
+        // clean up the local vars
+        this.add_rating = 0;
+        this.add_review = '';
+      }
+    );
 
     // close the modal
     this.closeBtn.nativeElement.click();

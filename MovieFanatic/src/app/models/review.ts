@@ -1,7 +1,7 @@
 export class Review {
     constructor (
         public id: number,
-        public user_name: string,
+        public username: string,
         public join_date: string,
         public review_date: string,
         public rating: number,
