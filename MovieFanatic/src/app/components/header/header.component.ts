@@ -37,7 +37,7 @@ export class HeaderComponent implements OnInit {
   }
 
   /*Login*/
-  
+
   login() {
     this.loginService.validateUser(this.username, this.password).subscribe(
       (user) => {
