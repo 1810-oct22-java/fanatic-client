@@ -15,6 +15,12 @@ body {font-family: Roboto, Helvetica, sans-serif;}
     color: white;
 }
 
+.FullName {
+    font-size: 24px;
+    padding: 0px;
+    color: white;
+}
+
 .main-search {
     padding: 0px 0px 0px 0px;
     background-color: white;
@@ -52,6 +58,7 @@ input[type=text], input[type=password] {
     padding: 10px 18px;
     background-color: #f44336;  
 }
+
 .modal-content {
     background-color: #ffffff;
     margin: 5% auto 15% auto; 
