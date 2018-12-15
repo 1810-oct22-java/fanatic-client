@@ -11,7 +11,7 @@ export class LoginService {
   private USERNAME = 'username';
   private ID = 'id';
   private TOKEN = 'token';
-  private FULLNAME = "fullname";
+  private FULLNAME = 'fullname';
 
   httpOptions = {
     headers: new HttpHeaders({
