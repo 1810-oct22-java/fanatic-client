@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 /*login component*/
 import { LoginService } from 'src/app/services/login.service';
-
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   username = '';
   password = '';
   output: string;
-  currentUser: User;
+  public currentUser: User;
 
   constructor(
     public router: Router,
@@ -37,16 +37,27 @@ export class HeaderComponent implements OnInit {
   }
 
   /*Login*/
+  
   login() {
-    this.currentUser = this.loginService.validateUser(this.username, this.password);
-    if (this.currentUser == null || this.currentUser === undefined) {
-      this.output = 'Invalid Credentials';
-
-    } else {
-      this.closeBtn.nativeElement.click();
-    }
+    this.loginService.validateUser(this.username, this.password).subscribe(
+      (user) => {
+        this.currentUser = new User(user.id,  
+                            user.username, 
+                            user.email, 
+                            user.password, 
+                            user.token,
+                            user.firstname,
+                            user.lastname);
+        console.log(this.currentUser);
+        if (this.currentUser == null || this.currentUser === undefined) {
+          console.log('Invalid Credentials' + this.username);
+          this.output = 'Invalid Credentials';
+        } else {
+          this.closeBtn.nativeElement.click();
+          this.loginService.persistLogin(this.currentUser);
+        }
+      });
   }
-
   logout() {
     this.loginService.logout();
   }

@@ -18,7 +18,11 @@
                                 {{this.ratings.Genre}}</h5>
                         </div>
                         <div class="col-auto">
-                            <span *ngIf="this.loginService.isLoggedIn()"><a routerLink="#" data-toggle="modal" data-target="#reviewModal">Add a Review</a></span>        
+                            <span *ngIf="this.loginService.isLoggedIn()">
+                                <span *ngIf="!this.allreadyReviewed">
+                                    <a routerLink="#" data-toggle="modal" data-target="#reviewModal">Add a Review</a>
+                                </span>
+                            </span>        
                         </div>
                     </div>
                 </div>
@@ -35,7 +39,7 @@
                         <div class="container review-container">
                             <div class="row justify-content-between review_header">
                                 <div class="col-3">
-                                    <span class="user_name">{{ this.review.user_name }}</span> <span class="join_date">({{ this.review.join_date }})</span>    
+                                    <span class="username">{{ this.review.username }}</span> <span class="join_date">({{ this.review.join_date }})</span>    
                                 </div>
                                 <div class="col-3 text-right">
                                     {{ this.review.review_date }}&nbsp;

@@ -1,5 +1,4 @@
 <br>
-
 <div class = "container emp-profile">
   <div class="jumbotron" class="row justify-content-md-center rounded" id="jum">
     <div class="col-1"></div>
@@ -11,7 +10,7 @@
   </div>
   <div class="col-8">
     
-    <h3 class="display-4" align= "right">{{firstname}} {{lastname}}</h3>
+    <h3 class="display-4" align= "right" *ngIf="user">{{this.user.firstname}} {{this.user.lastname}}</h3>
     <hr color="white">
     <div class="row">
         <div class="col-12">
@@ -19,32 +18,32 @@
             <div class="col-6">
               <label>Username</label>
             </div>
-            <div class = "col-6">
-              <p>{{username}}</p>
+            <div class = "col-6" *ngIf="user">
+              <p>{{this.user.username}}</p>
             </div>
-            <div class="col-6">
+            <div class="col-6" *ngIf="user">
               <label>Password</label>
             </div>
             <div class="col-6">
-              <p>{{password}}</p>
+              <p>{{this.user.password}}</p>
             </div>
             <div class="col-6">
               <label>Firstname</label>
             </div>
-            <div class="col-6">
-              <p>{{firstname}}</p>
+            <div class="col-6" *ngIf="user">
+              <p>{{this.user.firstname}}</p>
             </div>
             <div class="col-6">
               <label>Lastname</label>
             </div>
-            <div class="col-6">
-              <p>{{lastname}}</p>
+            <div class="col-6" *ngIf="user">
+              <p>{{this.user.lastname}}</p>
             </div>
             <div class="col-6">
               <label>Email</label>
             </div>
-            <div class="col-6">
-              <p>{{email}}</p>
+            <div class="col-6" *ngIf="user">
+              <p>{{this.user.email}}</p>
             </div>
           </div>
         </div>
