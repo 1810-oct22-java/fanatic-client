@@ -18,7 +18,11 @@
                                 {{this.ratings.Genre}}</h5>
                         </div>
                         <div class="col-auto">
-                            <span *ngIf="this.loginService.isLoggedIn()"><a routerLink="#" data-toggle="modal" data-target="#reviewModal">Add a Review</a></span>        
+                            <span *ngIf="this.loginService.isLoggedIn()">
+                                <span *ngIf="!this.allreadyReviewed">
+                                    <a routerLink="#" data-toggle="modal" data-target="#reviewModal">Add a Review</a>
+                                </span>
+                            </span>        
                         </div>
                     </div>
                 </div>

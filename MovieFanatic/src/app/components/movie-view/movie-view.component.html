@@ -19,17 +19,17 @@
                             <table> 
                                 <tr class='ratings-header'> 
                                     <th *ngIf="this.ratings.Metascore != 'N/A'"><a routerLink="https://www.metacritic.com">Metacritic</a></th> 
-                                    <th *ngIf="this.ratings.imdbRating != null"><a routerLink="https://www.imdb.com">IMDB</a></th> 
+                                    <th *ngIf="this.ratings.imdbRating != 'N/A'"><a routerLink="https://www.imdb.com">IMDB</a></th> 
                                     <th *ngIf="this.ratings.RottenTomatoes != null"><a routerLink="https://www.rottentomatoes.com">Rotten<br>Tomatoes</a></th> 
                                 </tr> 
                                 <tr class='ratings-detail'> 
                                     <td *ngIf="this.ratings.Metascore != 'N/A'">{{this.ratings.Metascore}}</td>
-                                    <td *ngIf="this.ratings.imdbRating != null">{{this.ratings.imdbRating}}<span class="tag-line">/10</span></td>
+                                    <td *ngIf="this.ratings.imdbRating != 'N/A'">{{this.ratings.imdbRating}}<span class="tag-line">/10</span></td>
                                     <td *ngIf="this.ratings.RottenTomatoes != null">{{this.ratings.RottenTomatoes}}</td>
                                 </tr> 
                                 <tr class='ratings-header'> 
                                     <td *ngIf="this.ratings.Metascore != 'N/A'"></td>
-                                    <td *ngIf="this.ratings.imdbRating != null"></td>
+                                    <td *ngIf="this.ratings.imdbRating != 'N/A'"></td>
                                     <td *ngIf="this.ratings.RottenTomatoes != null"></td>
                                 </tr> 
                             </table>
@@ -53,17 +53,21 @@
                             <span *ngIf="this.ratings.MovieFanatic < 4" class="fa fa-star off"></span>
                             <span *ngIf="this.ratings.MovieFanatic < 5" class="fa fa-star off"></span>
                             <span>&nbsp;{{ this.num_of_reviews }}<br>
-                                <a routerLink="/movie/review/{{this.movie.id}}">Click to Review</a>
+                                <a routerLink="/movie/review/{{this.movie.id}}">Click to see Reviews</a>
                             </span>
                         </div>
                     </div>
                 <div>
-                <hr class="line-break">
-                <div *ngIf="this.service.isLoggedIn()"> 
-                    <div *ngIf="this.isFavorite">
-                        <button (click)="addFavorite">Add Movie as Favorite</button>
+                
+                    <div *ngIf="this.loginService.isLoggedIn()"> 
+                        <div *ngIf="this.isFavorite">
+                            One of your Favorites
+                        </div>
+                        <div *ngIf="!this.isFavorite">
+                                <button type="button" (click)="addFavorite()" class="btn btn-light">Add Movie as a Favorite</button>
+                        </div>
                     </div>
-                </div>
+                <hr class="line-break">
                 <p>{{this.movie.overview}}</p>
                 <h6><span class="category">Directed by: 
                     <span *ngFor="let d of this.directorList">
