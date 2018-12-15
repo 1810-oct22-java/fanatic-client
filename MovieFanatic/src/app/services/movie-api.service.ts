@@ -52,6 +52,10 @@ export class MovieAPIService {
     return this.http.get<Favorite[]>(ConfigAPI.spring_url + 'favorite/' + id);
   }
 
+  getFavoritesByUsername(username: string) {
+    return this.http.get<Favorite[]>(ConfigAPI.spring_url + 'favorite/username/' + username);
+  }
+
   /**
    * save the favorite to the user
    */

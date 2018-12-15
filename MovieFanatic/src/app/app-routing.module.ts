@@ -23,7 +23,8 @@ const routes: Routes = [
   { path: 'profile-view', component: ProfileViewComponent},
   { path: 'edit-profile', component: EditProfileComponent},
   { path: 'user-profile', component: UserViewComponent },
-  { path: 'profile-view/:id', component: ProfileViewComponent }
+  { path: 'profile-view/:id', component: ProfileViewComponent },
+  { path: 'user/:username', component: UserViewComponent }
 ];
 
 @NgModule({
