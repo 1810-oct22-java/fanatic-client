@@ -56,7 +56,6 @@ export class MovieReviewComponent implements OnInit {
                                   this.getMovieReviews();
                                 }
                     );
-                  console.log(this.dataSource);
                   });
   }
 
@@ -99,7 +98,6 @@ export class MovieReviewComponent implements OnInit {
 
     // close the modal
     this.closeBtn.nativeElement.click();
-    console.log(review);
   }
 
   zero(int: number) {
@@ -133,11 +131,10 @@ export class MovieReviewComponent implements OnInit {
                       const review: Review = new Review(element[0], element[1], element[2], element[3],
                                                         element[4], element[5], element[6],
                                                         this.zero(element[7]),
-                                                        this.zero(element[8])); console.log(element[6]);
+                                                        this.zero(element[8])); 
                       if (review.username === this.loginService.getUserName()) {
                         this.alreadyReviewed = true;
                       }
-                      console.log(review);
                       this.dataSource.push(review);
                                                   }
                                       );
