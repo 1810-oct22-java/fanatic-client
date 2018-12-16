@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { ConfigAPI } from 'src/app/models/configAPI';
 import { MovieAPI } from 'src/app/models/movieAPI';
 import { CreditsAPI } from 'src/app/models/creditsAPI';
@@ -50,6 +52,10 @@ export class MovieAPIService {
    */
   getFavorites(id: number) {
     return this.http.get<Favorite[]>(ConfigAPI.spring_url + 'favorite/' + id);
+  }
+
+  getFavoritesByUsername(username: string) {
+    return this.http.get<Favorite[]>(ConfigAPI.spring_url + 'favorite/username/' + username);
   }
 
   /**

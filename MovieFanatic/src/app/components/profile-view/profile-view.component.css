@@ -17,3 +17,11 @@ a {
     color: rgba(0, 0, 0, 0.90);
 }
 
+.on {
+    font-size: 20px;
+    color:gold; 
+}
+
+.off {
+    font-size: 20px;   
+}

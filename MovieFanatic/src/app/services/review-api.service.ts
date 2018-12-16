@@ -6,6 +6,7 @@ import { Review } from '../models/review';
 import { ConfigAPI } from 'src/app/models/configAPI';
 import { ReviewCount } from 'src/app/models/reviewCount';
 import { ReviewBean } from 'src/app/models/reviewBean';
+import { Approval } from 'src/app/models/approval';
 import { config } from 'rxjs';
 
 @Injectable({
@@ -27,11 +28,22 @@ export class ReviewApiService {
   }
 
   getReviewCount(movie_id: string) {
-    console.log(ConfigAPI.spring_url + 'view/rating/' + movie_id);
     return this.http.get<ReviewCount>(ConfigAPI.spring_url + 'view/rating/' + movie_id);
   }
 
+  public getUserReviews(user_id: number) {
+    return this.http.get<ReviewBean[]>(ConfigAPI.spring_url + '/review/all/' + user_id);
+  }
+
   newReview(review: ReviewBean) {
-   return this.http.post<ReviewBean>(ConfigAPI.spring_url + 'review/new/', review, this.httpOptions);
+   return this.http.post<ReviewBean>(ConfigAPI.spring_url + 'review/', review, this.httpOptions);
+  }
+
+  newApproval(approval: Approval) {
+    return this.http.post<Approval>(ConfigAPI.spring_url + 'approval/', approval, this.httpOptions);
+  }
+
+  getApprovals(user_id: number) {
+    return this.http.get<Approval[]>(ConfigAPI.spring_url + 'approval/' + user_id);
   }
 }

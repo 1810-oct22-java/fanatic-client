@@ -10,7 +10,7 @@
                             
                         </div>
                         <div class="col">
-                            <span class="title">{{this.movie.title}}</span>
+                            <a routerLink="/movie/{{this.movie.id}}"><span class="title">{{this.movie.title}}</span></a>
                             <span>({{this.date_convert(this.movie.release_date)}})</span>
                             <h6 class="tag-line">{{this.movie.tagline}}</h6>
                             <h5 class="meta-data">{{this.ratings.Rated}}&nbsp;&bull;&nbsp;
@@ -19,7 +19,7 @@
                         </div>
                         <div class="col-auto">
                             <span *ngIf="this.loginService.isLoggedIn()">
-                                <span *ngIf="!this.allreadyReviewed">
+                                <span *ngIf="!this.alreadyReviewed">
                                     <a routerLink="#" data-toggle="modal" data-target="#reviewModal">Add a Review</a>
                                 </span>
                             </span>        
@@ -39,7 +39,8 @@
                         <div class="container review-container">
                             <div class="row justify-content-between review_header">
                                 <div class="col-3">
-                                    <span class="username">{{ this.review.username }}</span> <span class="join_date">({{ this.review.join_date }})</span>    
+                                    <a routerLink="/user/{{this.review.username}}">
+                                    <span class="username">{{ this.review.username }}</span></a> <span class="join_date">({{ this.review.join_date }})</span>    
                                 </div>
                                 <div class="col-3 text-right">
                                     {{ this.review.review_date }}&nbsp;
@@ -66,9 +67,15 @@
                                         <i class="fa fa-thumbs-up">&nbsp;{{ review.thumbs_up }}</i>&nbsp;&nbsp;
                                         <i class="fa fa-thumbs-down">&nbsp;{{ review.thumbs_down }}</i>
                                     </span>
-                                    <span class="on" *ngIf="!this.review.already_reviewed">
-                                        <i class="fa fa-thumbs-up" (click)="postUp(review.id)">&nbsp;{{ review.thumbs_up }}</i>&nbsp;&nbsp;
-                                        <i class="fa fa-thumbs-down" (click)="postDown(review.id)">&nbsp;{{ review.thumbs_down }}</i>
+                                    <span *ngIf="!this.review.already_reviewed">
+                                        <span class="off" *ngIf="review.username == this.loginService.getUserName()">
+                                            <i class="fa fa-thumbs-up">&nbsp;{{ review.thumbs_up }}</i>&nbsp;&nbsp;
+                                            <i class="fa fa-thumbs-down">&nbsp;{{ review.thumbs_down }}</i>
+                                        </span>
+                                        <span class="on" *ngIf="review.username != this.loginService.getUserName()">
+                                            <button type="button" (click)="postUp(review.id)" class="btn btn-light"><i class="fa fa-thumbs-up">&nbsp;{{ review.thumbs_up }}</i></button>&nbsp;&nbsp;
+                                            <button type="button" (click)="postDown(review.id)" class="btn btn-light"><i class="fa fa-thumbs-down">&nbsp;{{ review.thumbs_down }}</i></button>
+                                        </span>
                                     </span>
                                 </div>
                                 <div class="col-12" *ngIf="!this.loginService.isLoggedIn()">

@@ -23,23 +23,18 @@ export class ActorViewComponent implements OnInit {
   public current_page: number;
   public tempActMovie = [];
 
-
   constructor(
     public route: ActivatedRoute,
     public actorService: ActorApiService,
     public movieService: MovieAPIService
   ) {}
 
- 
-
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
     this.actorService.getActor(this.id).subscribe(
-      (actor) =>  { 
+      (actor) =>  {
         this.actor = actor;
-        this.actor.profile_path = this.actorService.formatImage(this.actor.profile_path);
-                    
-        console.log(this.actor);
+        this.actor.profile_path = this.actorService.formatActorImage(this.actor.profile_path);
       });
     this.getMovies();
   }
@@ -47,16 +42,13 @@ export class ActorViewComponent implements OnInit {
   getMovies() {
     this.movieService.getMoviesByActor(this.id).subscribe(
       (movie) =>  {
-                    console.log(movie);
                     this.tempActMovie.push(movie);
                     this.total_pages = this.tempActMovie[0].total_pages;
-                    console.log(this.total_pages);
                     this.current_page = 1;
-                    var nums;
+                    let nums;
                     if (this.tempActMovie[0].total_results < 6) {
                       nums = this.tempActMovie[0].total_results;
-                    } 
-                    else {
+                    } else {
                       nums = 6;
                     }
                     for (let i = 0; i < nums; i++) {
@@ -64,9 +56,6 @@ export class ActorViewComponent implements OnInit {
                                             'Poster' : this.movieService.formatImage(this.tempActMovie[0].results[i].poster_path),
                                             'id' : this.tempActMovie[0].results[i].id  });
                     }
-                    console.log(this.actMovieArray);
                   });
   }
-    
-
 }

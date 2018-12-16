@@ -4,6 +4,7 @@ import { User } from 'src/app/models/user.model';
 /*login component*/
 import { LoginService } from 'src/app/services/login.service';
 import { Observable } from 'rxjs';
+import { delay } from 'q';
 
 @Component({
   selector: 'app-header',
@@ -18,6 +19,7 @@ export class HeaderComponent implements OnInit {
   password = '';
   output: string;
   public currentUser: User;
+  public error = false;
 
   constructor(
     public router: Router,
@@ -37,27 +39,35 @@ export class HeaderComponent implements OnInit {
   }
 
   /*Login*/
-
   login() {
+    this.error = false;
     this.loginService.validateUser(this.username, this.password).subscribe(
       (user) => {
-        this.currentUser = new User(user.id,  
-                            user.username, 
-                            user.email, 
-                            user.password, 
+        this.currentUser = new User(user.id,
+                            user.username,
+                            user.email,
+                            user.password,
                             user.token,
                             user.firstname,
                             user.lastname);
-        console.log(this.currentUser);
+        this.error = false;
+
         if (this.currentUser == null || this.currentUser === undefined) {
-          console.log('Invalid Credentials' + this.username);
+          // console.log('Invalid Credentials' + this.username);
           this.output = 'Invalid Credentials';
         } else {
           this.closeBtn.nativeElement.click();
           this.loginService.persistLogin(this.currentUser);
+          this.router.navigateByUrl('/');
         }
-      });
+      },
+      err => {
+        this.error = true;
+        setTimeout( () => { this.error = false; }, 4000 );
+      }
+    );
   }
+
   logout() {
     this.loginService.logout();
   }
