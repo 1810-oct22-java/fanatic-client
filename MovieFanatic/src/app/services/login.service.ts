@@ -25,9 +25,7 @@ export class LoginService {
  }
 
  public validateUser(username, password) {
-   this.usr = new User(0, '', '', '', '', '', '');
-   this.usr.username = username;
-   this.usr.password = password;
+   this.usr = new User(0, username, '', password, '', '', '');
    return this.http.post<User>(ConfigAPI.spring_url + 'user/login/', this.usr);
  }
 
