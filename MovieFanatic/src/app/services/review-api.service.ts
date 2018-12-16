@@ -39,4 +39,8 @@ export class ReviewApiService {
   newApproval(approval: Approval) {
     return this.http.post<Approval>(ConfigAPI.spring_url + 'approval/', approval, this.httpOptions);
   }
+
+  getApprovals(user_id: number) {
+    return this.http.get<Approval[]>(ConfigAPI.spring_url + 'approval/' + user_id);
+  }
 }
