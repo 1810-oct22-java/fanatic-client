@@ -39,12 +39,10 @@ export class HeaderComponent implements OnInit {
   }
 
   /*Login*/
-
   login() {
     this.error = false;
     this.loginService.validateUser(this.username, this.password).subscribe(
       (user) => {
-        console.log(user);
         this.currentUser = new User(user.id,
                             user.username,
                             user.email,
@@ -52,10 +50,10 @@ export class HeaderComponent implements OnInit {
                             user.token,
                             user.firstname,
                             user.lastname);
-        console.log(this.currentUser);
         this.error = false;
+
         if (this.currentUser == null || this.currentUser === undefined) {
-          console.log('Invalid Credentials' + this.username);
+          // console.log('Invalid Credentials' + this.username);
           this.output = 'Invalid Credentials';
         } else {
           this.closeBtn.nativeElement.click();

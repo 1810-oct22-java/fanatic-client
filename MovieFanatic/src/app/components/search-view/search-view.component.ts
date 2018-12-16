@@ -32,9 +32,7 @@ export class SearchViewComponent implements OnInit {
 
    ngOnInit() {
     this.route.params.subscribe(param => {
-      console.log(param);
       this.query = param['query'];
-      console.log(this.query);
       this.getAllMovies();
     });
   }
@@ -45,10 +43,8 @@ export class SearchViewComponent implements OnInit {
     this.tempMovie = [];
     this.movieService.getMoviesByString(this.query).subscribe(
       (movie) =>  {
-                    console.log(movie);
                     this.tempMovie.push(movie);
                     this.total_pages = this.tempMovie[0].total_pages;
-                    console.log(this.total_pages);
                     this.current_page = 1;
                     for (let i = 0; i < this.tempMovie[0].results.length; i++) {
                       if (this.tempMovie[0].results[i].media_type === 'movie') {

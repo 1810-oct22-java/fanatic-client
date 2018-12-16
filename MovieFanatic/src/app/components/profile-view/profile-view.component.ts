@@ -31,7 +31,6 @@ export class ProfileViewComponent implements OnInit {
   findById() {
    const id = this.loginService.getUserID();
    this.showUser.findById(id).subscribe(user => this.user = user);
-   console.log(id);
   }
 
   /**

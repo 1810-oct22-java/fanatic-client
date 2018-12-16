@@ -50,14 +50,17 @@ export class MovieViewComponent implements OnInit {
         this.movie.poster_path = this.movieService.formatPosterImage(this.movie.poster_path);
         this.movieService.getOMDB(this.movie.imdb_id).subscribe(
           (omdb) => {
-            this.ratings = omdb;
-            this.getRottenTomatoes();
-            // get the review count
-            this.reviewService.getReviewCount(this.id).subscribe(
-              (reviewCount) => {
-                this.num_of_reviews = reviewCount.total;
-                this.ratings.MovieFanatic = reviewCount.rating;
-            });
+              this.ratings = omdb;
+              this.getRottenTomatoes();
+              // get the review count
+              this.reviewService.getReviewCount(this.id).subscribe(
+                (reviewCount) => {
+                  this.num_of_reviews = reviewCount.total;
+                  this.ratings.MovieFanatic = reviewCount.rating;
+              });
+          },
+          err => {
+            this.ratings.Metascore = 'N/A';
           });
       });
 
@@ -111,11 +114,13 @@ export class MovieViewComponent implements OnInit {
    * grabs the Rotten Tomatoes score from the ratings array
    */
   private getRottenTomatoes() {
-    this.ratings.Ratings.forEach(element => {
-      if (element.Source === 'Rotten Tomatoes') {
-        this.ratings.RottenTomatoes = element.Value;
-      }
-    });
+    if (this.ratings.Ratings) {
+      this.ratings.Ratings.forEach(element => {
+        if (element.Source === 'Rotten Tomatoes') {
+          this.ratings.RottenTomatoes = element.Value;
+        }
+      });
+    }
   }
 
   /**
