@@ -13,6 +13,10 @@ img.poster {
     
 }
 
+.fa-check-circle {
+    color: greenyellow;
+}
+
 .round-border {
 	border-radius: 15px;
 	border: 1px solid;
