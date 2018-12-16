@@ -13,17 +13,19 @@ import { ReviewApiService } from 'src/app/services/review-api.service';
 export class ProfileViewComponent implements OnInit {
   user = new NewUser();
   score = 0;
+  public reviewCount;
 
   constructor(
     public route: ActivatedRoute,
-    private showUser: UserService,
+    public showUser: UserService,
     private loginService: LoginService,
     public reviewService: ReviewApiService
   ) {}
 
   ngOnInit() {
     this.findById();
-    this.getMFScore();
+    this.getMFScore(this.loginService.getUserID());
+    this.getReviewCount(this.loginService.getUserID());
   }
 
   findById() {
@@ -32,8 +34,11 @@ export class ProfileViewComponent implements OnInit {
    console.log(id);
   }
 
-  getMFScore() {
-    this.reviewService.getApprovals(this.loginService.getUserID()).subscribe(
+  /**
+   * Requests the Movie Fanatics score for the user
+   */
+  getMFScore(user_id: number) {
+    this.reviewService.getApprovals(user_id).subscribe(
       (approvals) => {
         let thumbs_up = 0;
         let thumbs_down = 0;
@@ -51,10 +56,20 @@ export class ProfileViewComponent implements OnInit {
         if ((thumbs_down + thumbs_up) !== 0) {
           this.score = thumbs_up / (thumbs_down + thumbs_up);
         } else {
-          this.score = 100;
+          this.score = 1;
         }
       }
     );
   }
 
+  /**
+   * Requests all of the reviews for the user and then counts them
+   */
+  getReviewCount(user_id: number) {
+    this.reviewService.getUserReviews(user_id).subscribe (
+      (reviews) => {
+        this.reviewCount = reviews.length;
+      }
+    );
+  }
 }

@@ -61,14 +61,18 @@
                 <span *ngIf="this.score < 1.00" class="fa fa-star off"></span>
                 &nbsp;{{this.score | percent}}
             </div>
+            <div class="col-6" *ngIf="this.reviewCount">
+              <label>Number of Reviews</label>
+            </div>
+            <div class="col-6" *ngIf="this.reviewCount">
+              {{ this.reviewCount }}
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="col-1"></div>
   </div>
- 
-
   <br>
 <div class="row">
   <div class = "jumbotron col-12 text-center" id="jum">

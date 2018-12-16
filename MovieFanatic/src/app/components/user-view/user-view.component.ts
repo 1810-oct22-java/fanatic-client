@@ -15,7 +15,8 @@ export class UserViewComponent implements OnInit {
   public favArray = [];
   public favMovieArray = [];
   public tempMovie: MovieAPI;
-  score = 0;
+  public score = 0;
+  public reviewCount;
 
   constructor(
     public route: ActivatedRoute,
@@ -27,21 +28,25 @@ export class UserViewComponent implements OnInit {
   ngOnInit() {
     this.username = this.route.snapshot.paramMap.get('username');
     this.getFavorites();
-    // this.getMFScore();
   }
 
-  getFavorites() {
+  public getFavorites() {
     this.movieService.getFavoritesByUsername(this.username).subscribe(
       (favorite) => {
+        let user_id = 0;
+
         for (let i = 0; i < favorite.length; i++) {
           this.favArray.push(favorite[i].movie_id);
+          user_id = favorite[i].userId;
         }
         this.getFavMovies();
+        this.getMFScore(user_id);
+        this.getReviewCount(user_id);
       }
     );
   }
 
-  getFavMovies() {
+  public getFavMovies() {
     let num;
     if (this.favArray.length > 6) {
       num = 6;
@@ -58,29 +63,43 @@ export class UserViewComponent implements OnInit {
     }
   }
 
-  // getMFScore() {
-  //   this.reviewService.getApprovals(this.username).subscribe(
-  //     (approvals) => {
-  //       let thumbs_up = 0;
-  //       let thumbs_down = 0;
+  /**
+   * Requests the Movie Fanatics score for the user
+   */
+  public getMFScore(user_id: number) {
+    this.reviewService.getApprovals(user_id).subscribe(
+      (approvals) => {
+        let thumbs_up = 0;
+        let thumbs_down = 0;
 
-  //       // count the thumbs up and thumbs down
-  //       approvals.forEach(element => {
-  //         if (element.thumb === 1) {
-  //           thumbs_up++;
-  //         } else {
-  //           thumbs_down++;
-  //         }
-  //       });
+        // count the thumbs up and thumbs down
+        approvals.forEach(element => {
+          if (element.thumb === 1) {
+            thumbs_up++;
+          } else {
+            thumbs_down++;
+          }
+        });
 
-  //       // do the math
-  //       if ((thumbs_down + thumbs_up) !== 0) {
-  //         this.score = thumbs_up / (thumbs_down + thumbs_up);
-  //       } else {
-  //         this.score = 100;
-  //       }
-  //     }
-  //   );
-  // }
+        // do the math
+        if ((thumbs_down + thumbs_up) !== 0) {
+          this.score = thumbs_up / (thumbs_down + thumbs_up);
+        } else {
+          this.score = 1;
+        }
+      }
+    );
+  }
+
+  /**
+   * Requests all of the reviews for the user and then counts them
+   */
+  public getReviewCount(user_id: number) {
+    this.reviewService.getUserReviews(user_id).subscribe (
+      (reviews) => {
+        this.reviewCount = reviews.length;
+      }
+    );
+  }
 
 }
