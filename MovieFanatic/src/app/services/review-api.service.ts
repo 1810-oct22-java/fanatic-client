@@ -28,8 +28,11 @@ export class ReviewApiService {
   }
 
   getReviewCount(movie_id: string) {
-    console.log(ConfigAPI.spring_url + 'view/rating/' + movie_id);
     return this.http.get<ReviewCount>(ConfigAPI.spring_url + 'view/rating/' + movie_id);
+  }
+
+  public getUserReviews(user_id: number) {
+    return this.http.get<ReviewBean[]>(ConfigAPI.spring_url + '/review/all/' + user_id);
   }
 
   newReview(review: ReviewBean) {
@@ -38,5 +41,9 @@ export class ReviewApiService {
 
   newApproval(approval: Approval) {
     return this.http.post<Approval>(ConfigAPI.spring_url + 'approval/', approval, this.httpOptions);
+  }
+
+  getApprovals(user_id: number) {
+    return this.http.get<Approval[]>(ConfigAPI.spring_url + 'approval/' + user_id);
   }
 }
