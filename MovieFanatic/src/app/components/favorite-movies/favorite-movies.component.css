@@ -46,6 +46,11 @@ h2 {
     color: white;
 }
 
+h5{
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    color: rgba(0, 0, 0, 0.90);
+}
+
 .release-date {
     color: white;
 }
