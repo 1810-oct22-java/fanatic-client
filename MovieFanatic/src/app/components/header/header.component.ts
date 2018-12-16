@@ -60,6 +60,7 @@ export class HeaderComponent implements OnInit {
         } else {
           this.closeBtn.nativeElement.click();
           this.loginService.persistLogin(this.currentUser);
+          this.router.navigateByUrl('/');
         }
       },
       err => {
