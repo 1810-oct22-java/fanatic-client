@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NewUser } from 'src/app/models/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ConfigAPI } from '../models/configAPI'
+import { ConfigAPI } from '../models/configAPI';
 
 
 @Injectable({
@@ -17,7 +17,6 @@ export class UserService {
   private userUrl1 = 'http://localhost:8074/MovieFanatics/user';
 
   public createUser(user) {
-
     return this.http.post<NewUser>(ConfigAPI.spring_url + 'user/new/', user);
   }
 
