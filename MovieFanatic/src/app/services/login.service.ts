@@ -62,11 +62,11 @@ export class LoginService {
    return (loggedIn === 'true');
  }
 
- public logout() {
-   localStorage.removeItem(this.ID);
-   localStorage.removeItem(this.USERNAME);
-   localStorage.removeItem(this.TOKEN);
-   localStorage.removeItem(this.FULLNAME);
-   localStorage.setItem(this.LOGGEDIN, 'false');
- }
+  public logout() {
+    localStorage.removeItem(this.ID);
+    localStorage.removeItem(this.USERNAME);
+    localStorage.removeItem(this.TOKEN);
+    localStorage.removeItem(this.FULLNAME);
+    localStorage.setItem(this.LOGGEDIN, 'false');
+  }
 }
