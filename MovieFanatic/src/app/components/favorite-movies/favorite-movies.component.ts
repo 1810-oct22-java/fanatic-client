@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { MovieAPIService } from '../../services/movie-api.service';
-import { Favorite } from 'src/app/models/favorite';
 import { MovieAPI } from 'src/app/models/movieAPI';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -14,6 +13,7 @@ export class FavoriteMoviesComponent implements OnInit {
   public favArray = [];
   public favMovieArray = [];
   public tempMovie: MovieAPI;
+  public favLoaded = false;
 
   constructor(
     public movieService: MovieAPIService,
@@ -21,23 +21,38 @@ export class FavoriteMoviesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getFavorites();
+  }
+
+  /**
+   * manages if and when the list has been loaded.  The user id isn't available when this ngOnInit
+   * so we keep up with whether the user is logged in and the list needs to be loaded with a flag.
+   */
+  refresh() {
+    if (this.loginService.isLoggedIn()) {
+      if (!this.favLoaded) {
+        this.favLoaded = true;
+        this.getFavorites();
+      }
+    } else {
+      this.favLoaded = false;
+    }
+    return this.loginService.isLoggedIn();
   }
 
   getFavorites() {
-    if (this.loginService.isLoggedIn()) {
-      this.movieService.getFavorites(this.loginService.getUserID()).subscribe(
+    this.favArray = [];
+    this.movieService.getFavorites(this.loginService.getUserID()).subscribe(
         (favorite) => {
           for (let i = 0; i < favorite.length; i++) {
             this.favArray.push(favorite[i].movie_id);
           }
           this.getFavMovies();
         }
-      );
-    }
+    );
   }
 
   getFavMovies() {
+    this.favMovieArray = [];
     let num;
     if (this.favArray.length > 12) {
       num = 12;

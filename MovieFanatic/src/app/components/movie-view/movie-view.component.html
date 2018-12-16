@@ -60,7 +60,7 @@
                 <div>
                     <div *ngIf="this.loginService.isLoggedIn()"> 
                         <div *ngIf="this.isFavorite">
-                            One of your Favorites
+                            <i class="fa fa-check-circle"></i>&nbsp;One of your Favorites
                         </div>
                         <div *ngIf="!this.isFavorite">
                                 <button type="button" (click)="addFavorite()" class="btn btn-light">Add Movie as a Favorite</button>
