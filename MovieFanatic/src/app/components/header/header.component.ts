@@ -4,6 +4,7 @@ import { User } from 'src/app/models/user.model';
 /*login component*/
 import { LoginService } from 'src/app/services/login.service';
 import { Observable } from 'rxjs';
+import { delay } from 'q';
 
 @Component({
   selector: 'app-header',
@@ -61,7 +62,10 @@ export class HeaderComponent implements OnInit {
           this.loginService.persistLogin(this.currentUser);
         }
       },
-      err => { this.error = true; }
+      err => {
+        this.error = true;
+        setTimeout( () => { this.error = false; }, 4000 );
+      }
     );
   }
 
